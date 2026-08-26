@@ -826,6 +826,123 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
   html{scroll-behavior:auto}
   *{transition-duration:.01ms !important; animation-duration:.01ms !important}
 }
+
+/* ============================================================
+   20 · לוח עונת הדוחות — חי ארבע פעמים בשנה, בין המסטהד לכותרת השבוע
+   ------------------------------------------------------------
+   ⚠️ נבנה כ**בלוקים** ולא כטבלה במכוון. טבלה של שש עמודות
+      (מדד + חמש קבוצות) אינה שורדת 390px, וזו הייתה בדיוק
+      הסיבה שלוח 2028 לא נקרא במובייל — הוא ישב ב-87% מהעמוד.
+      כל בלוק הוא מדד אחד, וכל בלוק הוא גם כרטיס בנגן.
+   ⚠️ הלוח נשאר **בהיר**. הכותרת שמתחתיו כהה, ושני משטחים
+      כהים צמודים שוברים את חוק 4 של ספר העיצוב.
+   ============================================================ */
+.season{
+  margin:var(--mg-6) 0 0; scroll-margin-top:calc(var(--header-h) + 16px);
+}
+.season-head{margin:0 0 var(--mg-4)}
+.season-head h2{
+  margin:0; font-size:var(--mg-h2-m); line-height:1.15; font-weight:var(--mg-w-black);
+  letter-spacing:-.02em; color:var(--mg-text);
+}
+.season-head .sub{
+  margin:6px 0 0; font-size:var(--mg-body-sm); line-height:1.55;
+  font-weight:var(--mg-w-light); color:var(--mg-text-subtle);
+}
+/* שורת העמדות — הפאנץ׳ מגיע במסך הראשון גם למי שלא יגלול */
+.season-pos{
+  margin:var(--mg-3) 0 0; padding:11px 14px;
+  background:var(--mg-indigo-soft); border-radius:var(--mg-r-md);
+  font-size:var(--mg-body-sm); line-height:1.6; color:var(--mg-indigo-700);
+}
+.season-pos b{font-weight:var(--mg-w-black); color:var(--mg-indigo-700)}
+.season-pos a{color:var(--mg-indigo-700); text-decoration:none; border-bottom:1px solid rgba(42,73,173,.35)}
+.season-pos a:hover{border-bottom-color:var(--mg-indigo-700)}
+
+.season-grid{display:grid; grid-template-columns:1fr; gap:var(--mg-3)}
+@media (min-width:768px){ .season-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--mg-4)} }
+@media (min-width:1100px){ .season-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+.smetric{
+  background:var(--mg-surface); border:1px solid var(--mg-border-soft);
+  border-radius:var(--mg-r-lg); padding:var(--mg-4); box-shadow:var(--mg-sh-1);
+  scroll-margin-top:calc(var(--header-h) + 16px);
+}
+.smetric .k{margin:0; font-size:var(--mg-body); font-weight:var(--mg-w-black); color:var(--mg-text)}
+.smetric .kp{
+  margin:3px 0 var(--mg-3); font-size:11.5px; line-height:1.45;
+  font-weight:var(--mg-w-light); color:var(--mg-text-subtle);
+}
+.smetric .kn{
+  margin:var(--mg-3) 0 0; padding-top:10px; border-top:1px solid var(--mg-border-soft);
+  font-size:11px; line-height:1.5; font-weight:var(--mg-w-light); color:var(--mg-text-subtle);
+}
+
+.srank{margin:0; padding:0; list-style:none; font-variant-numeric:tabular-nums}
+.srank li{
+  display:grid; grid-template-columns:16px minmax(58px,auto) 1fr auto;
+  align-items:center; gap:8px; padding:6px 6px; border-radius:var(--mg-r-sm);
+}
+.srank .r{font-size:11px; font-weight:var(--mg-w-bold); color:var(--mg-text-faint); text-align:center}
+.srank .c{font-size:var(--mg-body-sm); font-weight:var(--mg-w-light); color:var(--mg-text-muted); white-space:nowrap}
+.srank .v{font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold); color:var(--mg-text); white-space:nowrap}
+/* הפס הוא ייצוג של הערך, לא ציון — ולכן גוון אחד לכולם */
+.srank .b{position:relative; height:5px; border-radius:var(--mg-r-pill); background:var(--mg-sunken); overflow:hidden}
+.srank .b::before{
+  content:""; position:absolute; inset-block:0; inset-inline-start:0;
+  width:var(--w,0%); border-radius:var(--mg-r-pill); background:var(--mg-indigo-soft);
+}
+/* מגדל — סימון זהות, לא שיפוט */
+.srank li.me{background:var(--mg-sunken)}
+.srank li.me .c{font-weight:var(--mg-w-black); color:var(--mg-text)}
+.srank li.me .r{color:var(--mg-text-strong)}
+.srank li.me .b::before{background:var(--mg-indigo)}
+.srank li.me .v{font-weight:var(--mg-w-black)}
+/* טרם דיווחה / לא בת-השוואה */
+.srank li.pending .c,.srank li.pending .v{color:var(--mg-text-faint); font-weight:var(--mg-w-light)}
+.srank li.pending .b{background:transparent; border:1px dashed var(--mg-border)}
+.srank li.pending .b::before{width:0}
+
+@media (min-width:1024px){
+  .season-head h2{font-size:var(--mg-h2)}
+  .smetric{padding:18px 20px}
+}
+@media print{
+  .season-grid{grid-template-columns:repeat(2,1fr)}
+  .smetric{break-inside:avoid; box-shadow:none}
+}
+
+/* מצב פלייסהולדר — תוכן שממתין לאירוע ידוע מראש. גלוי, לא מוסתר. */
+.is-placeholder{position:relative; border-style:dashed !important; border-color:var(--mg-border) !important; box-shadow:none !important}
+.is-placeholder .ph-badge{
+  display:inline-block; margin:0 0 10px; padding:4px 10px; border-radius:var(--mg-r-pill);
+  background:var(--mg-band); font-size:11px; font-weight:var(--mg-w-bold);
+  letter-spacing:.03em; color:var(--mg-indigo-700);
+}
+.lead.is-placeholder{background:var(--mg-surface); color:var(--mg-text)}
+.lead.is-placeholder h2{color:var(--mg-text)}
+.lead.is-placeholder .eyebrow{color:var(--mg-text-subtle)}
+.lead.is-placeholder .facts{color:var(--mg-text-muted)}
+.srank li.pending .v{font-style:normal}
+/* השבב הוא עוגן ולא כפתור כשהוא מוביל בתוך העמוד — ניווט הדפדפן עובד
+   גם בטאב ברקע ובתצוגה מוטמעת, ובניגוד ל-scrollIntoView הוא אינו no-op שקט. */
+a.hdr-chip{display:inline-block; text-decoration:none; line-height:1.35}
+
+/* ---------------- תצוגה שלישית: ״עונת הדוחות״ ----------------
+   המתג עובר משתי לשוניות לשלוש. ה-thumb זז ב-translateX של רוחב עצמו,
+   ולכן כלל ה-ai הקיים תקף גם כאן ורק המיקום השלישי נוסף. */
+.viewswitch.three .thumb{width:calc(33.333% - 4px)}
+body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200% - 6px))}
+@media (max-width:520px){
+  .viewswitch.three button{font-size:12.5px; padding-inline:2px}
+  .viewswitch.three .lbl{gap:5px}
+  .viewswitch.three .count{min-width:18px; height:17px; padding:0 5px; font-size:10px}
+}
+@media (min-width:1024px){ .viewswitch.three button{width:152px} }
+.masthead-season h1{font-size:var(--mg-h1-m)}
+@media (min-width:768px){ .masthead-season h1{font-size:38px} }
+@media (min-width:1024px){ .masthead-season{display:block} .masthead-season h1{font-size:46px} }
+.view-season .season{margin-top:var(--mg-4)}
 </style>
 </head>
 <body>
@@ -870,12 +987,14 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
   </div>
 
   <div class="switch-anchor">
-    <div class="viewswitch" role="tablist" aria-label="תצוגות הגיליון">
+    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" role="tab" aria-selected="true" aria-controls="viewMain"
               data-view-to="main">המבט השבועי</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="viewAi"
               data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">3</span></span></button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="viewSeason"
+              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
     </div>
   </div>
 
@@ -1512,12 +1631,14 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
   </div>
 
   <div class="switch-anchor">
-    <div class="viewswitch" role="tablist" aria-label="תצוגות הגיליון">
+    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" role="tab" aria-selected="false" aria-controls="viewMain"
               data-view-to="main">המבט השבועי</button>
       <button type="button" role="tab" aria-selected="true" aria-controls="viewAi"
               data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">3</span></span></button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="viewSeason"
+              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
     </div>
   </div>
   <p class="ai-cover" id="aiCover">
@@ -1749,6 +1870,183 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
 
 </div><!-- /view-ai -->
 
+<div class="view view-season" id="viewSeason" role="tabpanel" aria-label="עונת הדוחות" hidden>
+
+  <div class="masthead masthead-season">
+    <div class="meta">
+      <h1>עונת הדוחות</h1>
+      <p class="range">רבעון שני ומחצית 2026</p>
+      <p class="contract">תצוגה מקבילה לגיליון — לא מדור בתוכו. ארבע פעמים בשנה כל המתחרות מניחות על השולחן את אותם מדדים לאותה תקופה; זהו חלון ההשוואה היחיד שבו אפשר להעמיד אותן זו מול זו.</p>
+      <p class="reading">מוצר מבית <b class="byline-b">מגדל AI</b> · המספרים ממקור ראשוני — דוחות כספיים, דוחות כושר פירעון ומצגות משקיעים</p>
+    </div>
+  </div>
+
+  <div class="switch-anchor">
+    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" role="tab" aria-selected="false" aria-controls="viewMain"
+              data-view-to="main">המבט השבועי</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="viewAi"
+              data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">3</span></span></button>
+      <button type="button" role="tab" aria-selected="true" aria-controls="viewSeason"
+              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
+    </div>
+  </div>
+  <p class="ai-cover">
+    <span class="dot" aria-hidden="true"></span>
+    <b><span class="n">8</span> מדדים</b><span class="sep"> · </span><b><span class="n">5</span> קבוצות</b><span class="sep"> · </span>מדד שאינו בר-השוואה אינו בלוח<span class="sep"> · </span>הראל מדווחת <b><span class="n">26.8</span></b>
+  </p>
+
+    <section class="season" id="season" aria-labelledby="seasonH">
+    <div class="season-head">
+      <h2 id="seasonH">לוח עונת הדוחות</h2>
+      <p class="sub">רבעון שני ומחצית 2026 · חמש הקבוצות · כל בלוק הוא מדד אחד, באותה הגדרה ובאותה תקופה. מדד שאינו בר-השוואה אינו בלוח. ״הלוח של 2028״ נשאר במבט השבועי; כאן הוא חוזר כבלוק האחרון, אחרי המרה לבסיס אחיד — ושם הוא אומר משהו אחר לגמרי.</p>
+      <p class="season-pos">מגדל בעונה: <b>2 מ-5</b> בנכסי פנסיה · <b>5 מ-5</b> בכושר פירעון · <b>1 מ-4</b> בבניית רווח עתידי</p>
+    </div>
+    <div class="season-grid">
+      <article class="smetric" id="s-pension"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="הראל ל-31.3.2026 — טרם דיווחה למחצית. זהו החתך הנקי ביותר בנכסים: הגדרה רגולטורית אחידה לכל הקבוצות."
+        data-story-facts="1 הראל — 221|2 מגדל — 219|3 כלל — 203|4 הפניקס — 162|· מנורה — לא פרסמה פילוח">
+        <h3 class="k">נכסי פנסיה</h3>
+        <p class="kp">30.6.2026 · נכסי עמיתים בקרנות פנסיה חדשות · מיליארד ₪</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">הראל</span><span class="b" style="--w:100.0%"></span><span class="v">221</span></li>
+          <li class="me"><span class="r">2</span><span class="c">מגדל</span><span class="b" style="--w:99.1%"></span><span class="v">219</span></li>
+          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:91.9%"></span><span class="v">203</span></li>
+          <li><span class="r">4</span><span class="c">הפניקס</span><span class="b" style="--w:73.3%"></span><span class="v">162</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">לא פרסמה פילוח</span></li>
+        </ol>
+        <p class="kn">הראל ל-31.3.2026 — טרם דיווחה למחצית. זהו החתך הנקי ביותר בנכסים: הגדרה רגולטורית אחידה לכל הקבוצות.</p>
+      </article>
+      <article class="smetric" id="s-profit"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="שיעורי הצמיחה אינם ברי-השוואה — ה-+12% של כלל מושפע מהפרשה חד-פעמית במקס אשתקד."
+        data-story-facts="1 הפניקס — 1,574|2 מנורה — 1,249|3 כלל — 1,050|4 מגדל — 897|· הראל — טרם דיווחה">
+        <h3 class="k">רווח כולל אחרי מס</h3>
+        <p class="kp">מחצית 2026 · המיוחס לבעלי המניות · מיליון ₪</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">הפניקס</span><span class="b" style="--w:100.0%"></span><span class="v">1,574</span></li>
+          <li><span class="r">2</span><span class="c">מנורה</span><span class="b" style="--w:79.4%"></span><span class="v">1,249</span></li>
+          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:66.7%"></span><span class="v">1,050</span></li>
+          <li class="me"><span class="r">4</span><span class="c">מגדל</span><span class="b" style="--w:57.0%"></span><span class="v">897</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">הראל</span><span class="b" style="--w:0%"></span><span class="v">טרם דיווחה</span></li>
+        </ol>
+        <p class="kn">שיעורי הצמיחה אינם ברי-השוואה — ה-+12% של כלל מושפע מהפרשה חד-פעמית במקס אשתקד.</p>
+      </article>
+      <article class="smetric" id="s-roe"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="בבסיס אחיד (רווח כולל ×2 חלקי הון ממוצע): מנורה 26.4% · הפניקס 24.6% · כלל 18.8% · מגדל 17.3%. הפניקס מאנואלזת בהצברה גיאומטרית — יחידה בענף. פער מתחת לשתי נקודות אחוז אינו אות."
+        data-story-facts="1 מנורה — 27.2%|2 הפניקס — 26.1%|3 כלל — 19.8%|4 מגדל — 18.0%|· הראל — טרם דיווחה">
+        <h3 class="k">תשואה להון</h3>
+        <p class="kp">מחצית 2026 · מדווחת, במונחים שנתיים · %</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">מנורה</span><span class="b" style="--w:100.0%"></span><span class="v">27.2%</span></li>
+          <li><span class="r">2</span><span class="c">הפניקס</span><span class="b" style="--w:96.0%"></span><span class="v">26.1%</span></li>
+          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:72.8%"></span><span class="v">19.8%</span></li>
+          <li class="me"><span class="r">4</span><span class="c">מגדל</span><span class="b" style="--w:66.2%"></span><span class="v">18.0%</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">הראל</span><span class="b" style="--w:0%"></span><span class="v">טרם דיווחה</span></li>
+        </ol>
+        <p class="kn">בבסיס אחיד (רווח כולל ×2 חלקי הון ממוצע): מנורה 26.4% · הפניקס 24.6% · כלל 18.8% · מגדל 17.3%. הפניקס מאנואלזת בהצברה גיאומטרית — יחידה בענף. פער מתחת לשתי נקודות אחוז אינו אות.</p>
+      </article>
+      <article class="smetric" id="s-solvency"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="החתך היחיד שבו כל חמש הקבוצות מדווחות באותו תאריך ובאותה הגדרה — כולן בבסיס ״כפי שחושב״, מבוקר, וכל יחס נבדק מול ההון וה-SCR. שלוש גייסו הון אחרי תאריך החישוב ומציגות גם בסיס שני: מגדל 116% · כלל 144% · הפניקס 157% — והדירוג זהה בשני הבסיסים. סף החלוקה שקבע דירקטוריון מגדל הוא 115%, ולפי הבסיס השני מגדל מדווחת שהיא עומדת בו. יעדי הדירקטוריון אינם אחידים ואינם בלוח: מגדל וכלל 115% · מנורה 116.9% · הראל 118% · הפניקס 123%."
+        data-story-facts="1 מנורה — 163.1%|2 הפניקס — 155%|3 הראל — 148%|4 כלל — 139%|5 מגדל — 112%">
+        <h3 class="k">יחס כושר פירעון</h3>
+        <p class="kp">31.12.2025 · ללא הוראות פריסה · מבוקר · חברות הביטוח · %</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">מנורה</span><span class="b" style="--w:100.0%"></span><span class="v">163.1%</span></li>
+          <li><span class="r">2</span><span class="c">הפניקס</span><span class="b" style="--w:95.0%"></span><span class="v">155%</span></li>
+          <li><span class="r">3</span><span class="c">הראל</span><span class="b" style="--w:90.7%"></span><span class="v">148%</span></li>
+          <li><span class="r">4</span><span class="c">כלל</span><span class="b" style="--w:85.2%"></span><span class="v">139%</span></li>
+          <li class="me"><span class="r">5</span><span class="c">מגדל</span><span class="b" style="--w:68.7%"></span><span class="v">112%</span></li>
+        </ol>
+        <p class="kn">החתך היחיד שבו כל חמש הקבוצות מדווחות באותו תאריך ובאותה הגדרה — כולן בבסיס ״כפי שחושב״, מבוקר, וכל יחס נבדק מול ההון וה-SCR. שלוש גייסו הון אחרי תאריך החישוב ומציגות גם בסיס שני: מגדל 116% · כלל 144% · הפניקס 157% — והדירוג זהה בשני הבסיסים. סף החלוקה שקבע דירקטוריון מגדל הוא 115%, ולפי הבסיס השני מגדל מדווחת שהיא עומדת בו. יעדי הדירקטוריון אינם אחידים ואינם בלוח: מגדל וכלל 115% · מנורה 116.9% · הראל 118% · הפניקס 123%.</p>
+      </article>
+      <article class="smetric" id="s-csm-flow"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="CSM הוא מלאי הרווח העתידי תחת IFRS 17. התנועה מודדת כמה נבנה בתקופה — לא כמה נצבר."
+        data-story-facts="1 מגדל — +865 (+6.0%)|2 כלל — +172 (+1.7%)|3 הפניקס — +15 (+0.2%)|· הראל — +292 ברבעון בלבד|· מנורה — ההגדרה לא פורסמה">
+        <h3 class="k">בניית רווח עתידי — תנועה ב-CSM</h3>
+        <p class="kp">מחצית 2026 · נטו מביטוח משנה · מיליון ₪</p>
+        <ol class="srank">
+          <li class="me"><span class="r">1</span><span class="c">מגדל</span><span class="b" style="--w:100.0%"></span><span class="v">+865 (+6.0%)</span></li>
+          <li><span class="r">2</span><span class="c">כלל</span><span class="b" style="--w:19.9%"></span><span class="v">+172 (+1.7%)</span></li>
+          <li><span class="r">3</span><span class="c">הפניקס</span><span class="b" style="--w:1.7%"></span><span class="v">+15 (+0.2%)</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">הראל</span><span class="b" style="--w:0%"></span><span class="v">+292 ברבעון בלבד</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">ההגדרה לא פורסמה</span></li>
+        </ol>
+        <p class="kn">CSM הוא מלאי הרווח העתידי תחת IFRS 17. התנועה מודדת כמה נבנה בתקופה — לא כמה נצבר.</p>
+      </article>
+      <article class="smetric" id="s-csm-stock"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="הראל ל-31.3.2026. הפניקס מוצגת ב-8.3 ולא ב-9.1 — הוסרו 739 מיליון ₪ של פוליסות השקעה שאינן CSM לפי IFRS 17. יחס ל-הון: מגדל 1.41 · הראל 1.43 · כלל 0.90 · הפניקס 0.63."
+        data-story-facts="1 הראל — 17.5|2 מגדל — 15.3|3 כלל — 10.4|4 הפניקס — 8.3|· מנורה — ההגדרה לא פורסמה">
+        <h3 class="k">מלאי הרווח העתידי — יתרת CSM</h3>
+        <p class="kp">30.6.2026 · נטו מביטוח משנה · מיליארד ₪</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">הראל</span><span class="b" style="--w:100.0%"></span><span class="v">17.5</span></li>
+          <li class="me"><span class="r">2</span><span class="c">מגדל</span><span class="b" style="--w:87.4%"></span><span class="v">15.3</span></li>
+          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:59.4%"></span><span class="v">10.4</span></li>
+          <li><span class="r">4</span><span class="c">הפניקס</span><span class="b" style="--w:47.4%"></span><span class="v">8.3</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">ההגדרה לא פורסמה</span></li>
+        </ol>
+        <p class="kn">הראל ל-31.3.2026. הפניקס מוצגת ב-8.3 ולא ב-9.1 — הוסרו 739 מיליון ₪ של פוליסות השקעה שאינן CSM לפי IFRS 17. יחס ל-הון: מגדל 1.41 · הראל 1.43 · כלל 0.90 · הפניקס 0.63.</p>
+      </article>
+      <article class="smetric" id="s-payout"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="סף החלוקה שקבע דירקטוריון מגדל הוא יחס כושר פירעון של 115% ללא הוראות פריסה — ראו בלוק כושר הפירעון. הפניקס 62% בכלל הרכישה העצמית. כלל חילקה 200 מיליון ₪ מכלל ביטוח לכלל החזקות — תוך-קבוצתי, לא לבעלי המניות. הדיבידנד של הראל מ-25.3 הוא בגין 2025."
+        data-story-facts="1 הפניקס — 46%|2 מנורה — 40%|3 כלל — 0%|4 מגדל — 0%|· הראל — טרם דיווחה">
+        <h3 class="k">שיעור חלוקה מרווחי המחצית</h3>
+        <p class="kp">בגין רווחי מחצית 2026 · % מהרווח הכולל</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">הפניקס</span><span class="b" style="--w:100.0%"></span><span class="v">46%</span></li>
+          <li><span class="r">2</span><span class="c">מנורה</span><span class="b" style="--w:87.0%"></span><span class="v">40%</span></li>
+          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:0.0%"></span><span class="v">0%</span></li>
+          <li class="me"><span class="r">4</span><span class="c">מגדל</span><span class="b" style="--w:0.0%"></span><span class="v">0%</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">הראל</span><span class="b" style="--w:0%"></span><span class="v">טרם דיווחה</span></li>
+        </ol>
+        <p class="kn">סף החלוקה שקבע דירקטוריון מגדל הוא יחס כושר פירעון של 115% ללא הוראות פריסה — ראו בלוק כושר הפירעון. הפניקס 62% בכלל הרכישה העצמית. כלל חילקה 200 מיליון ₪ מכלל ביטוח לכלל החזקות — תוך-קבוצתי, לא לבעלי המניות. הדיבידנד של הראל מ-25.3 הוא בגין 2025.</p>
+      </article>
+      <article class="smetric" id="s-target"
+        data-sstory data-ms="7000"
+        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
+        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
+        data-caveat-short="⚠️ מגדל נוקבת ביעד של 3.0–3.2 מיליארד ₪ **לפני מס**; הראל והפניקס נוקבות **אחרי מס**. בשיעור המס האפקטיבי של מגדל (37%) היעד שלה שווה כ-2.0–2.1 אחרי מס — ואכן יעד הרווח הכולל שלה הוא 2–2.2. בלי ההמרה שלוש השורות נראות דומות."
+        data-story-facts="1 הפניקס — 3.3–3.5|2 הראל — 3.1–3.3|3 מגדל — ≈2.0–2.1|· כלל — לא פרסמה יעד|· מנורה — יעדי 2030">
+        <h3 class="k">יעד רווח 2028</h3>
+        <p class="kp">בבסיס אחיד — אחרי מס · מיליארד ₪</p>
+        <ol class="srank">
+          <li><span class="r">1</span><span class="c">הפניקס</span><span class="b" style="--w:100.0%"></span><span class="v">3.3–3.5</span></li>
+          <li><span class="r">2</span><span class="c">הראל</span><span class="b" style="--w:94.1%"></span><span class="v">3.1–3.3</span></li>
+          <li class="me"><span class="r">3</span><span class="c">מגדל</span><span class="b" style="--w:60.3%"></span><span class="v">≈2.0–2.1</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">כלל</span><span class="b" style="--w:0%"></span><span class="v">לא פרסמה יעד</span></li>
+          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">יעדי 2030</span></li>
+        </ol>
+        <p class="kn">⚠️ מגדל נוקבת ביעד של 3.0–3.2 מיליארד ₪ **לפני מס**; הראל והפניקס נוקבות **אחרי מס**. בשיעור המס האפקטיבי של מגדל (37%) היעד שלה שווה כ-2.0–2.1 אחרי מס — ואכן יעד הרווח הכולל שלה הוא 2–2.2. בלי ההמרה שלוש השורות נראות דומות.</p>
+      </article>
+    </div>
+  </section>
+  <p class="ai-next">העונה נסגרת עם דוח הראל — <b>26 באוגוסט 2026, 13:00</b></p>
+
+</div><!-- /view-season -->
+
+
 
   <!-- ============ שמורים ============ -->
   <section class="saved-strip" id="savedStrip" hidden aria-live="polite">
@@ -1865,13 +2163,13 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
   state.read  = state.read  || {};
 
   /* ---------- הפריטים נגזרים מה-DOM. מקור אמת אחד. ---------- */
-  var nodes = Array.prototype.slice.call(document.querySelectorAll("article[data-story]"));
+  var nodes = Array.prototype.slice.call(document.querySelectorAll("article[data-story], article[data-sstory]"));
   var ITEMS = nodes.map(function(el){
     var caveat = el.querySelector("[data-caveat]");
     return {
       el: el,
       slug: el.id,
-      view: el.closest(".view-ai") ? "ai" : "main",
+      view: el.closest(".view-ai") ? "ai" : (el.closest(".view-season") ? "season" : "main"),
       tag: el.dataset.pillar,
       actor: el.dataset.actor,
       title: el.querySelector("h2, h3").textContent.replace(/\s+/g, " ").trim(),
@@ -1894,7 +2192,7 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
      שתי תצוגות: ״המבט השבועי״ ו״AI בשוק״
      תצוגה מקבילה באותו קובץ. המעבר הוא על hash — בלי טעינה ובלי קובץ נוסף.
      ============================================================ */
-  var VIEW_EL = { main: document.getElementById("viewMain"), ai: document.getElementById("viewAi") };
+  var VIEW_EL = { main: document.getElementById("viewMain"), ai: document.getElementById("viewAi"), season: document.getElementById("viewSeason") };
   var curView = "main";
   var hdrChip = document.getElementById("hdrChip");
   var hdrBack = document.getElementById("hdrBack");
@@ -1907,7 +2205,7 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
     var quiet = document.getElementById("aiQuiet"), cover = document.getElementById("aiCover");
     if (quiet) quiet.hidden = AI_N > 0;
     if (cover) cover.hidden = AI_N === 0;
-    Array.prototype.forEach.call(document.querySelectorAll(".viewswitch .count"), function(c){
+    Array.prototype.forEach.call(document.querySelectorAll('.viewswitch [data-view-to="ai"] .count'), function(c){
       if (AI_N){ c.textContent = AI_N; return; }
       var q = document.createElement("span");
       q.className = "quiet";
@@ -1930,17 +2228,18 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
       ? anchor.getBoundingClientRect().bottom < headerH() + 2
       : window.scrollY > 260;
     hdrChip.hidden = !(passed && curView === "main" && AI_N > 0);
-    hdrBack.hidden = !(passed && curView === "ai");
+    hdrBack.hidden = !(passed && curView !== "main");
   }
 
   function setView(v, opts){
-    if (v !== "main" && v !== "ai") v = "main";
-    if (v === "ai" && !VIEW_EL.ai) v = "main";
+    if (v !== "main" && v !== "ai" && v !== "season") v = "main";
+    if (v !== "main" && !VIEW_EL[v]) v = "main";
     curView = v;
     lastLanded = "";
     document.body.setAttribute("data-view", v);
     VIEW_EL.main.hidden = v !== "main";
     if (VIEW_EL.ai) VIEW_EL.ai.hidden = v !== "ai";
+    if (VIEW_EL.season) VIEW_EL.season.hidden = v !== "season";
     Array.prototype.forEach.call(document.querySelectorAll('.viewswitch [data-view-to]'), function(b){
       b.setAttribute("aria-selected", b.getAttribute("data-view-to") === v ? "true" : "false");
     });
@@ -2004,7 +2303,7 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
       /* מחליפים תצוגה קודם. הכתובת מתעדכנת אחר כך — ואם היא נחסמת, המתג עדיין עובד. */
       setView(v);
       try {
-        if (v === "ai"){ if (location.hash !== "#ai") location.hash = "ai"; }
+        if (v === "ai" || v === "season"){ if (location.hash !== "#" + v) location.hash = v; }
         else if (location.hash) history.replaceState(null, "", location.pathname + location.search);
       } catch (e) {}
     });
@@ -2014,8 +2313,12 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
     list.addEventListener("keydown", function(e){
       if (["ArrowLeft","ArrowRight","Home","End"].indexOf(e.key) < 0) return;
       e.preventDefault();
-      var v = e.key === "Home" ? "main" : e.key === "End" ? "ai"
-            : (curView === "main" ? "ai" : "main");
+      var ORDER = ["main", "ai", "season"];
+      var i = ORDER.indexOf(curView); if (i < 0) i = 0;
+      /* ימין/שמאל ב-RTL: ArrowLeft מתקדם, ArrowRight חוזר */
+      var v = e.key === "Home" ? "main"
+            : e.key === "End" ? "season"
+            : ORDER[(i + (e.key === "ArrowLeft" ? 1 : ORDER.length - 1)) % ORDER.length];
       setView(v);
       var b = VIEW_EL[v].querySelector('.viewswitch [aria-selected="true"]');
       if (b) b.focus();
@@ -2035,7 +2338,7 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
     var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
     var slug = decodeURIComponent(a.getAttribute("href") || "").slice(1);
-    if (!slug || slug === "ai") return;
+    if (!slug || slug === "ai" || slug === "season") return;
     var it = bySlug[slug];
     if (it && it.view !== curView) setView(it.view, { keepScroll:true });
   }, true);
@@ -2281,7 +2584,7 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
   /* ‎#ai הוא כתובת מלאה: לינק קבוע, בוקמארק, ושליחה לרונן */
   function route(){
     var h = decodeURIComponent(location.hash || "").slice(1);
-    if (h === "ai"){ if (curView !== "ai") setView("ai"); return; }
+    if (h === "ai" || h === "season"){ if (curView !== h) setView(h); return; }
     if (!h){ if (curView !== "main") setView("main", { keepScroll:true }); return; }
     if (h === lastLanded) return;                 /* כבר נחתנו כאן */
     if (bySlug[h] || document.getElementById(h)){ goTo(h); return; }
@@ -2410,7 +2713,9 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
       ul.appendChild(li);
     }
     elFacts.appendChild(ul);
-    if (curView === "ai"){
+    if (curView === "season"){
+      elMeta.textContent = PLAY.length + " מדדים בעונה · רבעון שני ומחצית 2026";
+    } else if (curView === "ai"){
       elMeta.textContent = PLAY.length + " עדכוני AI · " + ISSUE;
     } else {
       var radar = document.querySelectorAll(".radar ol > li").length;
@@ -2450,7 +2755,8 @@ body[data-view="ai"] .viewswitch .thumb{transform:translateX(calc(-100% - 3px))}
     elTag.textContent   = it.tag;
     elTitle.textContent = it.title;
     elMeta.textContent  = it.source + " · " + it.date + (it.verified ? "" : " · תאריך לא אומת");
-    elLink.href         = it.url;
+    elLink.href         = it.url || "#";
+    elLink.hidden       = !it.url;
     elFacts.textContent = "";
     it.facts.forEach(function(f){
       var li = document.createElement("li");
