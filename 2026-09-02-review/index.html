@@ -1044,14 +1044,12 @@ body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200
   </div>
 
   <div class="switch-anchor">
-    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
+    <div class="viewswitch" role="tablist" aria-label="תצוגות הגיליון">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" role="tab" aria-selected="true" aria-controls="viewMain"
               data-view-to="main">המבט השבועי</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="viewAi"
               data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">1</span></span></button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="viewSeason"
-              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
     </div>
   </div>
 
@@ -1611,7 +1609,6 @@ body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200
           שדיווחו — אך <strong>היעד שלה נמוך מהביצוע שלהן</strong>, וזו הערה על היעד לא פחות מאשר על הביצוע.
           תשואות הרבעון של כל החמש נשענות חלקית על שוק הון חזק.
           <strong>יעד הרווח של מנורה נקוב ב״רווח מותאם אחרי מס״ ואינו בר-השוואה ליעדי מגדל, ולכן אינו בטבלה.</strong>
-          הפילוח המלא של העונה בלשונית ״עונת הדוחות״.
           היעדים:
           <a href="https://www.calcalist.co.il/market/article/s1gv8vbswg" target="_blank" rel="noopener" aria-label="כלכליסט — יעדי 2028 של מגדל">כלכליסט</a> ·
           <a href="https://www.ice.co.il/finance/news/article/1107398" target="_blank" rel="noopener" aria-label="אייס — יעדי 2028 של מגדל">אייס</a>, 25.3.2026.
@@ -1635,14 +1632,12 @@ body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200
   </div>
 
   <div class="switch-anchor">
-    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
+    <div class="viewswitch" role="tablist" aria-label="תצוגות הגיליון">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" role="tab" aria-selected="false" aria-controls="viewMain"
               data-view-to="main">המבט השבועי</button>
       <button type="button" role="tab" aria-selected="true" aria-controls="viewAi"
               data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">1</span></span></button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="viewSeason"
-              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
     </div>
   </div>
   <p class="ai-cover" id="aiCover">
@@ -1800,181 +1795,7 @@ body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200
 
 </div><!-- /view-ai -->
 
-<div class="view view-season" id="viewSeason" role="tabpanel" aria-label="עונת הדוחות" hidden>
 
-  <div class="masthead masthead-season">
-    <div class="meta">
-      <h1>עונת הדוחות</h1>
-      <p class="range">רבעון שני ומחצית 2026</p>
-      <p class="contract">תצוגה מקבילה לגיליון — לא מדור בתוכו. ארבע פעמים בשנה כל המתחרות מניחות על השולחן את אותם מדדים לאותה תקופה; זהו חלון ההשוואה היחיד שבו אפשר להעמיד אותן זו מול זו.</p>
-      <p class="reading">מוצר מבית <b class="byline-b">מגדל AI</b> · המספרים ממקור ראשוני — דוחות כספיים, דוחות כושר פירעון ומצגות משקיעים</p>
-    </div>
-  </div>
-
-  <div class="switch-anchor">
-    <div class="viewswitch three" role="tablist" aria-label="תצוגות הגיליון">
-      <span class="thumb" aria-hidden="true"></span>
-      <button type="button" role="tab" aria-selected="false" aria-controls="viewMain"
-              data-view-to="main">המבט השבועי</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="viewAi"
-              data-view-to="ai"><span class="lbl">AI בשוק<span class="count n">1</span></span></button>
-      <button type="button" role="tab" aria-selected="true" aria-controls="viewSeason"
-              data-view-to="season"><span class="lbl">עונת הדוחות<span class="count n">8</span></span></button>
-    </div>
-  </div>
-  <p class="ai-cover">
-    <span class="dot" aria-hidden="true"></span>
-    <b><span class="n">8</span> מדדים</b><span class="sep"> · </span><b><span class="n">5</span> קבוצות</b><span class="sep"> · </span>מדד שאינו בר-השוואה אינו בלוח<span class="sep"> · </span>העונה <b>נסגרה</b>
-  </p>
-
-    <section class="season" id="season" aria-labelledby="seasonH">
-    <div class="season-head">
-      <h2 id="seasonH">לוח עונת הדוחות</h2>
-      <p class="sub">רבעון שני ומחצית 2026 · חמש הקבוצות · כל בלוק הוא מדד אחד, באותה הגדרה ובאותה תקופה. מדד שאינו בר-השוואה אינו בלוח. ״הלוח של 2028״ נשאר במבט השבועי; כאן הוא חוזר כבלוק האחרון, אחרי המרה לבסיס אחיד — ושם הוא אומר משהו אחר לגמרי.</p>
-      <p class="season-pos">מגדל בעונה: <b>2 מ-4</b> בנכסי פנסיה · <b>5 מ-5</b> בכושר פירעון · <b>1 מ-4</b> בבניית רווח עתידי</p>
-    </div>
-    <div class="season-grid">
-      <article class="smetric" id="s-pension"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="ארבע הקבוצות שדיווחו — כולן ל-30.6.2026. הראל עלתה מ-221 ל-31.3.2026 ל-237, ונשארת ראשונה. זהו החתך הנקי ביותר בנכסים: הגדרה רגולטורית אחידה לכל הקבוצות."
-        data-story-facts="1 הראל — 237|2 מגדל — 219|3 כלל — 203|4 הפניקס — 162|· מנורה — לא פרסמה פילוח">
-        <h3 class="k">נכסי פנסיה</h3>
-        <p class="kp">30.6.2026 · נכסי עמיתים בקרנות פנסיה חדשות · מיליארד ₪</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">הראל</span><span class="b" style="--w:100.0%"></span><span class="v">237</span></li>
-          <li class="me"><span class="r">2</span><span class="c">מגדל</span><span class="b" style="--w:92.4%"></span><span class="v">219</span></li>
-          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:85.7%"></span><span class="v">203</span></li>
-          <li><span class="r">4</span><span class="c">הפניקס</span><span class="b" style="--w:68.4%"></span><span class="v">162</span></li>
-          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">לא פרסמה פילוח</span></li>
-        </ol>
-        <p class="kn">ארבע הקבוצות שדיווחו — כולן ל-30.6.2026. הראל עלתה מ-221 ל-31.3.2026 ל-237, ונשארת ראשונה. זהו החתך הנקי ביותר בנכסים: הגדרה רגולטורית אחידה לכל הקבוצות.</p>
-      </article>
-      <article class="smetric" id="s-profit"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="שיעורי הצמיחה אינם ברי-השוואה — ה-+12% של כלל מושפע מהפרשה חד-פעמית במקס אשתקד. הראל 1,586 היא המיוחסת לבעלי המניות; סך הרווח הכולל 1,589, והפער הוא זכויות שאינן מקנות שליטה. הפער בינה לבין הפניקס — 12 מיליון ₪ — אינו אות."
-        data-story-facts="1 הראל — 1,586|2 הפניקס — 1,574|3 מנורה — 1,249|4 כלל — 1,050|5 מגדל — 897">
-        <h3 class="k">רווח כולל אחרי מס</h3>
-        <p class="kp">מחצית 2026 · המיוחס לבעלי המניות · מיליון ₪</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">הראל</span><span class="b" style="--w:100.0%"></span><span class="v">1,586</span></li>
-          <li><span class="r">2</span><span class="c">הפניקס</span><span class="b" style="--w:99.2%"></span><span class="v">1,574</span></li>
-          <li><span class="r">3</span><span class="c">מנורה</span><span class="b" style="--w:78.8%"></span><span class="v">1,249</span></li>
-          <li><span class="r">4</span><span class="c">כלל</span><span class="b" style="--w:66.2%"></span><span class="v">1,050</span></li>
-          <li class="me"><span class="r">5</span><span class="c">מגדל</span><span class="b" style="--w:56.6%"></span><span class="v">897</span></li>
-        </ol>
-        <p class="kn">שיעורי הצמיחה אינם ברי-השוואה — ה-+12% של כלל מושפע מהפרשה חד-פעמית במקס אשתקד. הראל 1,586 היא המיוחסת לבעלי המניות; סך הרווח הכולל 1,589, והפער הוא זכויות שאינן מקנות שליטה. הפער בינה לבין הפניקס — 12 מיליון ₪ — אינו אות.</p>
-      </article>
-      <article class="smetric" id="s-roe"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="בבסיס אחיד (רווח כולל ×2 חלקי הון ממוצע): מנורה 26.4% · הפניקס 24.6% · כלל 18.8% · מגדל 17.3%. הראל מדווחת בדיוק בבסיס הזה, בעיגול לאחוז שלם — 27% — ולכן פערה ממנורה הוא רעש. הפניקס מאנואלזת בהצברה גיאומטרית — יחידה בענף. פער מתחת לשתי נקודות אחוז אינו אות."
-        data-story-facts="1 מנורה — 27.2%|2 הראל — 27%|3 הפניקס — 26.1%|4 כלל — 19.8%|5 מגדל — 18.0%">
-        <h3 class="k">תשואה להון</h3>
-        <p class="kp">מחצית 2026 · מדווחת, במונחים שנתיים · %</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">מנורה</span><span class="b" style="--w:100.0%"></span><span class="v">27.2%</span></li>
-          <li><span class="r">2</span><span class="c">הראל</span><span class="b" style="--w:99.3%"></span><span class="v">27%</span></li>
-          <li><span class="r">3</span><span class="c">הפניקס</span><span class="b" style="--w:96.0%"></span><span class="v">26.1%</span></li>
-          <li><span class="r">4</span><span class="c">כלל</span><span class="b" style="--w:72.8%"></span><span class="v">19.8%</span></li>
-          <li class="me"><span class="r">5</span><span class="c">מגדל</span><span class="b" style="--w:66.2%"></span><span class="v">18.0%</span></li>
-        </ol>
-        <p class="kn">בבסיס אחיד (רווח כולל ×2 חלקי הון ממוצע): מנורה 26.4% · הפניקס 24.6% · כלל 18.8% · מגדל 17.3%. הראל מדווחת בדיוק בבסיס הזה, בעיגול לאחוז שלם — 27% — ולכן פערה ממנורה הוא רעש. הפניקס מאנואלזת בהצברה גיאומטרית — יחידה בענף. פער מתחת לשתי נקודות אחוז אינו אות.</p>
-      </article>
-      <article class="smetric" id="s-solvency"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="החתך היחיד שבו כל חמש הקבוצות מדווחות באותו תאריך ובאותה הגדרה — כולן בבסיס ״כפי שחושב״, מבוקר, וכל יחס נבדק מול ההון וה-SCR. שלוש גייסו הון אחרי תאריך החישוב ומציגות גם בסיס שני: מגדל 116% · כלל 144% · הפניקס 157% — והדירוג זהה בשני הבסיסים. סף החלוקה שקבע דירקטוריון מגדל הוא 115%, ולפי הבסיס השני מגדל מדווחת שהיא עומדת בו. יעדי הדירקטוריון אינם אחידים ואינם בלוח: מגדל וכלל 115% · מנורה 116.9% · הראל 118% · הפניקס 123%."
-        data-story-facts="1 מנורה — 163.1%|2 הפניקס — 155%|3 הראל — 148%|4 כלל — 139%|5 מגדל — 112%">
-        <h3 class="k">יחס כושר פירעון</h3>
-        <p class="kp">31.12.2025 · ללא הוראות פריסה · מבוקר · חברות הביטוח · %</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">מנורה</span><span class="b" style="--w:100.0%"></span><span class="v">163.1%</span></li>
-          <li><span class="r">2</span><span class="c">הפניקס</span><span class="b" style="--w:95.0%"></span><span class="v">155%</span></li>
-          <li><span class="r">3</span><span class="c">הראל</span><span class="b" style="--w:90.7%"></span><span class="v">148%</span></li>
-          <li><span class="r">4</span><span class="c">כלל</span><span class="b" style="--w:85.2%"></span><span class="v">139%</span></li>
-          <li class="me"><span class="r">5</span><span class="c">מגדל</span><span class="b" style="--w:68.7%"></span><span class="v">112%</span></li>
-        </ol>
-        <p class="kn">החתך היחיד שבו כל חמש הקבוצות מדווחות באותו תאריך ובאותה הגדרה — כולן בבסיס ״כפי שחושב״, מבוקר, וכל יחס נבדק מול ההון וה-SCR. שלוש גייסו הון אחרי תאריך החישוב ומציגות גם בסיס שני: מגדל 116% · כלל 144% · הפניקס 157% — והדירוג זהה בשני הבסיסים. סף החלוקה שקבע דירקטוריון מגדל הוא 115%, ולפי הבסיס השני מגדל מדווחת שהיא עומדת בו. יעדי הדירקטוריון אינם אחידים ואינם בלוח: מגדל וכלל 115% · מנורה 116.9% · הראל 118% · הפניקס 123%.</p>
-      </article>
-      <article class="smetric" id="s-csm-flow"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="CSM הוא מלאי הרווח העתידי תחת IFRS 17. התנועה מודדת כמה נבנה בתקופה — לא כמה נצבר. הראל: 17,177 ב-1.1.2026 → 17,717 ב-30.6.2026; עסק חדש 992, שחרור (830), ריבית 296."
-        data-story-facts="1 מגדל — +865 (+6.0%)|2 הראל — +540 (+3.1%)|3 כלל — +172 (+1.7%)|4 הפניקס — +15 (+0.2%)|· מנורה — ההגדרה לא פורסמה">
-        <h3 class="k">בניית רווח עתידי — תנועה ב-CSM</h3>
-        <p class="kp">מחצית 2026 · נטו מביטוח משנה · מיליון ₪</p>
-        <ol class="srank">
-          <li class="me"><span class="r">1</span><span class="c">מגדל</span><span class="b" style="--w:100.0%"></span><span class="v">+865 (+6.0%)</span></li>
-          <li><span class="r">2</span><span class="c">הראל</span><span class="b" style="--w:62.4%"></span><span class="v">+540 (+3.1%)</span></li>
-          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:19.9%"></span><span class="v">+172 (+1.7%)</span></li>
-          <li><span class="r">4</span><span class="c">הפניקס</span><span class="b" style="--w:1.7%"></span><span class="v">+15 (+0.2%)</span></li>
-          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">ההגדרה לא פורסמה</span></li>
-        </ol>
-        <p class="kn">CSM הוא מלאי הרווח העתידי תחת IFRS 17. התנועה מודדת כמה נבנה בתקופה — לא כמה נצבר. הראל: 17,177 ב-1.1.2026 → 17,717 ב-30.6.2026; עסק חדש 992, שחרור (830), ריבית 296.</p>
-      </article>
-      <article class="smetric" id="s-csm-stock"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="כל ארבע השורות ל-30.6.2026. הפניקס מוצגת ב-8.3 ולא ב-9.1 — הוסרו 739 מיליון ₪ של פוליסות השקעה שאינן CSM לפי IFRS 17. יחס ל-הון: מגדל 1.41 · הראל 1.40 · כלל 0.90 · הפניקס 0.63."
-        data-story-facts="1 הראל — 17.7|2 מגדל — 15.3|3 כלל — 10.4|4 הפניקס — 8.3|· מנורה — ההגדרה לא פורסמה">
-        <h3 class="k">מלאי הרווח העתידי — יתרת CSM</h3>
-        <p class="kp">30.6.2026 · נטו מביטוח משנה · מיליארד ₪</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">הראל</span><span class="b" style="--w:100.0%"></span><span class="v">17.7</span></li>
-          <li class="me"><span class="r">2</span><span class="c">מגדל</span><span class="b" style="--w:86.4%"></span><span class="v">15.3</span></li>
-          <li><span class="r">3</span><span class="c">כלל</span><span class="b" style="--w:58.8%"></span><span class="v">10.4</span></li>
-          <li><span class="r">4</span><span class="c">הפניקס</span><span class="b" style="--w:46.9%"></span><span class="v">8.3</span></li>
-          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">ההגדרה לא פורסמה</span></li>
-        </ol>
-        <p class="kn">כל ארבע השורות ל-30.6.2026. הפניקס מוצגת ב-8.3 ולא ב-9.1 — הוסרו 739 מיליון ₪ של פוליסות השקעה שאינן CSM לפי IFRS 17. יחס ל-הון: מגדל 1.41 · הראל 1.40 · כלל 0.90 · הפניקס 0.63.</p>
-      </article>
-      <article class="smetric" id="s-payout"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="סף החלוקה שקבע דירקטוריון מגדל הוא יחס כושר פירעון של 115% ללא הוראות פריסה — ראו בלוק כושר הפירעון. הפניקס 62% בכלל הרכישה העצמית. כלל חילקה 200 מיליון ₪ מכלל ביטוח לכלל החזקות — תוך-קבוצתי, לא לבעלי המניות. הראל הכריזה 400 מיליון ₪ ב-25.8.2026 יחד עם אישור דוחות המחצית — 25% מהרווח הכולל. הדיבידנד שלה מ-25.3 הוא בגין 2025, ו-500 מיליון ₪ שהוכרזו ב-21.6.2026 הוכרזו בתוך המחצית ולא בגין תוצאותיה; בספירתם השיעור היה 57%. באותו יום עברה הראל לחלוקה רבעונית במקום חצי-שנתית."
-        data-story-facts="1 הפניקס — 46%|2 מנורה — 40%|3 הראל — 25%|4 כלל — 0%|5 מגדל — 0%">
-        <h3 class="k">שיעור חלוקה מרווחי המחצית</h3>
-        <p class="kp">בגין רווחי מחצית 2026 · % מהרווח הכולל</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">הפניקס</span><span class="b" style="--w:100.0%"></span><span class="v">46%</span></li>
-          <li><span class="r">2</span><span class="c">מנורה</span><span class="b" style="--w:87.0%"></span><span class="v">40%</span></li>
-          <li><span class="r">3</span><span class="c">הראל</span><span class="b" style="--w:54.3%"></span><span class="v">25%</span></li>
-          <li><span class="r">4</span><span class="c">כלל</span><span class="b" style="--w:0.0%"></span><span class="v">0%</span></li>
-          <li class="me"><span class="r">5</span><span class="c">מגדל</span><span class="b" style="--w:0.0%"></span><span class="v">0%</span></li>
-        </ol>
-        <p class="kn">סף החלוקה שקבע דירקטוריון מגדל הוא יחס כושר פירעון של 115% ללא הוראות פריסה — ראו בלוק כושר הפירעון. הפניקס 62% בכלל הרכישה העצמית. כלל חילקה 200 מיליון ₪ מכלל ביטוח לכלל החזקות — תוך-קבוצתי, לא לבעלי המניות. הראל הכריזה 400 מיליון ₪ ב-25.8.2026 יחד עם אישור דוחות המחצית — 25% מהרווח הכולל. הדיבידנד שלה מ-25.3 הוא בגין 2025, ו-500 מיליון ₪ שהוכרזו ב-21.6.2026 הוכרזו בתוך המחצית ולא בגין תוצאותיה; בספירתם השיעור היה 57%. באותו יום עברה הראל לחלוקה רבעונית במקום חצי-שנתית.</p>
-      </article>
-      <article class="smetric" id="s-target"
-        data-sstory data-ms="7000"
-        data-pillar="לוח העונה" data-actor="חמש הקבוצות"
-        data-source="דוחות רבעון 2 ומחצית 2026" data-date="עונת הדוחות · נסגרה 26.8.2026" data-verified="1"
-        data-caveat-short="שים לב: מגדל נוקבת ביעד של 3.0–3.2 מיליארד ₪ **לפני מס**; הראל והפניקס נוקבות **אחרי מס**. בשיעור המס האפקטיבי של מגדל (37%) היעד שלה שווה כ-2.0–2.1 אחרי מס — ואכן יעד הרווח הכולל שלה הוא 2–2.2. בלי ההמרה שלוש השורות נראות דומות."
-        data-story-facts="1 הפניקס — 3.3–3.5|2 הראל — 3.1–3.3|3 מגדל — ≈2.0–2.1|· כלל — לא פרסמה יעד|· מנורה — יעדי 2030">
-        <h3 class="k">יעד רווח 2028</h3>
-        <p class="kp">בבסיס אחיד — אחרי מס · מיליארד ₪</p>
-        <ol class="srank">
-          <li><span class="r">1</span><span class="c">הפניקס</span><span class="b" style="--w:100.0%"></span><span class="v">3.3–3.5</span></li>
-          <li><span class="r">2</span><span class="c">הראל</span><span class="b" style="--w:94.1%"></span><span class="v">3.1–3.3</span></li>
-          <li class="me"><span class="r">3</span><span class="c">מגדל</span><span class="b" style="--w:60.3%"></span><span class="v">≈2.0–2.1</span></li>
-          <li class="pending"><span class="r">—</span><span class="c">כלל</span><span class="b" style="--w:0%"></span><span class="v">לא פרסמה יעד</span></li>
-          <li class="pending"><span class="r">—</span><span class="c">מנורה</span><span class="b" style="--w:0%"></span><span class="v">יעדי 2030</span></li>
-        </ol>
-        <p class="kn">שים לב: מגדל נוקבת ביעד של 3.0–3.2 מיליארד ₪ **לפני מס**; הראל והפניקס נוקבות **אחרי מס**. בשיעור המס האפקטיבי של מגדל (37%) היעד שלה שווה כ-2.0–2.1 אחרי מס — ואכן יעד הרווח הכולל שלה הוא 2–2.2. בלי ההמרה שלוש השורות נראות דומות.</p>
-      </article>
-    </div>
-  </section>
-  <p class="ai-next">העונה נסגרה עם דוח הראל — <b>26 באוגוסט 2026</b>. הלוח מלא: חמש הקבוצות, שמונה מדדים.</p>
-
-</div><!-- /view-season -->
 
 
   <!-- ============ שמורים ============ -->
@@ -2242,14 +2063,16 @@ body[data-view="season"] .viewswitch.three .thumb{transform:translateX(calc(-200
     list.addEventListener("keydown", function(e){
       if (["ArrowLeft","ArrowRight","Home","End"].indexOf(e.key) < 0) return;
       e.preventDefault();
-      var ORDER = ["main", "ai", "season"];
+      /* ORDER נגזר מהתצוגות שקיימות בפועל — לשונית שהוסרה לא מפילה את הניווט */
+      var ORDER = ["main", "ai", "season"].filter(function(k){ return VIEW_EL[k]; });
       var i = ORDER.indexOf(curView); if (i < 0) i = 0;
       /* ימין/שמאל ב-RTL: ArrowLeft מתקדם, ArrowRight חוזר */
-      var v = e.key === "Home" ? "main"
-            : e.key === "End" ? "season"
+      var v = e.key === "Home" ? ORDER[0]
+            : e.key === "End" ? ORDER[ORDER.length - 1]
             : ORDER[(i + (e.key === "ArrowLeft" ? 1 : ORDER.length - 1)) % ORDER.length];
       setView(v);
-      var b = VIEW_EL[v].querySelector('.viewswitch [aria-selected="true"]');
+      var host = VIEW_EL[v] || VIEW_EL.main;
+      var b = host.querySelector('.viewswitch [aria-selected="true"]');
       if (b) b.focus();
     });
   });
