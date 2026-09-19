@@ -186,6 +186,7 @@
     var cls = el.classList;
     if (el.closest(".view-season") || el.hasAttribute("data-sstory")) return "season";
     if (el.closest(".view-ai") || el.getAttribute("data-ai") === "1") return "ai";
+    if (el.closest(".view-intl")) return "intl";   /* D-073 — לא נספר במכנה של הראשי */
     if (cls.contains("lead")) return "lead";
     if (cls.contains("card")) return "card";
     if (el.closest(".radar")) return "radar";
@@ -201,10 +202,10 @@
   });
   var aiN = items.filter(function(el){ return meta[el.id].slot === "ai"; }).length;
   /* ספירות מבניות של הדף — המכנים של ״נקרא ≥50%״ והגעה לפי slot, בלי לשונית items */
-  var counts = { n_main:0, n_radar:0, n_ai:0, n_season:0 };
+  var counts = { n_main:0, n_radar:0, n_ai:0, n_season:0, n_intl:0 };
   items.forEach(function(el){
     var s = meta[el.id].slot;
-    if (s === "ai") counts.n_ai++; else if (s === "season") counts.n_season++;
+    if (s === "ai") counts.n_ai++; else if (s === "season") counts.n_season++; else if (s === "intl") counts.n_intl++;
     else if (s === "radar") counts.n_radar++; else counts.n_main++;
   });
   counts.n_actions = document.querySelectorAll("[data-actions]").length;
@@ -214,7 +215,7 @@
   }
   function viewOfItem(id){
     var s = meta[id] ? meta[id].slot : "";
-    return s === "ai" || s === "season" ? s : "main";
+    return s === "ai" || s === "season" || s === "intl" ? s : "main";
   }
 
   /* ---------- תצוגות ועומק, לפי תצוגה ---------- */
@@ -223,7 +224,7 @@
   }
   function landingOf(){
     var h = decodeURIComponent(location.hash || "").slice(1);
-    if (h === "ai" || h === "season") return h;
+    if (h === "ai" || h === "season" || h === "intl") return h;
     if (h && meta[h]) return viewOfItem(h);
     return "main";
   }
@@ -254,7 +255,7 @@
   push("view", { value:landingView, num:items.length, ai_n:aiN, hash:decodeURIComponent(location.hash || "").slice(1, 60),
                  nav:navType, lang:(navigator.language || "").slice(0, 5), pwa:standalone ? 1 : 0,
                  prior:prior, ua:uaFam,
-                 n_main:counts.n_main, n_radar:counts.n_radar, n_ai:counts.n_ai, n_season:counts.n_season, n_actions:counts.n_actions });
+                 n_main:counts.n_main, n_radar:counts.n_radar, n_ai:counts.n_ai, n_season:counts.n_season, n_intl:document.getElementById("viewIntl") ? counts.n_intl : null, n_actions:counts.n_actions });   /* 0 = שבוע חו״ל שקט · null = דף בלי התצוגה */
   window.addEventListener("pageshow", function(e){ if (e.persisted) push("view", { value:curView(), num:items.length, ai_n:aiN, nav:"bfcache" }); });
 
   /* ---------- מעורבות: זמן פעיל ---------- */
