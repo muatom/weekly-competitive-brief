@@ -187,6 +187,7 @@
     if (el.closest(".view-season") || el.hasAttribute("data-sstory")) return "season";
     if (el.closest(".view-ai") || el.getAttribute("data-ai") === "1") return "ai";
     if (el.closest(".view-intl")) return "intl";   /* D-073 — לא נספר במכנה של הראשי */
+    if (el.getAttribute("data-section") === "qa") return "qa";   /* D-074 — שאלה לדיון, נספרת בנפרד */
     if (cls.contains("lead")) return "lead";
     if (cls.contains("card")) return "card";
     if (el.closest(".radar")) return "radar";
@@ -355,6 +356,7 @@
     if (id === "hdrChip") return { t:"hdr_chip", value:"ai" };
     if (id === "hdrBack") return { t:"hdr_back", value:"main" };
     if (b.hasAttribute("data-view-to")) return { t:"view_switch", value:b.getAttribute("data-view-to") };
+    if (b.hasAttribute("data-target")) return { t:"qa_open", value:b.getAttribute("data-target") };   /* D-074 */
     if (id === "plNext" || id === "plPrev" || id === "plPause" || id === "plClose" || id === "plSave")
       return { t:"pl_" + id.slice(2).toLowerCase(), item:playerItem() };
     if (id === "plLink") return { t:"pl_link", value:host(b.href), item:playerItem() };
