@@ -991,8 +991,8 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
   --mg-tallit-ink:var(--mg-navy);        /* על כהה: #FFFFFF */
   /* סטוריז */
   --mg-story-bg:var(--mg-surface);
-  --mg-story-end-bg:var(--mg-navy);      /* המשטח הכהה היחיד כל עוד החוויה פתוחה */
-  --mg-story-seg-on:var(--mg-navy);      --mg-story-seg-off:var(--mg-border);
+  --mg-story-end-bg:var(--mg-dark);      /* המשטח הכהה היחיד כל עוד החוויה פתוחה */
+  --mg-story-seg-on:var(--mg-dark);      --mg-story-seg-off:var(--mg-border);
   --mg-story-seg-on-dark:rgba(255,255,255,.9);
   --mg-story-sheet:var(--mg-sunken);     --mg-story-scrim:rgba(2,1,64,.28);
   --mg-story-sheet-shadow:0 -18px 48px rgba(2,1,64,.12);
@@ -1019,7 +1019,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 .mg-tallit__fringes{stroke:var(--mg-tallit-cloth); stroke-width:1.6; stroke-linecap:round; fill:none}
 .mg-tallit__fringes .f-b,.mg-tallit__fringes .f-d{display:inline}
 /* היפוך על כהה — בדיוק כמו המגדל */
-.mg-on-dark .mg-tallit{--mg-tallit-cloth:var(--mg-navy); --mg-tallit-ink:#FFFFFF}
+.mg-on-dark .mg-tallit{--mg-tallit-cloth:var(--mg-dark); --mg-tallit-ink:#FFFFFF}
 /* 39–47px — שלושה פסים, שלוש ציציות */
 .mg-tallit--mid .mg-tallit__cloth{stroke-width:2.6}
 .mg-tallit--mid .mg-tallit__stripes .s-a,.mg-tallit--mid .mg-tallit__stripes .s-d{stroke-width:3.6}
@@ -1080,7 +1080,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 .mg-entry__segments i{display:block; width:26px; height:3px; border-radius:2px; background:var(--mg-mint)}
 .mg-entry__arrow{
   flex:none; display:grid; place-items:center; width:44px; height:44px;
-  border-radius:var(--mg-r-pill); background:var(--mg-navy); color:#fff;
+  border-radius:var(--mg-r-pill); background:var(--mg-dark); color:#fff;
 }
 .mg-entry__arrow svg{width:13px; height:13px}
 @media (min-width:768px){
@@ -1231,6 +1231,24 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 @media (prefers-reduced-motion:reduce){
   .mg-story__screen.on,.mg-story__end.on,.mg-story__sheet{animation:none}
 }
+
+
+/* ---------------- גוון המהדורה (D-074) ----------------
+   מהדורת כיפור נושאת את הנייבי **הכחול יותר** של הפלטה, כדי שהיא תיקרא
+   כגיליון אחר כבר מהמשטח הראשון. **אין צבע חדש** — זה `--mg-navy-700`,
+   טוקן קיים (D-011). הכלל תחום ל-`:has(#qaStory)`, כלומר לגיליון הזה בלבד:
+   שום גיליון אחר אינו משנה גוון, וכיבוי = מחיקת הבלוק. */
+body:has(#qaStory){
+  /* #131F71 = נייבי 70% × אינדיגו 30%. כחול מובהק, עדיין כהה, ויושב על אותו ציר
+     של `--mg-indigo`. ניגודיות מול לבן 14.4:1 ומול `--mg-on-dark-subtle` 7.2:1. */
+  --mg-kippur-deep:#131F71;
+  --mg-dark:var(--mg-kippur-deep);    /* כותרת השבוע · חתימת הגיליון · רצועת השמורים */
+  --mg-dark-deep:var(--mg-kippur-deep);
+  /* ⚠️ אלה הוצהרו ב-`:root` עם `var(--mg-dark)`, ולכן נפתרו שם מול הערך של `:root`.
+     דריסת `--mg-dark` על ה-body **אינה** מחלחלת אליהם למפרע — צריך לדרוס גם אותם. */
+  --mg-story-end-bg:var(--mg-kippur-deep);
+  --mg-story-seg-on:var(--mg-kippur-deep);
+}
 </style>
 <script defer src="assets/wcb-usage.js" data-issue="2026-09-20"></script>
 </head>
@@ -1243,16 +1261,17 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 
 <header class="siteheader">
   <div class="shell bar">
-    <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt="מגדל"><svg class="mg-tallit mg-tallit--mini" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span></span><span class="mg-attrib" aria-hidden="true"><img src="assets/migdal-logo-clean.png" alt=""></span>
+    <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt="מגדל"><svg class="mg-tallit mg-tallit--mini" viewBox="0 0 62 108" aria-hidden="true"><g class="mg-tallit__scale" transform="translate(30 64) scale(.78) translate(-30 -64)"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></g></svg></span></span><span class="mg-attrib" aria-hidden="true"><img src="assets/migdal-logo-clean.png" alt=""></span>
     <button class="hdr-chip" type="button" id="hdrChip" hidden
             data-view-to="ai" aria-label="מעבר לתצוגת AI בשוק"><span class="n">AI · 0</span></button>
     <button class="hdr-chip hdr-chip-back" type="button" id="hdrBack" hidden
             data-view-to="main">למבט השבועי</button>
     <span class="bar-title">מבט שבועי תחרותי <span>14.9–20.9.2026</span></span>
     <span class="progress" id="readProgress" hidden></span>
-    <button class="cta cta-sm" data-play type="button">
-      <svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg>
-      נגן את השבוע
+    <button class="cta cta-sm" data-target="qa" type="button"
+            aria-haspopup="dialog" aria-controls="qaStory">
+      <svg viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 1 1.5 6l5 5"/></svg>
+      שאלות לדיון
     </button>
   </div>
 </header>
@@ -1267,11 +1286,12 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
       <h1>ערב יום כיפור</h1>
       <p class="range">14–20 בספטמבר 2026</p>
       <p class="contract">חיזוק פעילות ליבה — שלושה פריטים · הגברת אפקטיביות והקטנת עלויות — שלושה פריטים · הלקוח במרכז — פריט אחד. ערב יום כיפור: החלון נסגר בבוקר 20.9. בתצוגת ה-AI שבוע שקט, בתצוגת חו״ל שלושה מהלכים, ובתצוגת ״מהלינקדאין״ שני פוסטים. שני פריטים חוזרים כהתפתחות.</p>
-      <p class="reading" id="readingLine">מוצר מבית <b class="byline-b">מגדל AI</b> · החלון נסגר 20.9 ב-06:00 · <span id="readFull">קריאה מלאה: כ-6 דקות</span> · <span id="playLen">הנגן: כ-60 שניות</span></p>
+      <p class="reading" id="readingLine">מוצר מבית <b class="byline-b">מגדל AI</b> · החלון נסגר 20.9 ב-06:00 · <span id="readFull">קריאה מלאה: כ-6 דקות</span> · <span id="playLen">השאלות: כדקה נוספת</span></p>
     </div>
-    <button class="cta" data-play type="button">
-      <svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg>
-      נגן את השבוע
+    <button class="cta" data-target="qa" type="button"
+            aria-haspopup="dialog" aria-controls="qaStory">
+      <svg viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 1 1.5 6l5 5"/></svg>
+      ארבע שאלות לדיון
     </button>
     <ul class="mast-stats">
       <li><b>7</b><span>פריטים בבריף</span></li>
@@ -2213,7 +2233,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
       עובדות והקשר עובדתי בלבד, בלי המלצות.
       <strong>המבט הבא: 21–27 בספטמבר 2026</strong> — ובו המועד להשלמת רכישת UBIC בידי ווישור (עד 30.9), וההכרעה שטרם נפלה בעסקת כאל.
     </p>
-    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--mid" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה · מוצר מבית מגדל AI</span></span></span><span class="foot-note">מבט שבועי תחרותי · <b>14–20 בספטמבר 2026</b></span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
+    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--mid" viewBox="0 0 62 108" aria-hidden="true"><g class="mg-tallit__scale" transform="translate(30 64) scale(.78) translate(-30 -64)"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה · מוצר מבית מגדל AI</span></span></span><span class="foot-note">מבט שבועי תחרותי · <b>14–20 בספטמבר 2026</b></span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
   </footer>
 
 </div>
@@ -2312,7 +2332,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
     </nav>
     <section class="mg-story__end" id="qaEnd" aria-hidden="true">
       <span class="mg-cone" aria-hidden="true"></span>
-      <span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--full" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span></span></span>
+      <span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--full" viewBox="0 0 62 108" aria-hidden="true"><g class="mg-tallit__scale" transform="translate(30 64) scale(.78) translate(-30 -64)"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span></span></span>
       <p class="mg-story__greeting">גמר חתימה טובה</p>
       <p>ארבע השאלות נשארות בגיליון, למי שרוצה לחזור אליהן אחרי הצום.</p>
       <span class="mg-story__end-actions">
@@ -2324,49 +2344,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 </div>
 <!-- YKB:end -->
 
-<!-- ============================================================
-     נגן את השבוע
-     ============================================================ -->
-<div class="player" id="player" hidden role="dialog" aria-modal="true" aria-label="נגן את השבוע">
-  <div class="pl-frame" id="plFrame">
-    <div class="pl-bars" id="plBars" aria-hidden="true"></div>
-    <div class="pl-head">
-      <span class="mg-lockup mg-on-dark"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span></span><span class="mg-mark"><img src="assets/tower-mark.png" alt=""></span></span>
-      <div class="grp">
-        <button class="pl-icon" id="plPause" type="button" aria-label="השהיה">
-          <svg id="plPauseIcon" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
-        </button>
-        <button class="pl-icon" id="plClose" type="button" aria-label="סגירת הנגן">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <button class="pl-zone pl-next" id="plNext" type="button" aria-label="הפריט הבא"></button>
-    <button class="pl-zone pl-prev" id="plPrev" type="button" aria-label="הפריט הקודם"></button>
-
-    <div class="pl-stage" id="plStage" aria-live="polite" aria-atomic="true">
-      <span class="tag" id="plTag"></span>
-      <h2 class="pl-title" id="plTitle"></h2>
-      <ul class="pl-facts" id="plFacts"></ul>
-      <p class="pl-caveat" id="plCaveat" hidden></p>
-      <p class="pl-meta" id="plMeta"></p>
-    </div>
-
-    <p class="pl-hint"><span class="nav">שמאל — הבא · ימין — הקודם · לחיצה ארוכה — השהיה</span></p>
-
-    <div class="pl-actions" id="plActions">
-      <button id="plSave" type="button" aria-pressed="false">
-        <svg viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 1h10v14l-5-4-5 4z"/></svg>
-        <span id="plSaveLbl">שמור</span>
-      </button>
-      <a id="plLink" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 1h6v6M15 1L7 9M13 10v5H1V3h5"/></svg>
-        לכתבה
-      </a>
-    </div>
-  </div>
-</div>
+<!-- הנגן ירד ב-20.9 (D-075): 12 לחיצות בסך הכול, 0 מתוך 10 כניסות של נטלי -->
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -2905,264 +2883,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
     document.getElementById("readFull").textContent =
       "קריאה מלאה: כ-" + mins + (mins === 1 ? " דקה" : " דקות");
 
-    var secs = Math.round(itemsIn("main").reduce(function(a, it){ return a + it.ms; }, 0) / 1000);
-    document.getElementById("playLen").textContent = "הנגן: כ-" + secs + " שניות";
   })();
-
-  /* ============================================================
-     הנגן
-     ============================================================ */
-  var player  = document.getElementById("player");
-  var frame   = document.getElementById("plFrame");
-  var bars    = document.getElementById("plBars");
-  var elTag   = document.getElementById("plTag");
-  var elTitle = document.getElementById("plTitle");
-  var elFacts = document.getElementById("plFacts");
-  var elCav   = document.getElementById("plCaveat");
-  var elMeta  = document.getElementById("plMeta");
-  var elLink  = document.getElementById("plLink");
-  var actions = document.getElementById("plActions");
-  var btnSave = document.getElementById("plSave");
-  var lblSave = document.getElementById("plSaveLbl");
-  var btnPause= document.getElementById("plPause");
-  var icoPause= document.getElementById("plPauseIcon");
-  var lastFocus = null, scrollY = 0;
-
-  var ICON_PAUSE = '<rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/>';
-  var ICON_PLAY  = '<path d="M12 7L2 13V1z"/>';
-  /* הנגן מנגן את התצוגה הפעילה: הראשי מנגן את הגיליון, ״AI בשוק״ מנגן את המדור */
-  var PLAY = [], END = 0, fills = [];
-  function buildStage(){
-    PLAY = itemsIn(curView === "intl" ? "main" : curView === "linkedin" ? "main" : curView);   /* בתצוגת לינקדאין הנגן מנגן את הגיליון */
-    END  = PLAY.length;
-    bars.textContent = "";
-    PLAY.concat([{}]).forEach(function(){
-      var i = document.createElement("i");
-      i.appendChild(document.createElement("b"));
-      bars.appendChild(i);
-    });
-    fills = bars.querySelectorAll("b");
-  }
-
-  var idx = 0, elapsed = 0, lastTs = 0, raf = null, paused = false;
-
-  function frameStep(ts){
-    if (player.hidden) return;
-    if (!lastTs) lastTs = ts;
-    var dt = ts - lastTs;
-    lastTs = ts;
-    if (!paused && idx < END){
-      elapsed += dt;
-      var p = Math.min(1, elapsed / PLAY[idx].ms);
-      fills[idx].style.width = (p * 100) + "%";
-      if (p >= 1){ go(idx + 1); return; }
-    }
-    raf = requestAnimationFrame(frameStep);
-  }
-  function startTimer(){
-    elapsed = 0; lastTs = 0;
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(frameStep);
-  }
-  function setPaused(v){
-    paused = v;
-    player.classList.toggle("paused", v);
-    btnPause.setAttribute("aria-label", v ? "המשך" : "השהיה");
-    icoPause.innerHTML = v ? ICON_PLAY : ICON_PAUSE;
-  }
-
-  function renderPlayerSave(){
-    if (idx >= END) return;
-    var on = !!state.saved[PLAY[idx].slug];
-    btnSave.setAttribute("aria-pressed", on ? "true" : "false");
-    lblSave.textContent = on ? "נשמר" : "שמור";
-  }
-  window.renderPlayerSave = renderPlayerSave;
-
-  function renderEnd(){
-    player.classList.add("is-end");
-    setPaused(true);
-    elTag.hidden = true;
-    elCav.hidden = true;
-    elTitle.textContent = "זה היה השבוע";
-    elFacts.textContent = "";
-    var slugs = savedSlugs();
-    var ul = document.createElement("ul");
-    ul.className = "pl-endlist";
-    if (slugs.length){
-      slugs.forEach(function(s){
-        var li = document.createElement("li");
-        li.textContent = bySlug[s].title;
-        ul.appendChild(li);
-      });
-    } else {
-      var li = document.createElement("li");
-      li.textContent = "לא סימנת פריטים בריצה הזו.";
-      ul.appendChild(li);
-    }
-    elFacts.appendChild(ul);
-    if (curView === "season"){
-      elMeta.textContent = PLAY.length + " מדדים בעונה · רבעון שני ומחצית 2026";
-    } else if (curView === "ai"){
-      elMeta.textContent = PLAY.length + " עדכוני AI · " + ISSUE;
-    } else {
-      var radar = document.querySelectorAll(".radar ol > li").length;
-      elMeta.textContent = PLAY.length + " פריטים בגיליון · " + radar +
-                           " על הרדאר · " + ISSUE;
-    }
-    Array.prototype.forEach.call(fills, function(b){ b.style.width = "100%"; });
-
-    actions.textContent = "";
-    var b1 = document.createElement("button");
-    b1.type = "button";
-    b1.textContent = slugs.length ? "העתק את השמורים" : "העתק את הגיליון";
-    b1.addEventListener("click", function(){
-      if (slugs.length) document.getElementById("copySaved").click();
-      else copy(PLAY.map(itemText).join("\n\n———\n\n"), "הגיליון הועתק");
-    });
-    var b2 = document.createElement("button");
-    b2.type = "button";
-    b2.textContent = "למבט המלא";
-    b2.addEventListener("click", close);
-    actions.appendChild(b1);
-    actions.appendChild(b2);
-  }
-
-  function restoreActions(){
-    player.classList.remove("is-end");
-    elTag.hidden = false;
-    actions.textContent = "";
-    actions.appendChild(btnSave);
-    actions.appendChild(elLink);
-  }
-
-  function render(){
-    if (idx >= END){ renderEnd(); return; }
-    restoreActions();
-    var it = PLAY[idx];
-    elTag.textContent   = it.tag;
-    elTitle.textContent = it.title;
-    elMeta.textContent  = it.source + " · " + it.date + (it.verified ? "" : " · תאריך לא אומת");
-    elLink.href         = it.url || "#";
-    elLink.hidden       = !it.url;
-    elFacts.textContent = "";
-    it.facts.forEach(function(f){
-      var li = document.createElement("li");
-      li.textContent = f;
-      elFacts.appendChild(li);
-    });
-    if (it.caveatShort){ elCav.hidden = false; elCav.textContent = it.caveatShort; }
-    else { elCav.hidden = true; elCav.textContent = ""; }
-    Array.prototype.forEach.call(fills, function(b, i){ b.style.width = (i < idx) ? "100%" : "0%"; });
-    renderPlayerSave();
-    markRead(it.slug);
-  }
-
-  function focusables(){
-    return Array.prototype.filter.call(
-      frame.querySelectorAll("button, a[href]"),
-      function(el){ return el.offsetParent !== null && !el.hasAttribute("hidden"); }
-    );
-  }
-
-  function open(){
-    lastFocus = document.activeElement;
-    scrollY = window.scrollY;
-    idx = 0;
-    buildStage();
-    player.hidden = false;
-    document.body.style.position = "fixed";
-    document.body.style.top = (-scrollY) + "px";
-    document.body.style.width = "100%";
-    var shell = document.querySelector("body > .shell"), head = document.querySelector("header.siteheader");
-    if ("inert" in HTMLElement.prototype){ if (shell) shell.inert = true; if (head) head.inert = true; }
-    setPaused(reduceMotion);          /* מי שביקש בלי אנימציה — מתקדם ידנית */
-    render();
-    startTimer();
-    document.getElementById("plClose").focus();
-  }
-
-  function close(){
-    cancelAnimationFrame(raf);
-    raf = null;
-    player.hidden = true;
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    window.scrollTo(0, scrollY);
-    var shell = document.querySelector("body > .shell"), head = document.querySelector("header.siteheader");
-    if ("inert" in HTMLElement.prototype){ if (shell) shell.inert = false; if (head) head.inert = false; }
-    renderSaved();
-    renderProgress();
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  function go(n){
-    if (n < 0) idx = 0;
-    else if (n > END) { close(); return; }
-    else idx = n;
-    render();
-    startTimer();
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll("[data-play]"), function(b){
-    b.addEventListener("click", open);
-  });
-  document.getElementById("plClose").addEventListener("click", close);
-  document.getElementById("plNext").addEventListener("click", function(){ go(idx + 1); });
-  document.getElementById("plPrev").addEventListener("click", function(){ go(idx - 1); });
-  btnSave.addEventListener("click", function(){ if (idx < END) toggleSave(PLAY[idx].slug); });
-  btnPause.addEventListener("click", function(){ setPaused(!paused); });
-
-  document.addEventListener("visibilitychange", function(){
-    if (document.hidden && !player.hidden) setPaused(true);
-  });
-
-  document.addEventListener("keydown", function(e){
-    if (player.hidden) return;
-    if (e.key === "Escape"){ close(); return; }
-    if (e.key === "ArrowLeft"){ go(idx + 1); return; }    /* RTL: שמאל = קדימה */
-    if (e.key === "ArrowRight"){ go(idx - 1); return; }
-    if (e.key === " "){
-      if (e.target.closest("button, a")) return;          /* רווח על כפתור מפעיל אותו */
-      e.preventDefault();
-      setPaused(!paused);
-      return;
-    }
-    if (e.key === "Tab"){                                  /* מלכודת פוקוס */
-      var f = focusables();
-      if (!f.length) return;
-      var first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
-  });
-
-  /* לחיצה ארוכה = השהיה */
-  var holdTimer = null, heldPause = false;
-  function holdStart(e){
-    if (e.target.closest("button, a")) return;
-    holdTimer = setTimeout(function(){
-      if (!paused){ heldPause = true; setPaused(true); }
-    }, 260);
-  }
-  function holdEnd(){
-    clearTimeout(holdTimer);
-    if (heldPause){ heldPause = false; setPaused(false); }
-  }
-  ["mousedown","touchstart"].forEach(function(ev){ player.addEventListener(ev, holdStart, {passive:true}); });
-  ["mouseup","mouseleave","touchend","touchcancel"].forEach(function(ev){ player.addEventListener(ev, holdEnd, {passive:true}); });
-
-  /* החלקה */
-  var x0 = null;
-  player.addEventListener("touchstart", function(e){ x0 = e.changedTouches[0].clientX; }, {passive:true});
-  player.addEventListener("touchend", function(e){
-    if (x0 === null) return;
-    var dx = e.changedTouches[0].clientX - x0;
-    x0 = null;
-    if (dx < -45) go(idx + 1);
-    else if (dx > 45) go(idx - 1);
-  }, {passive:true});
 
   /* ---------- הדפסה: לפתוח את כל ההרחבות ---------- */
   function openAll(){
@@ -3190,6 +2911,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
   onScrollChip();
 })();
 </script>
+
 
 
 
@@ -3268,7 +2990,10 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  if (openBtn) openBtn.addEventListener("click", open);
+  /* כל כפתור שנושא data-target="qa" פותח את החוויה — הרצועה, ההדר והמסטהד */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-target="qa"]'), function(b){
+    b.addEventListener("click", open);
+  });
   closeBtn.addEventListener("click", close);
   backBtn.addEventListener("click", close);
   againBtn.addEventListener("click", function(){ go(0); });
