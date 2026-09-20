@@ -975,16 +975,274 @@ body[data-view="intl"] .viewswitch.three .thumb{transform:translateX(calc(-200% 
 body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% - 9px))}
 /* בגרסה הנקייה שורת הפעולות של כרטיס חו״ל ריקה (הפעולות רצות על data-story בלבד) — בלי קו כפול */
 .view-intl .actions:empty{display:none}
+
+
+/* ============================================================
+   מהדורת כיפור (D-074) — טלית, ברכה, רצועת השאלות וחוויית הסטוריז
+   ------------------------------------------------------------
+   מקור: `prototypes/yom-kippur/design/claude-design.html` (Claude Design).
+   נכבה בגיליון הבא: המחלקות למטה אינן מופיעות בגיליון רגיל, ולכן אין מה
+   לגלגל לאחור — מספיק לא לכתוב אותן. אין טוקן צבע חדש.
+   ============================================================ */
+:root{
+  /* הטלית — משורטטת ב-viewBox של המגדל עצמו (62×108), ולכן נצמדת אליו בכל גודל */
+  --mg-tallit-cloth:var(--mg-surface);   /* על כהה: var(--mg-navy) */
+  --mg-tallit-ink:var(--mg-navy);        /* על כהה: #FFFFFF */
+  /* סטוריז */
+  --mg-story-bg:var(--mg-surface);
+  --mg-story-end-bg:var(--mg-navy);      /* המשטח הכהה היחיד כל עוד החוויה פתוחה */
+  --mg-story-seg-on:var(--mg-navy);      --mg-story-seg-off:var(--mg-border);
+  --mg-story-seg-on-dark:rgba(255,255,255,.9);
+  --mg-story-sheet:var(--mg-sunken);     --mg-story-scrim:rgba(2,1,64,.28);
+  --mg-story-sheet-shadow:0 -18px 48px rgba(2,1,64,.12);
+  --mg-story-q:26px;  --mg-story-q-lh:1.28;
+  --mg-t-sheet:280ms cubic-bezier(.45,.05,.15,1);
+  --mg-greeting:40px;                    /* משקל 200, מסך הסיום בלבד */
+  --mg-entry-r:var(--mg-r-lg);
+}
+
+/* ---------------- הטלית ----------------
+   שכבה נפרדת מעל ה-PNG הרשמי — לא צובעת אותו, לא מסובבת אותו, לא נוגעת בו.
+   הגדלים: ≤38px שני פסים עבים בלי ציציות · 39–47px שלושה פסים ושלוש ציציות ·
+   ≥48px ארבעה פסים וחמש ציציות. מתחת ל-24px אין טלית כלל. */
+.mg-tallit{
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:1; overflow:visible; pointer-events:none;
+}
+.mg-tallit__cloth{fill:var(--mg-tallit-cloth); stroke:var(--mg-tallit-ink); stroke-width:2.2; stroke-linejoin:round}
+.mg-tallit__stripes{stroke:var(--mg-tallit-ink); fill:none}
+.mg-tallit__stripes .s-a,.mg-tallit__stripes .s-d{stroke-width:3.2}
+.mg-tallit__stripes .s-b,.mg-tallit__stripes .s-c{stroke-width:1.4}
+.mg-tallit__stripes .s-mid{stroke-width:1.6; display:none}
+/* הציציות בצבע הבד — לבנות על המגדל הכהה, ולכן נראות */
+.mg-tallit__fringes{stroke:var(--mg-tallit-cloth); stroke-width:1.6; stroke-linecap:round; fill:none}
+.mg-tallit__fringes .f-b,.mg-tallit__fringes .f-d{display:inline}
+/* היפוך על כהה — בדיוק כמו המגדל */
+.mg-on-dark .mg-tallit{--mg-tallit-cloth:var(--mg-navy); --mg-tallit-ink:#FFFFFF}
+/* 39–47px — שלושה פסים, שלוש ציציות */
+.mg-tallit--mid .mg-tallit__cloth{stroke-width:2.6}
+.mg-tallit--mid .mg-tallit__stripes .s-a,.mg-tallit--mid .mg-tallit__stripes .s-d{stroke-width:3.6}
+.mg-tallit--mid .mg-tallit__stripes .s-b,.mg-tallit--mid .mg-tallit__stripes .s-c{display:none}
+.mg-tallit--mid .mg-tallit__stripes .s-mid{display:inline}
+.mg-tallit--mid .mg-tallit__fringes{stroke-width:1.9}
+.mg-tallit--mid .mg-tallit__fringes .f-b,.mg-tallit--mid .mg-tallit__fringes .f-d{display:none}
+/* ≤38px — ״הטלית הקטנה״: בד ושני פסים עבים, בלי ציציות. הפסים הדקים נסתמים */
+.mg-tallit--mini .mg-tallit__cloth{stroke-width:3.4}
+.mg-tallit--mini .mg-tallit__stripes .s-a,.mg-tallit--mini .mg-tallit__stripes .s-d{stroke-width:5}
+.mg-tallit--mini .mg-tallit__stripes .s-b,.mg-tallit--mini .mg-tallit__stripes .s-c,
+.mg-tallit--mini .mg-tallit__stripes .s-mid{display:none}
+.mg-tallit--mini .mg-tallit__fringes{display:none}
+/* ההדר הדביק: 28px במובייל (mini), 38px בדסקטופ — עדיין mini לפי הסולם */
+.bar .mg-tallit{}
+/* חתימת סוף הגיליון: 44px במובייל, 56px בדסקטופ — mid, ואז מלא */
+.colofoot .mg-tallit{}
+@media (min-width:768px){
+  .colofoot .mg-tallit .mg-tallit__cloth{stroke-width:2.2}
+  .colofoot .mg-tallit .mg-tallit__stripes .s-b,.colofoot .mg-tallit .mg-tallit__stripes .s-c{display:inline}
+  .colofoot .mg-tallit .mg-tallit__stripes .s-mid{display:none}
+  .colofoot .mg-tallit .mg-tallit__stripes .s-a,.colofoot .mg-tallit .mg-tallit__stripes .s-d{stroke-width:3.2}
+  .colofoot .mg-tallit .mg-tallit__fringes{stroke-width:1.6}
+  .colofoot .mg-tallit .mg-tallit__fringes .f-b,.colofoot .mg-tallit .mg-tallit__fringes .f-d{display:inline}
+}
+
+/* ---------------- המסטהד של המהדורה ---------------- */
+.mg-yk-eyebrow{
+  margin:0 0 6px; font-size:var(--mg-eyebrow); font-weight:var(--mg-w-bold);
+  letter-spacing:.04em; color:var(--mg-text-subtle);
+}
+
+/* ---------------- רצועת הכניסה ----------------
+   כל הכרטיס הוא היעד. משטח בהיר — המשטח הכהה היחיד בעמוד נשאר הפוטר. */
+.mg-entry{
+  display:flex; align-items:center; gap:var(--mg-4); width:100%; text-align:start;
+  margin:var(--mg-5) 0 var(--mg-6); padding:var(--mg-4) var(--mg-5);
+  background:var(--mg-surface); border:1px solid var(--mg-border-soft);
+  border-radius:var(--mg-entry-r); box-shadow:var(--mg-sh-2);
+  font-family:inherit; color:inherit; cursor:pointer;
+  transition:box-shadow var(--mg-t-fast), transform var(--mg-t-fast);
+}
+.mg-entry:hover{box-shadow:var(--mg-sh-3); transform:translateY(-1px)}
+.mg-entry__body{flex:1 1 auto; min-width:0}
+.mg-entry__eyebrow{
+  display:block; font-size:var(--mg-eyebrow); font-weight:var(--mg-w-bold);
+  letter-spacing:.04em; color:var(--mg-text-subtle); margin-bottom:4px;
+}
+.mg-entry__title{
+  display:block; font-size:var(--mg-h3-m); line-height:1.2; font-weight:var(--mg-w-black);
+  letter-spacing:-.015em; color:var(--mg-text);
+}
+.mg-entry__note{
+  display:block; margin-top:6px; font-size:var(--mg-body-sm); line-height:1.5;
+  font-weight:var(--mg-w-light); color:var(--mg-text-muted);
+}
+.mg-entry__segments{display:flex; gap:5px; margin-top:12px}
+.mg-entry__segments i{display:block; width:26px; height:3px; border-radius:2px; background:var(--mg-mint)}
+.mg-entry__arrow{
+  flex:none; display:grid; place-items:center; width:44px; height:44px;
+  border-radius:var(--mg-r-pill); background:var(--mg-navy); color:#fff;
+}
+.mg-entry__arrow svg{width:13px; height:13px}
+@media (min-width:768px){
+  .mg-entry{padding:var(--mg-5) var(--mg-6)}
+  .mg-entry__title{font-size:var(--mg-h3)}
+  .mg-entry__arrow{width:48px; height:48px}
+}
+
+/* ---------------- חוויית הסטוריז ----------------
+   מסך מלא בהיר במובייל, מודאל 420×760 ב-web. הסטוריז לבנים כדי להיבדל מהנגן,
+   ומסך הסיום הוא המשטח הכהה היחיד כל עוד החוויה פתוחה (חוק 4 נשמר). */
+.mg-story{
+  position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center;
+  background:var(--mg-story-bg);
+}
+.mg-story__frame{
+  position:relative; display:flex; flex-direction:column;
+  width:100%; height:100%; max-width:none; background:var(--mg-story-bg);
+  padding:max(14px, env(safe-area-inset-top)) 20px max(18px, env(safe-area-inset-bottom));
+  overflow:hidden;
+}
+@media (min-width:768px){
+  .mg-story{background:var(--mg-story-scrim); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px)}
+  .mg-story__frame{
+    width:420px; height:760px; max-height:92vh; border-radius:var(--mg-r-screen);
+    box-shadow:var(--mg-sh-3); padding:18px 24px 22px;
+  }
+  .mg-story__frame .mg-story__q{font-size:30px; line-height:1.25}
+}
+.mg-story__top{display:flex; align-items:center; gap:var(--mg-3); flex:none}
+.mg-story__top .mg-lockup{--H:22px; --name-size:15px}
+.mg-story__label{
+  font-size:var(--mg-eyebrow); font-weight:var(--mg-w-bold); letter-spacing:.04em;
+  color:var(--mg-text-subtle); margin-inline-start:auto;
+}
+.mg-story__close{
+  flex:none; display:grid; place-items:center; width:var(--mg-tap); height:var(--mg-tap);
+  margin-inline-end:-10px; border:0; background:none; color:var(--mg-text-muted); cursor:pointer;
+}
+.mg-story__close svg{width:15px; height:15px}
+/* מד ההתקדמות מתמלא מימין לשמאל, כמו הקריאה — חריגה מכוונת מחוק 06 */
+.mg-story__progress{display:flex; gap:5px; margin:14px 0 0; flex:none}
+.mg-story__progress i{
+  flex:1 1 0; height:3px; border-radius:2px; background:var(--mg-story-seg-off);
+  transition:background var(--mg-t-fast);
+}
+.mg-story__progress i.on{background:var(--mg-story-seg-on)}
+.mg-story__screens{position:relative; flex:1 1 auto; min-height:0; display:flex}
+.mg-story__screen{
+  display:none; flex-direction:column; width:100%; padding-block:var(--mg-6);
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+}
+/* שלושה margin אוטומטיים מחלקים את החלל: השאלה יושבת גבוה-מרכז,
+   וכפתור העובדות נשאר מעוגן לתחתית כאחיזה קבועה */
+.mg-story__screen > .mg-story__topic{margin-top:auto}
+.mg-story__screen.on{display:flex; animation:mgStoryIn var(--mg-t-enter) both}
+@keyframes mgStoryIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+.mg-story__topic{display:flex; align-items:baseline; gap:8px; margin:0 0 var(--mg-4)}
+.mg-story__topic .num{
+  font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold); color:var(--mg-text-faint);
+  font-variant-numeric:tabular-nums;
+}
+.mg-story__topic .topic{font-size:var(--mg-caption); font-weight:var(--mg-w-bold); color:var(--mg-text-subtle)}
+.mg-story__q{
+  margin:0; font-size:var(--mg-story-q); line-height:var(--mg-story-q-lh);
+  font-weight:var(--mg-w-black); letter-spacing:-.015em; color:var(--mg-text); text-wrap:pretty;
+}
+.mg-story__facts-toggle{
+  display:inline-flex; align-items:center; gap:9px; align-self:flex-start;
+  margin-top:auto; min-height:var(--mg-tap); padding:0 var(--mg-4);
+  background:none; border:1px solid var(--mg-border); border-radius:var(--mg-r-pill);
+  font-family:inherit; font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold);
+  color:var(--mg-text); cursor:pointer;
+}
+.mg-story__facts-toggle .cnt{
+  display:grid; place-items:center; min-width:20px; height:20px; padding:0 6px;
+  border-radius:var(--mg-r-pill); background:var(--mg-indigo-soft);
+  font-size:var(--mg-eyebrow); color:var(--mg-indigo-700); font-variant-numeric:tabular-nums;
+}
+.mg-story__facts-toggle svg{width:11px; height:8px; transition:transform var(--mg-t-fast)}
+.mg-story__facts-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mg-story__nav{
+  display:flex; align-items:center; justify-content:space-between; gap:var(--mg-3);
+  flex:none; padding-top:var(--mg-4); margin-top:var(--mg-4);
+  border-top:1px solid var(--mg-border-soft);
+}
+.mg-story__nav button{
+  min-height:var(--mg-tap); padding:0 var(--mg-3); background:none; border:0;
+  font-family:inherit; font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold);
+  color:var(--mg-text); cursor:pointer;
+}
+.mg-story__nav button[disabled]{color:var(--mg-text-faint); cursor:default}
+.mg-story__counter{
+  font-size:var(--mg-caption); color:var(--mg-text-subtle); font-variant-numeric:tabular-nums;
+  direction:rtl;   /* ״1 מתוך 4״ הוא משפט עברי — direction:ltr היה מפרק אותו */
+}
+/* שכבת העובדות — גיליון תחתון, מעל הסקרים */
+.mg-story__scrim{position:absolute; inset:0; z-index:2; background:var(--mg-story-scrim); border:0}
+.mg-story__sheet{
+  position:absolute; inset-inline:0; bottom:0; z-index:3; max-height:66%;
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+  background:var(--mg-story-sheet); border-radius:var(--mg-r-xl) var(--mg-r-xl) 0 0;
+  box-shadow:var(--mg-story-sheet-shadow); padding:var(--mg-5) var(--mg-5) var(--mg-6);
+  animation:mgSheetIn var(--mg-t-sheet) both;
+}
+@keyframes mgSheetIn{from{transform:translateY(100%)} to{transform:none}}
+.mg-story__sheet h3{
+  margin:0 0 var(--mg-4); font-size:var(--mg-caption); font-weight:var(--mg-w-bold);
+  letter-spacing:.04em; color:var(--mg-text-subtle);
+}
+.mg-story__sheet ol{margin:0; padding:0; list-style:none; counter-reset:f}
+.mg-story__fact{
+  display:flex; gap:var(--mg-3); padding:var(--mg-3) 0;
+  border-top:1px solid var(--mg-border-soft);
+}
+.mg-story__fact:first-child{border-top:0; padding-top:0}
+.mg-story__fact .n{flex:none; font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold); color:var(--mg-text-faint)}
+.mg-story__fact p{margin:0; font-size:var(--mg-body); line-height:1.6; font-weight:var(--mg-w-light); color:var(--mg-text)}
+.mg-story__fact .meta{display:block; margin-top:4px; font-size:var(--mg-caption); color:var(--mg-text-subtle)}
+.mg-story__fact .meta a{font-weight:var(--mg-w-bold)}
+/* מסך הסיום — המשטח הכהה היחיד כל עוד החוויה פתוחה */
+.mg-story__end{
+  position:absolute; inset:0; z-index:4; display:none; flex-direction:column;
+  align-items:center; justify-content:center; gap:var(--mg-5); text-align:center;
+  background:var(--mg-story-end-bg); color:#fff; padding:var(--mg-8) var(--mg-6);
+  overflow:hidden;
+}
+.mg-story__end.on{display:flex; animation:mgStoryIn var(--mg-t-enter) both}
+/* בלי קונוס נפרד: ללוקאפ של מסך הסיום יש אלומה משלו, ושתיים באותו מסך מתחרות */
+.mg-story__end .mg-cone{display:none}
+.mg-story__end > *:not(.mg-cone){position:relative; z-index:1}
+.mg-story__end .mg-lockup{--H:64px; --name-size:34px}
+.mg-story__end .mg-story__greeting{
+  margin:0; font-size:var(--mg-greeting); line-height:1.15; max-width:none;
+  font-weight:var(--mg-w-xlight); letter-spacing:-.02em; color:#fff;
+}
+.mg-story__end p{
+  margin:0; max-width:30ch; font-size:var(--mg-body); line-height:1.65;
+  font-weight:var(--mg-w-light); color:var(--mg-on-dark-muted);
+}
+.mg-story__end .mg-story__end-actions{display:flex; flex-direction:column; align-items:center; gap:var(--mg-3)}
+.mg-story__end .cta{margin:0}
+.mg-story__end .linkish{
+  min-height:var(--mg-tap); background:none; border:0; font-family:inherit;
+  font-size:var(--mg-body-sm); font-weight:var(--mg-w-bold); color:var(--mg-on-dark-subtle); cursor:pointer;
+}
+.mg-story__end .mg-story__progress i.on{background:var(--mg-story-seg-on-dark)}
+@media (prefers-reduced-motion:reduce){
+  .mg-story__screen.on,.mg-story__end.on,.mg-story__sheet{animation:none}
+}
 </style>
 <script defer src="../assets/wcb-usage.js" data-issue="2026-09-20"></script>
 </head>
 <body>
+<!-- YK:start -->
+<svg class="mg-yk-defs" width="0" height="0" aria-hidden="true" style="position:absolute"><defs><clipPath id="mgTallitClip" clipPathUnits="userSpaceOnUse"><path d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path></clipPath></defs></svg>
+<!-- YK:end -->
 
 <a class="skip" href="#cma-institutional-boundary-doc">לתוכן המבט</a>
 
 <header class="siteheader">
   <div class="shell bar">
-    <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">ניוזלטר אסטרטגי להנהלת מגדל</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt="מגדל"></span></span><span class="mg-attrib" aria-hidden="true"><img src="../assets/migdal-logo-clean.png" alt=""></span>
+    <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt="מגדל"><svg class="mg-tallit mg-tallit--mini" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span></span><span class="mg-attrib" aria-hidden="true"><img src="../assets/migdal-logo-clean.png" alt=""></span>
     <button class="hdr-chip" type="button" id="hdrChip" hidden
             data-view-to="ai" aria-label="מעבר לתצוגת AI בשוק"><span class="n">AI · 0</span></button>
     <button class="hdr-chip hdr-chip-back" type="button" id="hdrBack" hidden
@@ -1004,7 +1262,8 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 
   <div class="masthead">
     <div class="meta">
-      <h1>מבט שבועי תחרותי</h1>
+      <p class="mg-yk-eyebrow">מבט שבועי תחרותי</p>
+      <h1>ערב יום כיפור</h1>
       <p class="range">14–20 בספטמבר 2026</p>
       <p class="contract">חיזוק פעילות ליבה — שלושה פריטים · הגברת אפקטיביות והקטנת עלויות — שלושה פריטים · הלקוח במרכז — פריט אחד. ערב יום כיפור: החלון נסגר בבוקר 20.9. בתצוגת ה-AI שבוע שקט, בתצוגת חו״ל שלושה מהלכים, ובתצוגת ״מהלינקדאין״ שני פוסטים. שני פריטים חוזרים כהתפתחות.</p>
       <p class="reading" id="readingLine">מוצר מבית <b class="byline-b">מגדל AI</b> · החלון נסגר 20.9 ב-06:00 · <span id="readFull">קריאה מלאה: כ-6 דקות</span> · <span id="playLen">הנגן: כ-60 שניות</span></p>
@@ -1042,6 +1301,21 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
       <li><a href="#clal-restructure">כלל ביטוח מעבירה מכירות, שירות ותפעול באלמנטר ממערך הסוכנים לחטיבה לביטוח כללי, ומחליפה שני משנים למנכ״ל</a></li>
     </ol>
   </nav>
+
+
+<!-- YKB:start -->
+  <!-- ============ שאלות לדיון — מהדורת כיפור (D-074) ============ -->
+  <button class="mg-entry" type="button" id="qaOpen" data-target="qa"
+          aria-haspopup="dialog" aria-controls="qaStory">
+    <span class="mg-entry__body">
+      <span class="mg-entry__eyebrow">פעם בשנה · ערב יום כיפור</span>
+      <span class="mg-entry__title">ארבע שאלות לדיון</span>
+      <span class="mg-entry__note">נגזרות מעובדות שפורסמו כאן השנה. בלי תשובות ובלי המלצות — שאלה אחת למסך.</span>
+      <span class="mg-entry__segments" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </span>
+    <span class="mg-entry__arrow" aria-hidden="true"><svg viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 1 1.5 6l5 5"/></svg></span>
+  </button>
+<!-- YKB:end -->
 
   <!-- ============ כותרת השבוע ============ -->
   <article class="lead" id="cma-institutional-boundary-doc"
@@ -1938,10 +2212,116 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
       עובדות והקשר עובדתי בלבד, בלי המלצות.
       <strong>המבט הבא: 21–27 בספטמבר 2026</strong> — ובו המועד להשלמת רכישת UBIC בידי ווישור (עד 30.9), וההכרעה שטרם נפלה בעסקת כאל.
     </p>
-    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt=""></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">ניוזלטר אסטרטגי להנהלת מגדל · מוצר מבית מגדל AI</span></span></span><span class="foot-note">מבט שבועי תחרותי · <b>14–20 בספטמבר 2026</b></span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
+    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--mid" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">גמר חתימה טובה · מוצר מבית מגדל AI</span></span></span><span class="foot-note">מבט שבועי תחרותי · <b>14–20 בספטמבר 2026</b></span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
   </footer>
 
 </div>
+
+
+<!-- YKB:start -->
+<!-- ============================================================
+     שאלות לדיון — חוויית הסטוריז (D-074)
+     ============================================================ -->
+<div class="mg-story" id="qaStory" hidden role="dialog" aria-modal="true"
+     aria-label="ארבע שאלות לדיון">
+  <div class="mg-story__frame">
+    <div class="mg-story__top">
+      <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span></span><span class="mg-mark"><img src="../assets/tower-mark.png" alt=""></span></span>
+      <span class="mg-story__label">שאלות לדיון</span>
+      <button class="mg-story__close" type="button" id="qaClose" aria-label="סגירת השאלות">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"
+             aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg>
+      </button>
+    </div>
+    <div class="mg-story__progress" id="qaProgress" dir="rtl" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="mg-story__screens" id="qaScreens">
+        <article class="mg-story__screen" id="qa-ai-distribution" data-item data-section="qa"
+                 data-qa-index="0" aria-hidden="true">
+          <p class="mg-story__topic"><span class="num n">1/4</span><span class="topic">מכירות פיננסים כשההשוואה עוברת לשיחה</span></p>
+          <h2 class="mg-story__q">בעוד שלוש שנים, מי מציג ללקוח את המוצר הפיננסי — האתר שלנו, הסוכן, או עוזר AI שאינו שלנו? ומה מתחילים לעשות היום כדי להיות בנקודה שבה ההחלטה נסגרת?</h2>
+          <button class="mg-story__facts-toggle" type="button" data-qa-facts
+                  aria-expanded="false" aria-controls="qaSheet">העובדות שמאחורי השאלה<span class="cnt n">5</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></button>
+          <template data-qa-sheet>
+            <h3>העובדות שמאחורי השאלה</h3>
+            <ol>
+            <li class="mg-story__fact"><span class="n">1</span><p>ביטוח ישיר מונה שלושה מוצרי AI פעילים מול לקוחות.<span class="meta">בגיליון הזה · מהלינקדאין · <a href="#li-idi-873152" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">2</span><p>AXA הציבה ל-AI יעד כספי: תועלת חוזרת צפויה של 500–700 מיליון אירו.<span class="meta">הודעת החברה, 15.9 · בגיליון הזה · <a href="#intl-axa-growing-forward" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">3</span><p>ביטוח ישיר משלמת 200 ₪ ללקוח שמגיע מ-ChatGPT, Gemini, Copilot, Claude או Perplexity.<span class="meta">אייס, 14.9 · גיליון 16.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-16/#idi-ai-referral-gift" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">4</span><p>ווישור השיקה בוט שמנפיק הצעת מחיר לביטוח רכב בשיחה.<span class="meta">ביזפורטל, 6.9 · גיליון 9.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-09/#wesure-ai-bot" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">5</span><p>בקנדה: Manulife נותנת הצעת מחיר לביטוח נסיעות בתוך ChatGPT.<span class="meta">Coverager, 11.9 · <a href="https://coverager.com/manulife-launches-travel-insurance-app-in-chatgpt/" target="_blank" rel="noopener">למקור</a></span></p></li>
+            </ol>
+          </template>
+        </article>
+        <article class="mg-story__screen" id="qa-agent-channel" data-item data-section="qa"
+                 data-qa-index="1" aria-hidden="true">
+          <p class="mg-story__topic"><span class="num n">2/4</span><span class="topic">ערוץ הסוכן: העמלות עולות, העבודה שמאחוריהן מתייעלת</span></p>
+          <h2 class="mg-story__q">כמה שווה ערוץ הסוכן בעוד שלוש שנים, אם העמלה עולה והעבודה שמאחוריה מתייעלת — ומה הופך אותו ליתרון ולא לעלות?</h2>
+          <button class="mg-story__facts-toggle" type="button" data-qa-facts
+                  aria-expanded="false" aria-controls="qaSheet">העובדות שמאחורי השאלה<span class="cnt n">5</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></button>
+          <template data-qa-sheet>
+            <h3>העובדות שמאחורי השאלה</h3>
+            <ol>
+            <li class="mg-story__fact"><span class="n">1</span><p>כלל ביטוח מעבירה מכירות, שירות ותפעול באלמנטר ממערך הסוכנים לחטיבה לביטוח כללי.<span class="meta">בגיליון הזה · <a href="#clal-restructure" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">2</span><p>Allianz UK פותחת לסוכנים חיתום דיגיטלי לפוליסות דירקטורים.<span class="meta">בגיליון הזה · חו״ל · <a href="#intl-allianz-uk-financial-lines" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">3</span><p>עמלות סוכני הביטוח הגיעו ל-13.2 מיליארד ₪ ב-2025, 46% יותר מאשר ב-2020.<span class="meta">רשות שוק ההון · גיליון 9.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-09/#cma-agent-commissions" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">4</span><p>במיטב, 55% מהתקשורת הכתובה עם לקוחות הגמל והפנסיה מבוצעת בסוכני AI.<span class="meta">אייס, 17.8 · <a href="https://www.ice.co.il/finance/news/article/1125879" target="_blank" rel="noopener">למקור</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">5</span><p>בארה״ב נרכשה סוכנות הביטוח Baldwin ב-7.7 מיליארד דולר, בנימוק של האצת AI.<span class="meta">Insurance Journal, 14.9 · <a href="https://www.insurancejournal.com/news/national/2026/09/14/884956.htm" target="_blank" rel="noopener">למקור</a></span></p></li>
+            </ol>
+          </template>
+        </article>
+        <article class="mg-story__screen" id="qa-savings-consolidation" data-item data-section="qa"
+                 data-qa-index="2" aria-hidden="true">
+          <p class="mg-story__topic"><span class="num n">3/4</span><span class="topic">שוק החיסכון מתכנס, והריבית ירדה</span></p>
+          <h2 class="mg-story__q">בשוק שמתכנס לפחות שחקנים ובריבית יורדת — מאיפה מגיעה הצמיחה בשנה הקרובה: מגיוס, מרכישה, או ממוצר חדש?</h2>
+          <button class="mg-story__facts-toggle" type="button" data-qa-facts
+                  aria-expanded="false" aria-controls="qaSheet">העובדות שמאחורי השאלה<span class="cnt n">6</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></button>
+          <template data-qa-sheet>
+            <h3>העובדות שמאחורי השאלה</h3>
+            <ol>
+            <li class="mg-story__fact"><span class="n">1</span><p>כלל עוקפת את מיטב בראש טבלת המגייסים של אוגוסט; אלטשולר שחם וילין לפידות איבדו.<span class="meta">בגיליון הזה · <a href="#gemel-pension-august" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">2</span><p>בליץ הצעות ממשלתיות לצמצם את ההפקדה לפנסיה.<span class="meta">בגיליון הזה · <a href="#pension-contribution-cuts" data-qa-jump="1">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">3</span><p>ווישור רוכשת את השליטה בחברת הגמל והפנסיה של אלטשולר שחם, בכמיליארד ₪.<span class="meta">גיליון 16.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-16/#altshuler-deal-signed" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">4</span><p>איילון נכנסה לשוק הגמל.<span class="meta">גיליון 6.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-06/#ayalon-gemel-entry" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">5</span><p>מור במשא ומתן על סאנפלאוור.<span class="meta">גיליון 16.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-16/#mor-sunflower-stake" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">6</span><p>בנק ישראל הפחית את הריבית ל-3.25%.<span class="meta">הודעת בנק ישראל, 1.9 · גיליון 2.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-02/#boi-rate-325" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            </ol>
+          </template>
+        </article>
+        <article class="mg-story__screen" id="qa-who-faces-saver" data-item data-section="qa"
+                 data-qa-index="3" aria-hidden="true">
+          <p class="mg-story__topic"><span class="num n">4/4</span><span class="topic">מי יושב מול החוסך</span></p>
+          <h2 class="mg-story__q">בעוד שלוש שנים, מי יושב מול החוסך ברגע ההחלטה — היצרן, הבנק, או בעל רישיון אחד שמחזיק את כל המוצרים?</h2>
+          <button class="mg-story__facts-toggle" type="button" data-qa-facts
+                  aria-expanded="false" aria-controls="qaSheet">העובדות שמאחורי השאלה<span class="cnt n">4</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></button>
+          <template data-qa-sheet>
+            <h3>העובדות שמאחורי השאלה</h3>
+            <ol>
+            <li class="mg-story__fact"><span class="n">1</span><p>רשות ניירות ערך מקדמת רישיון כפול שיאחד פנסיה-ביטוח והשקעות בידי איש מקצוע אחד.<span class="meta">פאנדר, 3.9 · גיליון 6.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-06/#isa-dual-license" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">2</span><p>485.6 מיליארד ₪ בתיקים המיועצים בבנקים, ומצבת היועצים מתכווצת.<span class="meta">ביזפורטל, 2.9 · גיליון 6.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-06/#isa-bank-advisory" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">3</span><p>הבנקים גבו 344 מיליון ₪ עמלות קנייה ומכירה מלקוחות מיועצים ב-2025, 13% יותר.<span class="meta">גלובס, 10.9 · גיליון 14.9 · <a href="https://muatom.github.io/weekly-competitive-brief/2026-09-14/#banks-advisory-commissions" target="_blank" rel="noopener">לכרטיס</a></span></p></li>
+            <li class="mg-story__fact"><span class="n">4</span><p>רשות ניירות ערך מסדירה את ה״הוסטינג״ בקרנות נאמנות: מי שמנהל בפועל אינו מי שנושא ברישיון.<span class="meta">בגיליון הזה · <a href="#isa-fund-hosting" data-qa-jump="1">לכרטיס</a></span></p></li>
+            </ol>
+          </template>
+        </article>
+    </div>
+    <nav class="mg-story__nav" id="qaNav" aria-label="ניווט בין השאלות">
+      <button type="button" id="qaPrev">הקודמת</button>
+      <span class="mg-story__counter" id="qaCounter" aria-live="polite">1 מתוך 4</span>
+      <button type="button" id="qaNext">הבאה</button>
+    </nav>
+    <section class="mg-story__end" id="qaEnd" aria-hidden="true">
+      <span class="mg-cone" aria-hidden="true"></span>
+      <span class="mg-lockup mg-on-dark"><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt=""><svg class="mg-tallit mg-tallit--full" viewBox="0 0 62 108" aria-hidden="true"><path class="mg-tallit__cloth" d="M7 42C20 48 36 49 53 42C53 57 52 72 51 85C38 90 22 90 8 88C7 73 6 57 7 42Z"></path><g class="mg-tallit__stripes" clip-path="url(#mgTallitClip)"><path class="s-a" d="M-2 68L64 68"></path><path class="s-b" d="M-2 73L64 73"></path><path class="s-mid" d="M-2 74.5L64 74.5"></path><path class="s-c" d="M-2 76L64 76"></path><path class="s-d" d="M-2 81L64 81"></path></g><g class="mg-tallit__fringes"><path class="f-a" d="M47 86.6q-.4 5-1 9.5"></path><path class="f-b" d="M38 88.6q-.4 5-1 9.5"></path><path class="f-c" d="M29 89.4q-.4 5-1 9.5"></path><path class="f-d" d="M20 89.2q-.4 5-1 9.5"></path><path class="f-e" d="M12 88.2q-.4 5-1 9.5"></path></g></svg></span><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span></span></span>
+      <p class="mg-story__greeting">גמר חתימה טובה</p>
+      <p>ארבע השאלות נשארות בגיליון, למי שרוצה לחזור אליהן אחרי הצום.</p>
+      <span class="mg-story__end-actions">
+        <button class="cta" type="button" id="qaBack">חזרה לגיליון</button>
+        <button class="linkish" type="button" id="qaRestart">מהתחלה</button>
+      </span>
+    </section>
+  </div>
+</div>
+<!-- YKB:end -->
 
 <!-- ============================================================
      נגן את השבוע
@@ -2152,6 +2532,7 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
      ואינו מנסה שוב אחרי ש-JS חושף אותה. זה היה הבאג ״הלינק לא מעביר אותי לפריט״. */
   var lastLanded = "";
 
+  window.__mgGoTo = goTo;
   function goTo(slug){
     var it = bySlug[slug];
     /* פריט שאינו סטורי (כרטיס לינקדאין) — התצוגה נגזרת מה-DOM, לא מ-ITEMS (D-072) */
@@ -2809,5 +3190,169 @@ body[data-view="intl"] .viewswitch.four .thumb{transform:translateX(calc(-300% -
 })();
 </script>
 
+
+
+
+
+<!-- YKC:start -->
+<script>
+/* ============================================================
+   שאלות לדיון — חוויית הסטוריז (D-074)
+   ארבעה מסכים, שכבת עובדות נפתחת, מסך סיום.
+   בלי ניגון אוטומטי, בלי ספירה לאחור, בלי מוזיקה.
+   ============================================================ */
+(function(){
+  var story = document.getElementById("qaStory");
+  if (!story) return;
+  var openBtn  = document.getElementById("qaOpen");
+  var closeBtn = document.getElementById("qaClose");
+  var screens  = Array.prototype.slice.call(story.querySelectorAll(".mg-story__screen"));
+  var prog     = document.getElementById("qaProgress");
+  var segs     = Array.prototype.slice.call(prog.children);
+  var nav      = document.getElementById("qaNav");
+  var prevBtn  = document.getElementById("qaPrev");
+  var nextBtn  = document.getElementById("qaNext");
+  var counter  = document.getElementById("qaCounter");
+  var endEl    = document.getElementById("qaEnd");
+  var backBtn  = document.getElementById("qaBack");
+  var againBtn = document.getElementById("qaRestart");
+  var frame    = story.querySelector(".mg-story__frame");
+  var N = screens.length, cur = 0, atEnd = false, lastFocus = null, sheet = null, scrim = null;
+
+  function closeSheet(){
+    if (sheet){ sheet.remove(); sheet = null; }
+    if (scrim){ scrim.remove(); scrim = null; }
+    screens.forEach(function(el){
+      var t = el.querySelector("[data-qa-facts]");
+      if (t) t.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function paint(){
+    screens.forEach(function(el, i){
+      var on = !atEnd && i === cur;
+      el.classList.toggle("on", on);
+      el.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+    segs.forEach(function(el, i){ el.classList.toggle("on", atEnd || i <= cur); });
+    endEl.classList.toggle("on", atEnd);
+    endEl.setAttribute("aria-hidden", atEnd ? "false" : "true");
+    nav.hidden = atEnd;
+    prog.hidden = false;
+    prevBtn.disabled = atEnd || cur === 0;
+    nextBtn.textContent = (cur === N - 1) ? "לסיום" : "הבאה";
+    counter.textContent = (cur + 1) + " מתוך " + N;
+  }
+
+  function go(i){
+    closeSheet();
+    if (i < 0) return;
+    if (i >= N){ atEnd = true; paint(); return; }
+    atEnd = false; cur = i; paint();
+    var el = screens[cur];
+    if (el) el.scrollTop = 0;
+  }
+
+  function open(){
+    lastFocus = document.activeElement;
+    story.hidden = false;
+    document.body.style.overflow = "hidden";
+    atEnd = false; cur = 0; paint();
+    closeBtn.focus();
+  }
+  function close(){
+    closeSheet();
+    story.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  if (openBtn) openBtn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  backBtn.addEventListener("click", close);
+  againBtn.addEventListener("click", function(){ go(0); });
+  prevBtn.addEventListener("click", function(){ go(cur - 1); });
+  nextBtn.addEventListener("click", function(){ go(cur + 1); });
+
+  /* שכבת העובדות — נבנית מה-template של המסך הפעיל */
+  story.addEventListener("click", function(e){
+    var t = e.target.closest ? e.target.closest("[data-qa-facts]") : null;
+    if (!t) return;
+    if (sheet){ closeSheet(); return; }
+    var tpl = t.parentNode.querySelector("[data-qa-sheet]");
+    if (!tpl) return;
+    scrim = document.createElement("button");
+    scrim.className = "mg-story__scrim";
+    scrim.setAttribute("aria-label", "סגירת העובדות");
+    scrim.addEventListener("click", closeSheet);
+    sheet = document.createElement("div");
+    sheet.className = "mg-story__sheet";
+    sheet.id = "qaSheet";
+    sheet.appendChild(tpl.content.cloneNode(true));
+    frame.appendChild(scrim); frame.appendChild(sheet);
+    t.setAttribute("aria-expanded", "true");
+  });
+
+  /* קישור לכרטיס — סוגר את החוויה ומוסר את הניווט למנגנון של הגיליון */
+  story.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest("a[data-qa-jump]") : null;
+    if (!a) return;
+    e.preventDefault();
+    var slug = decodeURIComponent(a.getAttribute("href") || "").slice(1);
+    close();
+    if (slug && window.__mgGoTo) window.__mgGoTo(slug);
+  });
+
+  /* הקשה: שמאל — הבאה, ימין — הקודמת. לא על כפתור, לא על קישור, לא על השכבה */
+  story.addEventListener("click", function(e){
+    if (atEnd || sheet) return;
+    if (e.target.closest && e.target.closest("button, a, .mg-story__sheet, .mg-story__top, .mg-story__nav")) return;
+    var r = frame.getBoundingClientRect();
+    var x = e.clientX - r.left;
+    if (x < r.width * 0.33) go(cur + 1);
+    else if (x > r.width * 0.67) go(cur - 1);
+  });
+
+  /* החלקה */
+  var x0 = null, y0 = null;
+  story.addEventListener("touchstart", function(e){
+    var t = e.changedTouches[0]; x0 = t.clientX; y0 = t.clientY;
+  }, { passive:true });
+  story.addEventListener("touchend", function(e){
+    if (x0 === null || atEnd || sheet) return;
+    var t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) < 45 || Math.abs(dy) > Math.abs(dx)) return;
+    go(dx > 0 ? cur - 1 : cur + 1);   /* RTL: החלקה שמאלה מתקדמת */
+  }, { passive:true });
+
+  /* כניסה ישירה לשאלה מהכתובת — כך הקישור מהמייל נוחת על השאלה ולא על כלום */
+  function fromHash(){
+    var h = decodeURIComponent(location.hash || "").slice(1);
+    var i = -1;
+    screens.forEach(function(el, k){ if (el.id === h) i = k; });
+    if (i < 0){
+      /* הכתובת עזבה את השאלות — למשל ״חזרה״ בדפדפן. סוגרים, אחרת
+         החוויה נשארת פתוחה מעל כרטיס שהקורא ביקש לראות. */
+      if (!story.hidden) close();
+      return;
+    }
+    if (story.hidden) open();
+    go(i);
+  }
+  window.addEventListener("hashchange", fromHash);
+  if (document.readyState === "complete") fromHash();
+  else window.addEventListener("load", fromHash);
+
+  document.addEventListener("keydown", function(e){
+    if (story.hidden) return;
+    if (e.key === "Escape"){ e.preventDefault(); if (sheet) closeSheet(); else close(); return; }
+    if (atEnd || sheet) return;
+    if (e.key === "ArrowLeft"){ e.preventDefault(); go(cur + 1); }
+    else if (e.key === "ArrowRight"){ e.preventDefault(); go(cur - 1); }
+  });
+})();
+</script>
+<!-- YKC:end -->
 </body>
 </html>
