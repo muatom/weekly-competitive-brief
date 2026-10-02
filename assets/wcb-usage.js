@@ -449,5 +449,12 @@
   /* ---------- לבדיקה ולניפוי: window.__wcbu ---------- */
   window.__wcbu = { vid:vid, sid:sid, who:who, issue:issue, path:path, variant:variant, bot:BOT,
                     queue:function(){ return queue.slice(); }, sent:function(){ return sent; },
-                    flush:flush, engage:function(){ engage(true); } };
+                    flush:flush, engage:function(){ engage(true); },
+                    /* אירוע מותאם מהדף עצמו (סיור ההיכרות, אירועי שמע): נשלח כ-click עם target נתון.
+                       ל-props: value · num · item הם עמודות; כל השאר הולך ל-meta. */
+                    track:function(target, props){
+                      var p = { target:String(target || "").slice(0, 40) };
+                      if (props) Object.keys(props).forEach(function(k){ if (k !== "target") p[k] = props[k]; });
+                      push("click", p);
+                    } };
 })();
