@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>המגדלור 2.0 · המבט השבועי · 24.9–2.10</title>
-<meta name="description" content="המבטחות נכנסות למשכנתאות: הראל מציעה תנאים שהבנקים לא יכולים להציע, מנורה כבר בשוק, הפניקס נערכת דרך גמא — ומגדל נכנסת דרך בנק ירושלים. · דקה לקרוא, או כמה דקות להאזין.">
+<title>המגדלור 2.0 · המבט השבועי · 2–8.10</title>
+<meta name="description" content="רשות שוק ההון מציעה להפוך את הביטוח הסיעודי של קופות החולים לחיסכון אישי שינוהל בידי חברות הביטוח; דיסקונט ממזג את מרכנתיל, והפניקס W חוברת ל-Bernstein. · דקה לקרוא, או כמה דקות להאזין.">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<meta property="og:url" content="https://muatom.github.io/weekly-competitive-brief/2026-10-02/">
-<meta property="og:title" content="המבטחות נכנסות למשכנתאות: הראל מציעה עד 80% מימון, בתנאים שהבנקים לא יכולים להציע">
-<meta property="og:description" content="המבטחות נכנסות למשכנתאות: הראל מציעה תנאים שהבנקים לא יכולים להציע, מנורה כבר בשוק, הפניקס נערכת דרך גמא — ומגדל נכנסת דרך בנק ירושלים. · דקה לקרוא, או כמה דקות להאזין.">
-<meta property="og:image" content="https://muatom.github.io/weekly-competitive-brief/assets/share-card-2026-10-02-m2.png">
+<meta property="og:url" content="https://muatom.github.io/weekly-competitive-brief/">
+<meta property="og:title" content="רשות שוק ההון מציעה להפוך את הביטוח הסיעודי לחיסכון אישי, שינוהל בידי חברות הביטוח">
+<meta property="og:description" content="רשות שוק ההון מציעה להפוך את הביטוח הסיעודי של קופות החולים לחיסכון אישי שינוהל בידי חברות הביטוח; דיסקונט ממזג את מרכנתיל, והפניקס W חוברת ל-Bernstein. · דקה לקרוא, או כמה דקות להאזין.">
+<meta property="og:image" content="https://muatom.github.io/weekly-competitive-brief/assets/share-card-2026-10-08-m2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -1462,40 +1462,218 @@ body.np-on{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
 }
 
 </style>
-<script defer src="../assets/wcb-usage.js" data-issue="2026-10-02"></script>
+<script defer src="../assets/wcb-usage.js" data-issue="2026-10-08"></script>
+<!--wcb-ob:css-->
+<style data-ob>
+/* ============================================================
+   wcb-ob · סיור היכרות חד-פעמי — העיצוב. tools/onboarding/ob.css · docs/11 §2.5
+   רק מערכת העיצוב (magdalor.css) דרך טוקנים עם ברירת מחדל; כל הכללים תחת .ob-root / .ob-replay
+   (אין השפעה על הדף). שכבות: מסך הפתיחה 95 (מעל הכול) · סיור 90/91 (מעל ‎.toast 80, ‎.fbbar 60, ‎.np 50).
+   ============================================================ */
+.ob-root{
+  --ob-bg:var(--mg-dark-deep,#0A0A3D); --ob-fg:var(--mg-on-dark,#fff); --ob-muted:var(--mg-on-dark-muted,#DBE2F7);
+  --ob-subtle:var(--mg-on-dark-subtle,#A9B6EE); --ob-mint:var(--mg-mint,#A2EB9A); --ob-navy:var(--mg-navy,#020140);
+  font-family:var(--mg-font,"Migdal RagSans","Assistant",system-ui,-apple-system,"Segoe UI",sans-serif);
+  -webkit-font-smoothing:antialiased; direction:rtl; text-align:start;
+}
+.ob-root[hidden]{display:none}
+.ob-root *{box-sizing:border-box}
+
+/* ---------------- מסך הפתיחה: תופס את כל המסך, בסגנון ״מה חדש״ של Apple ---------------- */
+.ob-root .ob-intro{
+  position:fixed; inset:0; z-index:95; display:flex; flex-direction:column; overflow:hidden;
+  background:var(--mg-dark,#020140); color:var(--ob-fg); overscroll-behavior:contain;
+  opacity:0; transition:opacity .26s ease;
+}
+.ob-root .ob-intro[hidden]{display:none}
+.ob-root .ob-intro.in{opacity:1}
+.ob-root .ob-intro.out{opacity:0}
+.ob-root .ob-intro:focus{outline:none}
+/* קונוס האלומה — כמו בשער ובנגן (‎.colofoot::after, ‎.pl-frame::before) */
+.ob-root .ob-cone{
+  position:absolute; top:0; left:50%; width:min(560px,130%); height:72%; transform:translateX(-50%); pointer-events:none; opacity:0;
+  background:linear-gradient(180deg, rgba(162,235,154,.28), rgba(162,235,154,0));
+  clip-path:polygon(46% 0, 54% 0, 88% 100%, 12% 100%); filter:blur(30px);
+}
+.ob-root .ob-scroll{
+  position:relative; flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; touch-action:pan-y;
+  display:flex; flex-direction:column; align-items:center; padding:max(28px, env(safe-area-inset-top)) 24px 12px;
+}
+.ob-root .ob-hero{display:flex; flex-direction:column; align-items:center; text-align:center; width:100%; max-width:460px; margin-top:auto}
+.ob-root .ob-mark{--H:56px; --name-size:30px; margin:0 0 12px}
+.ob-root .ob-tag{
+  margin:0; display:inline-flex; align-items:center; min-height:24px; padding:0 12px; border-radius:var(--mg-r-pill,999px);
+  background:var(--ob-mint); color:var(--ob-navy); font-size:12px; font-weight:900; line-height:1;
+}
+.ob-root .ob-tag:empty,.ob-root .ob-kicker:empty{display:none}
+.ob-root .ob-kicker{margin:16px 0 0; font-size:15px; font-weight:300; letter-spacing:.02em; color:var(--ob-subtle)}
+.ob-root .ob-it{margin:2px 0 0; font-size:clamp(40px, 12.5vw, 54px); line-height:1.05; font-weight:900; letter-spacing:-.025em; color:#fff}
+.ob-root .ob-it .ob-v{font-weight:200; letter-spacing:-.02em}
+.ob-root .ob-is{margin:12px 0 0; max-width:30ch; font-size:17px; line-height:1.5; font-weight:300; color:var(--ob-muted); text-wrap:balance}
+.ob-root .ob-list{list-style:none; margin:26px 0 auto; padding:0; width:100%; max-width:460px; display:flex; flex-direction:column; gap:18px}
+.ob-root .ob-list li{display:flex; align-items:flex-start; gap:16px; text-align:start}
+.ob-root .ob-ico{
+  flex:none; width:48px; height:48px; border-radius:15px; display:grid; place-items:center; color:var(--ob-mint);
+  background:rgba(255,255,255,.08); border:1px solid var(--mg-dark-border,rgba(255,255,255,.13));
+}
+.ob-root .ob-ico svg{width:26px; height:26px}
+.ob-root .ob-tx{display:block; min-width:0; padding-top:1px}
+.ob-root .ob-tx b{display:block; font-size:16.5px; line-height:1.25; font-weight:900; color:#fff}
+.ob-root .ob-tx span{display:block; margin-top:3px; font-size:14.5px; line-height:1.5; font-weight:300; color:var(--ob-muted); text-wrap:balance}
+.ob-root .ob-foot{
+  position:relative; flex:none; display:flex; flex-direction:column; align-items:center; gap:2px;
+  padding:14px 24px max(14px, env(safe-area-inset-bottom));
+  background:linear-gradient(180deg, rgba(2,1,64,0), var(--mg-dark,#020140) 26%);
+}
+.ob-root .ob-big{width:100%; max-width:420px; min-height:50px; font-size:16.5px}
+/* כניסה: אלומה ← כותרת ← שורות ← כפתור (תנועה מופחתת: הכול מיידי) */
+.ob-root .ob-intro.in .ob-cone{animation:ob-cone .9s .05s cubic-bezier(.2,.7,.2,1) both}
+.ob-root .ob-intro.in .ob-hero > *{animation:ob-rise .55s cubic-bezier(.2,.7,.2,1) both}
+.ob-root .ob-intro.in .ob-hero > :nth-child(1){animation-delay:.05s}
+.ob-root .ob-intro.in .ob-hero > :nth-child(2){animation-delay:.12s}
+.ob-root .ob-intro.in .ob-hero > :nth-child(3){animation-delay:.19s}
+.ob-root .ob-intro.in .ob-hero > :nth-child(4){animation-delay:.26s}
+.ob-root .ob-intro.in .ob-hero > :nth-child(5){animation-delay:.33s}
+.ob-root .ob-intro.in .ob-list li{animation:ob-rise .55s cubic-bezier(.2,.7,.2,1) both; animation-delay:calc(.42s + var(--i,0) * .08s)}
+.ob-root .ob-intro.in .ob-foot{animation:ob-rise .55s .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ob-rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+@keyframes ob-cone{from{opacity:0} to{opacity:1}}
+
+/* ---------------- הצעדים: חוסם שקוף + טבעת + כרטיס ---------------- */
+.ob-root .ob-shield{display:none; position:fixed; inset:0; z-index:90; touch-action:none; overscroll-behavior:contain; background:transparent}
+.ob-root.ob-tour .ob-shield{display:block}
+/* הטבעת: החור בהכהיה. הצל הענק הוא ההכהיה עצמה; הטבעת הלבנה — בשביל הרקע הכהה של השער */
+.ob-root .ob-ring{
+  display:none; position:fixed; z-index:90; left:0; top:0; width:0; height:0; pointer-events:none; border-radius:14px; opacity:0;
+  box-shadow:0 0 0 2px rgba(255,255,255,.92), 0 0 0 200vmax rgba(2,1,64,.6);
+}
+.ob-root.ob-tour .ob-ring{display:block}
+.ob-root .ob-ring.on{opacity:1}
+.ob-root .ob-ring.anim{
+  transition:left .26s cubic-bezier(.45,.05,.15,1), top .26s cubic-bezier(.45,.05,.15,1), width .26s cubic-bezier(.45,.05,.15,1),
+             height .26s cubic-bezier(.45,.05,.15,1), border-radius .26s ease, opacity .2s ease;
+}
+.ob-root:not(.ob-tour) .ob-card{display:none}
+.ob-root .ob-card{
+  position:fixed; inset-inline:12px; margin-inline:auto; width:auto; max-width:440px;
+  bottom:max(12px, env(safe-area-inset-bottom));
+  z-index:91; padding:14px 18px 10px; max-height:min(62vh, 420px); overflow:auto; overscroll-behavior:contain;
+  background:var(--ob-bg); color:var(--ob-fg); border:1px solid var(--mg-dark-border,rgba(255,255,255,.13)); border-radius:20px;
+  box-shadow:var(--mg-sh-dark,0 14px 34px rgba(2,1,64,.24));
+  opacity:0; transform:translateY(14px);
+  transition:opacity .28s ease, transform .32s cubic-bezier(.2,.7,.2,1);
+}
+.ob-root .ob-card.in{opacity:1; transform:none}
+.ob-root .ob-card:focus{outline:none}
+.ob-root .ob-bars{display:flex; gap:5px; height:3px; margin:0 0 12px}
+.ob-root .ob-bars[hidden]{display:none}
+.ob-root .ob-bars i{flex:1; border-radius:99px; background:rgba(255,255,255,.22)}
+.ob-root .ob-bars i.on{background:#fff}
+.ob-root .ob-head{display:flex; align-items:center; gap:8px; margin:0; min-height:24px}
+.ob-root .ob-head[hidden]{display:none}
+.ob-root .ob-badge{
+  display:inline-flex; align-items:center; min-height:24px; padding:0 10px; border-radius:var(--mg-r-pill,999px);
+  background:var(--ob-mint); color:var(--ob-navy); font-size:12px; font-weight:900; line-height:1;
+}
+.ob-root .ob-badge[hidden]{display:none}
+.ob-root .ob-count{margin-inline-start:auto; font-size:12px; font-weight:700; color:var(--ob-subtle); font-variant-numeric:tabular-nums}
+.ob-root .ob-title{margin:8px 0 0; font-size:18px; line-height:1.3; font-weight:900; letter-spacing:-.01em; color:var(--ob-fg)}
+.ob-root .ob-body{margin:4px 0 0; font-size:15px; line-height:1.55; font-weight:300; color:var(--ob-muted)}
+.ob-root .ob-actions{display:flex; gap:8px; align-items:center; margin:12px 0 0}
+
+/* ---------------- כפתורים (משותף) ---------------- */
+.ob-root .ob-btn{
+  min-height:46px; padding:0 20px; border:0; border-radius:var(--mg-r-pill,999px); cursor:pointer; white-space:nowrap;
+  font-family:inherit; font-size:15px; font-weight:700; line-height:1;
+  transition:background .2s ease, transform .2s ease;
+}
+.ob-root .ob-primary{flex:1; background:var(--ob-mint); color:var(--ob-navy)}
+.ob-root .ob-primary:hover{background:var(--mg-mint-hover,#8FE086)}
+.ob-root .ob-primary:active{background:var(--mg-mint-press,#7AD46F); transform:scale(.97)}
+.ob-root .ob-ghost{background:none; color:var(--ob-subtle); font-weight:300; padding:0 14px; min-height:46px}
+.ob-root .ob-ghost:hover{color:#fff}
+.ob-root .ob-btn:focus-visible{outline:none; box-shadow:0 0 0 3px #fff}
+.ob-root .ob-ghost:focus-visible{box-shadow:0 0 0 3px var(--ob-mint)}
+.ob-root .ob-foot .ob-ghost{min-height:44px}
+
+/* קישור ״הפעלה מחדש״ — טקסט אינדיגו בלבד, כמו .txt-btn של המערכת */
+.ob-replay{
+  display:inline-flex; align-items:center; min-height:44px; padding:0 2px; background:none; border:0; cursor:pointer;
+  font-family:var(--mg-font,inherit); font-size:var(--mg-body-sm,13.5px); font-weight:700; color:var(--mg-indigo,#3C65E3);
+}
+.ob-replay:hover{color:var(--mg-indigo-700,#2A49AD)}
+.ob-replay:focus-visible{outline:none; box-shadow:var(--mg-focus,0 0 0 3px rgba(61,101,227,.35)); border-radius:8px}
+
+/* ---------------- מסכים נמוכים ורחבים ---------------- */
+@media (max-height:760px){
+  .ob-root .ob-mark{--H:44px; margin-bottom:8px}
+  .ob-root .ob-kicker{margin-top:12px}
+  .ob-root .ob-it{font-size:clamp(36px, 11vw, 46px)}
+  .ob-root .ob-is{margin-top:8px; font-size:16px}
+  .ob-root .ob-list{margin-top:18px; gap:13px}
+  .ob-root .ob-ico{width:42px; height:42px; border-radius:13px}
+  .ob-root .ob-ico svg{width:23px; height:23px}
+  .ob-root .ob-tx b{font-size:15.5px}
+  .ob-root .ob-tx span{font-size:14px; line-height:1.4}
+}
+@media (max-height:640px){
+  .ob-root .ob-tag{display:none}
+  .ob-root .ob-kicker{margin-top:6px}
+  .ob-root .ob-list{gap:10px}
+}
+@media (max-height:520px) and (min-width:640px){            /* מסך לרוחב: שתי עמודות */
+  .ob-root .ob-scroll{flex-direction:row; align-items:center; justify-content:center; gap:36px; padding-top:16px}
+  .ob-root .ob-hero{margin:0; flex:1; max-width:340px}
+  .ob-root .ob-list{margin:0; flex:1.2; max-width:420px}
+  .ob-root .ob-mark{display:none}
+  .ob-root .ob-card{padding:10px 16px 6px}
+  .ob-root .ob-title{font-size:16px}
+  .ob-root .ob-body{font-size:14px}
+  .ob-root .ob-actions{margin-top:8px}
+}
+@media (min-width:768px) and (min-height:761px){
+  .ob-root .ob-it{font-size:60px}
+  .ob-root .ob-is{font-size:19px}
+  .ob-root .ob-mark{--H:64px}
+}
+@media (max-height:480px){
+  .ob-root .ob-card{padding:10px 16px 6px}
+  .ob-root .ob-title{font-size:16px}
+  .ob-root .ob-body{font-size:14px}
+  .ob-root .ob-actions{margin-top:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ob-root *,.ob-root *::before,.ob-root *::after{animation:none !important; transition:none !important}
+}
+@media print{ .ob-root,.ob-replay{display:none !important} }
+</style>
+<!--/wcb-ob:css-->
 </head>
 <body>
-<p style="margin:0;padding:9px 16px;background:#e3eef8;color:#212058;font:14px/1.4 'Migdal RagSans',Assistant,system-ui,sans-serif;text-align:center">זהו גיליון מארכיון. <a href="../" style="color:#2a49ad;font-weight:700">למבט השבועי האחרון</a></p>
 
 <header class="siteheader">
   <div class="shell bar">
     <span class="mg-lockup"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">ניוזלטר אסטרטגי להנהלת מגדל</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt="מגדל"></span></span>
     <span class="spacer"></span>
-    <button type="button" class="hdr-chip" id="hdrListen" data-listen data-play data-ch="intro" hidden><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="t n">4:03</span></button>
+    <button type="button" class="hdr-chip" id="hdrListen" data-listen data-play data-ch="intro" hidden><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="t n">3:21</span></button>
   </div>
 </header>
 <main class="shell" id="top">
   <section class="front" aria-labelledby="frontTitle">
-    <p class="front-kicker" id="frontTitle"><b>המבט השבועי</b> · 24.9–2.10</p>
-    <section class="lead cover" aria-labelledby="coverTitle"><p class="eyebrow">01 · הכותרת המרכזית</p><h1 id="coverTitle">המבטחות נכנסות למשכנתאות</h1><div class="figure" role="group" aria-label="תנאי המימון: הראל מול הבנקים"><div><span class="k">הראל</span><b class="n hl">80%</b><span class="cap">מימון מרבי<br>40 שנה — במימון עד 60%</span></div><div><span class="k">הבנקים</span><b class="n">75%</b><span class="cap">דירה יחידה<br>עד 30 שנה</span></div></div><figure class="cover-quote"><figcaption>מה כתבו על מגדל · כלכליסט</figcaption><p class="cq"><a class="cq-d" href="https://www.calcalist.co.il/local_news/article/r1vs00s8qmg" target="_blank" rel="noopener">28.9</a><span class="cq-t">״יוצאת דופן היא מגדל, שפועלת במודל שונה ואינה רואה באשראי מנוע צמיחה אטרקטיבי.״</span></p><p class="cq cq-now"><a class="cq-d" href="https://www.calcalist.co.il/market/article/79egmk4g9" target="_blank" rel="noopener">30.9</a><span class="cq-t">״מגדל נכנסת לשוק המשכנתאות: עד 60% מימון לדירה להשקעה והלוואות ל-40 שנה״</span></p></figure><div class="cover-cta"><button type="button" class="cta" id="coverListen" data-listen data-play data-ch="intro"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">4:03</span></button><a class="txt-btn on-dark" href="#harel-mortgages">בהרחבה</a></div></section>
+    <p class="front-kicker" id="frontTitle"><b>המבט השבועי</b> · 2–8.10</p>
+    <section class="lead cover" aria-labelledby="coverTitle"><p class="eyebrow">01 · הכותרת המרכזית</p><h1 id="coverTitle">הביטוח הסיעודי עובר לחיסכון</h1><div class="cover-cta"><button type="button" class="cta" id="coverListen" data-listen data-play data-ch="intro"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">3:21</span></button><a class="txt-btn on-dark" href="#cma-ltc-savings">בהרחבה</a></div></section>
   </section>
-  <div class="worlds" id="worlds"><h2 class="section-title worlds-h">הגיליון המלא</h2><div class="switch-anchor"><div class="viewswitch four" role="tablist" aria-label="עולמות הגיליון"><span class="thumb" aria-hidden="true"></span><button type="button" role="tab" id="tab-main" aria-selected="true" aria-controls="view-main" data-view-to="main"><span class="lbl">השוק<span class="count n">9</span></span></button><button type="button" role="tab" id="tab-ai" aria-selected="false" aria-controls="view-ai" data-view-to="ai"><span class="lbl">AI<span class="count n">2</span></span></button><button type="button" role="tab" id="tab-linkedin" aria-selected="false" aria-controls="view-linkedin" data-view-to="linkedin"><span class="lbl">לינקדאין</span></button><button type="button" role="tab" id="tab-intl" aria-selected="false" aria-controls="view-intl" data-view-to="intl"><span class="lbl">בעולם<span class="count n">2</span></span></button></div></div><section class="view view-main" id="view-main" data-view="main" role="tabpanel" aria-labelledby="tab-main"><div class="layout"><div class="col-main"><article class="paper feature story" id="harel-mortgages" data-story data-pillar="ליבה וצמיחה" data-actor="הראל" data-ch="lead" aria-labelledby="featTitle"><div class="opener"><span class="numeral n" aria-hidden="true">01</span><span class="who"><span class="who-txt">הראל · מנורה · הפניקס · כלל · מגדל</span><span class="date">25.9</span></span></div><h2 id="featTitle">הראל פותחת משכנתאות בתנאים שהבנקים לא יכולים להציע — והיא לא לבד</h2><div class="context"><span class="lbl">הקשר עובדתי</span><p>הראל: עד 80% מימון, ועד 40 שנה כשהמימון עד 60%; דחיית קרן עד עשר שנים. בבנקים, לפי הוראות בנק ישראל: דירה יחידה — עד 75%, ועד 30 שנה.</p></div><ul class="bullets"><li><b>הראל אינה מתחילה מאפס.</b> לפי ביזפורטל, ב-2022 הריצה פיילוט והפסיקה אותו; הראל משכנתאות הוקמה בפברואר, ולקבוצה תיק של כ-3 מיליארד ₪, רובו משכנתאות הפוכות.</li><li><b>לא רק הראל.</b> מנורה כבר בשוק, הפניקס נערכת דרך גמא, כלל — בעיקר הפוכות.</li><li><b>ומגדל, 30.9.</b> חתמה על שיתוף פעולה עם בנק ירושלים: מגדל תעמיד את ההון ותקבע את האסטרטגיה, הבנק יתפעל. בעיקר למשקיעים ולבעלי נכסים — עד 60% מימון לדירה להשקעה (בבנקים: 50%), והלוואות עד 40 שנה. השירות טרם הושק.</li><li><b>ומגדל ובנק ירושלים — לא שותפות חדשה.</b> לפי כלכליסט (19.8), הם כבר מממנים יחד משכנתאות בסינדיקציה של 2 מיליארד ₪ מלפני כשנתיים, ומגדל רכשה מהבנק תיקים של כ-350 וכ-330 מיליון ₪. המבנה, לפי הכתבה, נותן למגדל דריסת רגל באשראי לדיור ״ללא צורך בהקמת מערך שירות לקוחות ותפעול עצמאי״.</li><li><b>ובבנקים, על ההצעה של הראל.</b> ״מהלך מסוכן״; ״זה לא יחזיק מים״, אמרה יועצת משכנתאות באחד הבנקים הגדולים (אייס, 30.9).</li><li><b>הגודל.</b> לבנקים כ-95% מהשוק; ב-2025 נלקחו משכנתאות בכ-110 מיליארד ₪.</li></ul><figure class="pull"><figcaption>מה כתבו על מגדל</figcaption><blockquote>״יוצאת דופן היא מגדל, שפועלת במודל שונה ואינה רואה באשראי מנוע צמיחה אטרקטיבי.״</blockquote><p class="pull-2">ובהמשך אותה כתבה: ״מגדל, לעומתן, אינה מאמינה בשלב זה מספיק בתחום האשראי כדי להצטרף למרוץ ובינתיים פועלת באמצעות שיתופי פעולה עם גופים אחרים.״</p><p class="cite"><a href="https://www.calcalist.co.il/local_news/article/r1vs00s8qmg" target="_blank" rel="noopener">כלכליסט, 28.9.2026, 07:18 · ״רוצים פריסה ל-40 שנה? השחקניות החדשות שמסתערות על המשכנתא שלכם״</a></p><div class="pull-now"><p class="pn-h">יומיים אחר כך: מגדל נכנסת לשוק — דרך בנק ירושלים</p><blockquote>״מגדל נכנסת לשוק המשכנתאות: עד 60% מימון לדירה להשקעה והלוואות ל-40 שנה״</blockquote><p class="pull-2">לפי הכתבה, ״מגדל תעמיד את ההון ותקבע את האסטרטגיה, ובנק ירושלים יהיה אחראי לתפעול״. וארז מגדלי, מנהל חטיבת ההשקעות במגדל, לכלכליסט: ״הכניסה לתחום המשכנתאות מהווה נדבך נוסף ומשמעותי בהרחבת פעילות ההשקעות של מגדל״.</p><p class="cite"><a href="https://www.calcalist.co.il/market/article/79egmk4g9" target="_blank" rel="noopener">כלכליסט, 30.9.2026, 12:51</a></p></div></figure><p class="signal"><span class="lbl">מה נוחת</span><b class="n">1.10</b> — נכנס לתוקף: בנק ישראל משנה את חישוב יחס ההחזר של לווים בבנקים — הלוואה נוספת המובטחת באותו נכס תיבחן יחד עם ההחזרים על ההלוואות הקודמות. חברות המשכנתאות החוץ-בנקאיות, ובהן המבטחות, אינן כפופות לשינוי</p><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="lead"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">1:04</span></button></summary><div class="more"><p class="summary">ההלוואה של הראל — עד 7 מיליון ₪, עם דחיית קרן של עד עשר שנים שבהן משלמים ריבית בלבד; לפי הסיקור, על דירה של 2 מיליון ₪ זה כ-100 אלף ₪ הון עצמי לזוג צעיר. ב-30.9 דיווח כלכליסט שגם מגדל נכנסת לתחום — בשיתוף בנק ירושלים, שיתפעל את העסק, בעוד מגדל תעמיד את ההון ותקבע את האסטרטגיה. ״נכנסת״ הוא מסגור: לפי אותו עיתון באוגוסט, מגדל ובנק ירושלים כבר מממנים יחד משכנתאות בסינדיקציה של 2 מיליארד ₪ מלפני כשנתיים; החדש הוא הצעה של מגדל ללווים, שטרם הושקה. לפי הכתבה, התזמון קשור לשינוי של בנק ישראל שנכנס לתוקף ב-1.10 ומקשה על הלוואה נוספת על אותו נכס בבנקים; המבטחות אינן כפופות לו. הבנקים מחזיקים כ-95% מהשוק — כ-110 מיליארד ₪ ב-2025. התנאים של הראל מתוארים בסיקור; ריבית ויעד לתיק לא פורסמו.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.bizportal.co.il/realestates/news/article/20043221" target="_blank" rel="noopener">ביזפורטל, 25.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/r100eeyxcme" target="_blank" rel="noopener">כלכליסט, 25.9.2026</a> · <a href="https://www.calcalist.co.il/local_news/article/r1vs00s8qmg" target="_blank" rel="noopener">כלכליסט, 28.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/79egmk4g9" target="_blank" rel="noopener">כלכליסט, 30.9.2026 — מגדל נכנסת</a> · <a href="https://www.ice.co.il/realestate/news/article/1131551" target="_blank" rel="noopener">אייס, 30.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/hygfczqdgl" target="_blank" rel="noopener">כלכליסט, 19.8.2026 — הלוואות ג׳מבו</a></p><div class="actions" data-actions><button type="button" data-copy="הראל פותחת משכנתאות בתנאים שהבנקים לא יכולים להציע — והיא לא לבד
-https://www.calcalist.co.il/market/article/r100eeyxcme" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A8%D7%90%D7%9C%20%D7%A4%D7%95%D7%AA%D7%97%D7%AA%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%D7%95%D7%AA%20%D7%91%D7%AA%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%94%D7%91%D7%A0%D7%A7%D7%99%D7%9D%20%D7%9C%D7%90%20%D7%99%D7%9B%D7%95%D7%9C%D7%99%D7%9D%20%D7%9C%D7%94%D7%A6%D7%99%D7%A2%20%E2%80%94%20%D7%95%D7%94%D7%99%D7%90%20%D7%9C%D7%90%20%D7%9C%D7%91%D7%93%0Ahttps%3A//www.calcalist.co.il/market/article/r100eeyxcme" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><section class="paper" aria-label="השוק — שאר הפריטים"><article class="story" id="cma-agents-warning" data-story data-pillar="הלקוח במרכז" data-actor="רשות שוק ההון · אלטשולר שחם"><div class="opener"><span class="who"><span class="who-txt">רשות שוק ההון · אלטשולר שחם</span><span class="date">29.9</span></span></div><h3>רשות שוק ההון מזהירה סוכנים שהבריחו חוסכים מאלטשולר שחם — וגם גוף מוסדי גדול</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>אלטשולר שחם מכרה את הגמל והפנסיה לווישור במיליארד ₪, וסוכנים ניצלו את העסקה כדי להעביר חוסכים. על כל מיליון ₪ שעובר, הסוכן מקבל בדרך כלל 4,000–7,000 ₪ (ביזפורטל).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><div class="more"><p class="summary">רשות שוק ההון שלחה מכתבי אזהרה חריפים לשורת סוכני ביטוח, וגם לגוף מוסדי גדול בעל פעילות גמל ופנסיה (שמו לא פורסם), על כך שעודדו חוסכים להעביר כספים מאלטשולר שחם תוך מסירת מידע מוטעה על העסקה. זו אזהרה לפני צעדים נוספים. במבצעי גיוס העמלה לסוכן מגיעה עד 8,000 ₪ למיליון, וב-2025 שולמו לסוכנים 13.2 מיליארד ₪ בעמלות.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001557905" target="_blank" rel="noopener">גלובס, 29.9.2026</a> · <a href="https://www.bizportal.co.il/longtermsavings/news/article/20043674" target="_blank" rel="noopener">ביזפורטל, 29.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="רשות שוק ההון מזהירה סוכנים שהבריחו חוסכים מאלטשולר שחם — וגם גוף מוסדי גדול
-https://www.globes.co.il/news/article.aspx?did=1001557905" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A9%D7%95%D7%A7%20%D7%94%D7%94%D7%95%D7%9F%20%D7%9E%D7%96%D7%94%D7%99%D7%A8%D7%94%20%D7%A1%D7%95%D7%9B%D7%A0%D7%99%D7%9D%20%D7%A9%D7%94%D7%91%D7%A8%D7%99%D7%97%D7%95%20%D7%97%D7%95%D7%A1%D7%9B%D7%99%D7%9D%20%D7%9E%D7%90%D7%9C%D7%98%D7%A9%D7%95%D7%9C%D7%A8%20%D7%A9%D7%97%D7%9D%20%E2%80%94%20%D7%95%D7%92%D7%9D%20%D7%92%D7%95%D7%A3%20%D7%9E%D7%95%D7%A1%D7%93%D7%99%20%D7%92%D7%93%D7%95%D7%9C%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001557905" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="car-renewal-gap" data-story data-pillar="הלקוח במרכז" data-actor="ביטוח רכב · הכשרה · כלל · מנורה מבטחים"><div class="opener"><span class="who"><span class="who-txt">ביטוח רכב · הכשרה · כלל · מנורה מבטחים</span><span class="date">4.10</span></span></div><h3>פער של עד 5,400 ₪ בשנה על אותו רכב — למי שמחדש ביטוח מקיף אוטומטית</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>מחירי ביטוח הרכב ירדו בכמעט 18% מאז נובמבר 2024 (הלמ״ס), אבל מי שמחדש אוטומטית בהצעה הראשונה לא רואה את זה. שני שלישים מהשוק, שמגלגל יותר מ-20 מיליארד ₪ בשנה, בידי שש חברות.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><div class="more"><p class="summary">לפי השוואת מחירים של סוכנות WOBI שהופקה עבור גלובס, ביטוח מקיף לאותו רכב ולאותו נהג נע בין חברות בעשרות אחוזים. בטוסון 2022 לנהג בן 47 ההצעה הזולה (הכשרה) הייתה 5,824 ₪ והיקרה (מנורה מבטחים) 8,404 ₪ — פער של 2,580 ₪. בקורולה 2021 לנהג בן 31 הזולה (כלל) הייתה 6,657 ₪ והיקרה (מנורה מבטחים) 12,068 ₪ — פער של 5,411 ₪, 81%. הסייג: שני פרופילים בלבד, והנתונים של סוכנות מסחרית ולא סקר רשמי. הכתבה פורסמה ב-4.10, אחרי סגירת הגיליון, והפריט נכנס בבקשה מפורשת.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001558268" target="_blank" rel="noopener">גלובס, 4.10.2026</a></p><div class="actions" data-actions><button type="button" data-copy="פער של עד 5,400 ₪ בשנה על אותו רכב — למי שמחדש ביטוח מקיף אוטומטית
-https://www.globes.co.il/news/article.aspx?did=1001558268" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%A4%D7%A2%D7%A8%20%D7%A9%D7%9C%20%D7%A2%D7%93%205%2C400%20%E2%82%AA%20%D7%91%D7%A9%D7%A0%D7%94%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%AA%D7%95%20%D7%A8%D7%9B%D7%91%20%E2%80%94%20%D7%9C%D7%9E%D7%99%20%D7%A9%D7%9E%D7%97%D7%93%D7%A9%20%D7%91%D7%99%D7%98%D7%95%D7%97%20%D7%9E%D7%A7%D7%99%D7%A3%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%98%D7%99%D7%AA%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001558268" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="altshuler-leader" data-story data-pillar="ליבה וצמיחה" data-actor="אלטשולר שחם · לידר · הראל" data-ch="leader"><div class="opener"><span class="numeral n" aria-hidden="true">03</span><span class="who"><span class="who-txt">אלטשולר שחם · לידר · הראל</span><span class="date">27.9</span></span></div><h3>אלטשולר שחם מבטלת את ההשקעה בלידר — ותקים בעצמה פעילות של חיתום הנפקות</h3><p class="stat"><b class="n">160</b> מיליון ₪<span class="l"> — על כ-18% מלידר, חודשיים אחרי החתימה</span></p><div class="context"><span class="lbl">הקשר עובדתי</span><p>לידר מלווה חברות בהנפקות מניות ואג״ח בבורסה (חיתום) ופועלת בברוקראז׳. הראל מחזיקה בה 16.66%; הפניקס פועלת בתחום דרך אפסילון, וכלל במגעים על 20% מווליו בייס.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="leader"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:27</span></button></summary><div class="more"><p class="summary">לפני כחודשיים חתמה אלטשולר שחם על רכישת כ-18% מלידר תמורת 160 מיליון ₪. עכשיו העסקה בוטלה בהסכמה, והכספים מוחזרים. הנימוק: אחרי שמכרה את הגמל והפנסיה לווישור במיליארד ₪, אלטשולר מתכננת להקים בעצמה פעילות של חיתום הנפקות וברוקראז׳ — בתחרות ישירה בלידר. השליטה בלידר (50.01%) נשארת בידי בעלי המניות בראשות עמית ורדי. הביטול דווח בעיתונות, ולא נמצא דיווח מיידי של החברות.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.calcalist.co.il/market/article/s1bz1wsqme" target="_blank" rel="noopener">כלכליסט, 27.9.2026</a> · <a href="https://www.ice.co.il/finance/news/article/1131164" target="_blank" rel="noopener">אייס, 27.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="אלטשולר שחם מבטלת את ההשקעה בלידר — ותקים בעצמה פעילות של חיתום הנפקות
-https://www.calcalist.co.il/market/article/s1bz1wsqme" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%90%D7%9C%D7%98%D7%A9%D7%95%D7%9C%D7%A8%20%D7%A9%D7%97%D7%9D%20%D7%9E%D7%91%D7%98%D7%9C%D7%AA%20%D7%90%D7%AA%20%D7%94%D7%94%D7%A9%D7%A7%D7%A2%D7%94%20%D7%91%D7%9C%D7%99%D7%93%D7%A8%20%E2%80%94%20%D7%95%D7%AA%D7%A7%D7%99%D7%9D%20%D7%91%D7%A2%D7%A6%D7%9E%D7%94%20%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA%20%D7%A9%D7%9C%20%D7%97%D7%99%D7%AA%D7%95%D7%9D%20%D7%94%D7%A0%D7%A4%D7%A7%D7%95%D7%AA%0Ahttps%3A//www.calcalist.co.il/market/article/s1bz1wsqme" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="phoenix-brokers-ai" data-story data-pillar="הגברת אפקטיביות" data-actor="הפניקס ברוקרס" data-ch="brokers"><div class="opener"><span class="numeral n" aria-hidden="true">02</span><span class="who"><span class="who-txt">הפניקס ברוקרס</span><span class="date">29.9</span></span></div><h3>הפניקס ברוקרס מקימה זרוע AI — ורכשה את פלטפורמת AdvisorOS</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>המהלך השני שלה בתוך חודשיים: ב-28.7 רכשה 60% מגורן פמילי אופיס, בתחום ניהול העושר.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="brokers"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:22</span></button></summary><div class="more"><p class="summary">הפניקס ברוקרס, חברה בבעלות קבוצת הפניקס, רכשה את פלטפורמת AdvisorOS והקימה זרוע ייעודית לבינה מלאכותית ולחדשנות. מייסד הפלטפורמה, עדי לב, מונה לראש התחום בקבוצה. לפי החברה, המטרה היא לשפר את חוויית הלקוח, להעצים את הסוכנים ולייעל תהליכי עבודה, והמנכ״ל, אורן כהן, אמר שהבינה המלאכותית ״תעצב מחדש את עולם ההפצה והשירותים הפיננסיים״. הפרטים הם הודעת החברה, וסכום הרכישה לא פורסם.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.funder.co.il/article/210637" target="_blank" rel="noopener">פאנדר, 29.9.2026</a> · <a href="https://www.ice.co.il/finance/news/article/1131557" target="_blank" rel="noopener">אייס, 29.9</a> · <a href="https://www.maariv.co.il/economy/israel/article-1371951" target="_blank" rel="noopener">מעריב, 29.9</a> · <a href="https://www.globes.co.il/news/article.aspx?did=1001557863" target="_blank" rel="noopener">גלובס, 29.9</a> · <a href="https://www.ynet.co.il/economy/article/ry500kq95fe" target="_blank" rel="noopener">ynet, 30.9</a></p><div class="actions" data-actions><button type="button" data-copy="הפניקס ברוקרס מקימה זרוע AI — ורכשה את פלטפורמת AdvisorOS
-https://www.funder.co.il/article/210637" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%20%D7%91%D7%A8%D7%95%D7%A7%D7%A8%D7%A1%20%D7%9E%D7%A7%D7%99%D7%9E%D7%94%20%D7%96%D7%A8%D7%95%D7%A2%20AI%20%E2%80%94%20%D7%95%D7%A8%D7%9B%D7%A9%D7%94%20%D7%90%D7%AA%20%D7%A4%D7%9C%D7%98%D7%A4%D7%95%D7%A8%D7%9E%D7%AA%20AdvisorOS%0Ahttps%3A//www.funder.co.il/article/210637" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="boi-private-debt" data-story data-pillar="ליבה וצמיחה" data-actor="בנק ישראל"><div class="opener"><span class="who"><span class="who-txt">בנק ישראל</span><span class="date">24.9</span></span></div><h3>האשראי הבנקאי לעסקים צומח 19% בשנה — החוץ-בנקאי 6.6%</h3><p class="stat"><b class="n">19%</b> <span class="l"> — הבנקאי · החוץ-בנקאי: 6.6%</span></p><div class="context"><span class="lbl">הקשר עובדתי</span><p>החוץ-בנקאי הוא הערוץ שבו הגופים המוסדיים מלווים. נתוני הרביע השני, בנק ישראל.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><div class="more"><p class="summary">לפי בנק ישראל, החוב הבנקאי של המגזר העסקי צומח בקצב שנתי של כ-19%, והחוב החוץ-בנקאי בקצב של כ-6.6%. סך החוב הפרטי הלא-פיננסי: כ-2.6 טריליון ₪, מתוכו כ-1.7 טריליון של המגזר העסקי. הנפקות האג״ח ברביע: כ-33 מיליארד ₪, יותר ממחציתן בנדל״ן ובינוי. ההודעה אינה מפרטת את חלק המוסדיים בנפרד מיתר המלווים.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.boi.org.il/publications/pressreleases/24-9-26/" target="_blank" rel="noopener">בנק ישראל, 24.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="האשראי הבנקאי לעסקים צומח 19% בשנה — החוץ-בנקאי 6.6%
-https://www.boi.org.il/publications/pressreleases/24-9-26/" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%90%D7%A9%D7%A8%D7%90%D7%99%20%D7%94%D7%91%D7%A0%D7%A7%D7%90%D7%99%20%D7%9C%D7%A2%D7%A1%D7%A7%D7%99%D7%9D%20%D7%A6%D7%95%D7%9E%D7%97%2019%25%20%D7%91%D7%A9%D7%A0%D7%94%20%E2%80%94%20%D7%94%D7%97%D7%95%D7%A5-%D7%91%D7%A0%D7%A7%D7%90%D7%99%206.6%25%0Ahttps%3A//www.boi.org.il/publications/pressreleases/24-9-26/" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="meitav-breach" data-story data-pillar="הלקוח במרכז" data-actor="מיטב טרייד" data-ch="meitav"><div class="opener"><span class="numeral n" aria-hidden="true">05</span><span class="who"><span class="who-txt">מיטב טרייד</span><span class="date">29.9</span></span></div><h3>ניסיון פריצה למיטב טרייד — דרך ממשק של ספק חיצוני</h3><p class="stat"><b class="n">3,000</b> מסרונים<span class="l"> — המניה ירדה 3.4%</span></p><div class="context"><span class="lbl">הקשר עובדתי</span><p>נשלפו מספרי זהות וחשבונות בנק; לחשבונות המסחר ולכספים לא הייתה גישה. נקודת הכשל — ממשק של הספק.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="meitav"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:20</span></button></summary><div class="more"><p class="summary">בשבת 26.9 קיבלו לקוחות של מיטב טרייד מסרונים עם קוד אימות שלא ביקשו. בבדיקה עם הספק החיצוני שמפעיל את המערכות התגלתה חשיפה באחד מממשקי ה-API שלו, והגישה נחסמה. לפי דיווח החברה לבורסה, כ-3,000 מסרונים נשלחו בניסיון התקיפה. המניה ירדה בכ-5% בפתיחה וסיימה בירידה של 3.4%. היקף הדליפה חלוק בין העיתונים: מ״לקוחות בודדים״ (גלובס) ועד כ-3,000 לקוחות (כלכליסט).</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001557812" target="_blank" rel="noopener">גלובס, 29.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/skkbpzt9ml" target="_blank" rel="noopener">כלכליסט, 29.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="ניסיון פריצה למיטב טרייד — דרך ממשק של ספק חיצוני
-https://www.globes.co.il/news/article.aspx?did=1001557812" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%A0%D7%99%D7%A1%D7%99%D7%95%D7%9F%20%D7%A4%D7%A8%D7%99%D7%A6%D7%94%20%D7%9C%D7%9E%D7%99%D7%98%D7%91%20%D7%98%D7%A8%D7%99%D7%99%D7%93%20%E2%80%94%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%9E%D7%A9%D7%A7%20%D7%A9%D7%9C%20%D7%A1%D7%A4%D7%A7%20%D7%97%D7%99%D7%A6%D7%95%D7%A0%D7%99%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001557812" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="phoenix-gama-cp" data-story data-pillar="ליבה וצמיחה" data-actor="הפניקס גמא"><div class="opener"><span class="who"><span class="who-txt">הפניקס גמא</span><span class="date">24.9</span></span></div><h3>הפניקס גמא גייסה כ-500 מיליון ₪ — 0.05% מעל ריבית בנק ישראל</h3><p class="stat"><b class="n">500</b> מיליון ₪<span class="l"> — ביקושים: כ-963 מיליון</span></p><div class="context"><span class="lbl">הקשר עובדתי</span><p>תיק האשראי של הפניקס: 5.7 מיליארד ₪ בסוף הרבעון השני, לעומת 4.8 בתחילת השנה (כלכליסט, 25.8).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><div class="more"><p class="summary">הפניקס גמא, זרוע האשראי של הפניקס, גייסה כ-500 מיליון ₪ בניירות ערך מסחריים (סדרה 7) מול ביקושים של כ-963 מיליון, במרווח של 0.05% מעל ריבית בנק ישראל — עלות גיוס קרובה לזו של בנק. הכסף מיועד לצמיחה בתחומי אשראי שונים. הביקושים והסכום הם הודעת החברה; הדירוג, Aa2 במידרוג, ניתן לאימות עצמאי.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.funder.co.il/article/210447" target="_blank" rel="noopener">פאנדר, 24.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="הפניקס גמא גייסה כ-500 מיליון ₪ — 0.05% מעל ריבית בנק ישראל
-https://www.funder.co.il/article/210447" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%20%D7%92%D7%9E%D7%90%20%D7%92%D7%99%D7%99%D7%A1%D7%94%20%D7%9B-500%20%D7%9E%D7%99%D7%9C%D7%99%D7%95%D7%9F%20%E2%82%AA%20%E2%80%94%200.05%25%20%D7%9E%D7%A2%D7%9C%20%D7%A8%D7%99%D7%91%D7%99%D7%AA%20%D7%91%D7%A0%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%0Ahttps%3A//www.funder.co.il/article/210447" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="private-capital-institutions" data-story data-pillar="ליבה וצמיחה" data-actor="מגדל · הפניקס" data-ch="private"><div class="opener"><span class="numeral n" aria-hidden="true">04</span><span class="who"><span class="who-txt">מגדל · הפניקס</span><span class="date">30.9</span></span></div><h3>מגדל בראש ההשקעות הפרטיות של המוסדיים — 23 מיליארד דולר, הפניקס 19</h3><p class="stat"><b class="n">23</b> מיליארד $<span class="l"> — מגדל · הפניקס: 19 · כלל: 18.2</span></p><div class="context"><span class="lbl">הקשר עובדתי</span><p>ההשקעות הפרטיות של כל המוסדיים, עם נדל״ן ישיר: כ-101 מיליארד דולר — כעשירית מנכסי החיסכון שהם מנהלים. והפער בצמרת הוא גם בתמהיל: אצל מגדל נדל״ן פרטי (31%), אצל הפניקס פרייבט אקוויטי (35%).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="private"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:17</span></button></summary><div class="more"><p class="summary">לפי ניתוח של ווליו השקעות מתקדמות שפורסם בגלובס, מגדל היא הגוף המוסדי שמשקיע הכי הרבה בהשקעות פרטיות — 23 מיליארד דולר — ואחריה הפניקס עם 19 מיליארד, כלל עם 18.2, מנורה עם 14.9 והראל עם 14.7. לפי הדוח, הגופים הקטינו את ההשקעות הפרטיות ברבעון הראשון, בגלל מלאי של נכסים שנצברו וטרם מומשו, והתחומים הבולטים כיום הם מרלו״גים, דאטה סנטרים ואנרגיה. נתוני הגיוס שבכתבה אינם עקביים עם סך התיק, ולכן לא הובאו; הדוח עצמו לא נקרא.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001557907" target="_blank" rel="noopener">גלובס, 30.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="מגדל בראש ההשקעות הפרטיות של המוסדיים — 23 מיליארד דולר, הפניקס 19
-https://www.globes.co.il/news/article.aspx?did=1001557907" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%9E%D7%92%D7%93%D7%9C%20%D7%91%D7%A8%D7%90%D7%A9%20%D7%94%D7%94%D7%A9%D7%A7%D7%A2%D7%95%D7%AA%20%D7%94%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%9E%D7%95%D7%A1%D7%93%D7%99%D7%99%D7%9D%20%E2%80%94%2023%20%D7%9E%D7%99%D7%9C%D7%99%D7%90%D7%A8%D7%93%20%D7%93%D7%95%D7%9C%D7%A8%2C%20%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%2019%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001557907" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article></section></div><aside class="col-side"><section class="radar" id="radar" aria-labelledby="radarTitle"><h2 class="sub" id="radarTitle">על הרדאר</h2><ol><li id="menora-claims-report" data-item data-pillar="הלקוח במרכז" data-actor="מנורה מבטחים"><span class="t">ייצוגית אושרה נגד מנורה: הוצאות צד ג׳ נכללו בדוח התביעות, וייתכן שהקפיצו פרמיות</span><span class="m">29.9 · <a href="https://www.funder.co.il/article/210645" target="_blank" rel="noopener">פאנדר</a></span></li><li id="shlomo-service-riders" data-item data-pillar="הלקוח במרכז" data-actor="שלמה חברה לביטוח"><span class="t">ייצוגית אושרה נגד שלמה ביטוח: כתבי שירות ברכב נמכרו בלי בחירה ובלי תמחור נפרד</span><span class="m">28.9 · <a href="https://www.calcalist.co.il/local_news/article/rkpc7pdqfx" target="_blank" rel="noopener">כלכליסט</a></span></li><li id="isa-ceo-departure" data-item data-pillar="הגברת אפקטיביות" data-actor="רשות ניירות ערך"><span class="t">מנכ״ל רשות ניירות ערך, עודד שפירר, מסיים את תפקידו אחרי שבע שנים</span><span class="m">24.9 · <a href="https://www.funder.co.il/article/210436" target="_blank" rel="noopener">פאנדר</a></span></li><li id="hapoalim-stark-power" data-item data-pillar="ליבה וצמיחה" data-actor="בנק הפועלים"><span class="t">הפועלים יעמיד לסטארק פאוור 85 מיליון דולר לאנרגיה מתחדשת בארה״ב</span><span class="m">27.9 · <a href="https://www.bizportal.co.il/capitalmarket/news/article/20043380" target="_blank" rel="noopener">ביזפורטל</a></span></li><li id="clal-akirov-alrov" data-item data-pillar="ליבה וצמיחה" data-actor="כלל החזקות · אלרוב נדל״ן"><span class="t">אקירוב מציע כ-788 מיליון ₪ כדי למחוק את אלרוב מהמסחר — לאלרוב 14.2% מכלל ביטוח, שאין לה בעל שליטה</span><span class="m">30.9 · <a href="https://www.globes.co.il/news/article.aspx?did=1001557965" target="_blank" rel="noopener">גלובס</a></span></li><li id="altshuler-funds-redemptions" data-item data-pillar="ליבה וצמיחה" data-actor="אלטשולר שחם"><span class="t">מקרנות הנאמנות של אלטשולר שחם נפדו בספטמבר כמעט 200 מיליון ₪ נטו — לראשונה מאז יוני 2025</span><span class="m">1.10 · <a href="https://www.calcalist.co.il/market/article/b1zanri5mg" target="_blank" rel="noopener">כלכליסט</a></span></li></ol><h2 class="sub landing-h" id="landing">מה נוחת</h2><ol class="landing"><li><span class="when n">4.11</span><span class="t">נסגר המכרז להפעלת המסלקה הפנסיונית</span><span class="m">במבט של 17–23.9</span></li></ol></section><details class="scoreboard board-d" id="board"><summary><span><b>הלוח של 2028</b> · היעדים שמגדל הכריזה, מול המתחרה</span><span class="toggle"><span class="lbl-open">לפתיחה</span><span class="lbl-close">לסגירה</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><table><thead><tr><th>מדד</th><th>מגדל</th><th>המתחרה</th><th>יעד</th></tr></thead><tbody><tr><td>נכסים מנוהלים<small>30.6</small></td><td class="goal n">631 מיליארד ₪</td><td class="now">הפניקס 658 · הראל 638</td><td class="goal n">750–850</td></tr><tr><td>תשואה להון<small>ר׳ 2</small></td><td class="goal n">22.4%</td><td class="now">הראל 37% · מנורה 34.2% · הפניקס 29.7%</td><td class="goal n">16%–18%</td></tr><tr><td>השקעות פרטיות<small>ר׳ 1</small></td><td class="goal n">23 מיליארד $</td><td class="now">הפניקס 19 · כלל 18.2</td><td class="goal n">—</td></tr></tbody></table><p class="src">היעדים: כלכליסט · אייס, 25.3.2026. השקעות פרטיות: גלובס, 30.9.</p></details></aside></div><section class="archive" id="archive" aria-labelledby="arcTitle"><h2 class="section-title" id="arcTitle">גיליונות קודמים</h2><ol class="arc-list"><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-23/" target="_blank" rel="noopener"><span class="r"><span>17–23.9</span><span>7 פריטים</span></span><span class="h">עסקת כאל קורסת על תנאי של רשות התחרות — הרוכשות ישלמו כ-187 מיליון ₪, ודיסקונט מבקש דחייה במועד המכירה</span><span class="tp">כלל ביטוח קיבלה בלעדיות לבחינת השקעה של 18%–20% בבנק ההשקעות ווליו בייס, לפי שווי של כ-600 מיליון ₪</span><span class="tp">הפרסומות של ChatGPT הגיעו לישראל — אבל מבטחות ובנקים אינם יכולים לקנות בהן מקום</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-20/" target="_blank" rel="noopener"><span class="r"><span>14–20.9</span><span>7 פריטים</span></span><span class="h">רשות שוק ההון מסמנת במסמך רשמי מתי מעורבות של מוסדי בחברה ללא בעל שליטה הופכת ל״ניסיון שליטה״</span><span class="tp">כלל עוקפת את מיטב בראש טבלת המגייסים של אוגוסט — ואלטשולר שחם וילין לפידות איבדו יחד 4.6 מיליארד ₪ בחודש</span><span class="tp">כלל ביטוח מעבירה מכירות, שירות ותפעול באלמנטר ממערך הסוכנים לחטיבה לביטוח כללי — ומחליפה שני משנים למנכ״ל</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-16/" target="_blank" rel="noopener"><span class="r"><span>10–16.9</span><span>3 פריטים</span></span><span class="h">ההסכם עם ווישור נחתם — ורשות שוק ההון מרגיעה את חוסכי אלטשולר שחם בזמן שסוכנים ממליצים לבחון יציאה</span><span class="tp">מור מובילה משא ומתן לרכישת 15%–20% מסאנפלאוור, מפתחת משחקי קזינו מקוונים — כמיליארד ₪ מצד מור</span><span class="tp">ביטוח ישיר משלמת 200 ₪ ללקוח שמגיע מ-ChatGPT, Gemini או Claude ורוכש ביטוח רכב מקיף</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-14/" target="_blank" rel="noopener"><span class="r"><span>8–14.9</span><span>5 פריטים</span></span><span class="h">ווישור תרכוש עם המנכ״ל את השליטה בחברת הגמל והפנסיה של אלטשולר שחם — בכמיליארד ₪</span><span class="tp">גם בעלי השליטה בילין לפידות בוחנים מכירה — ודורשים שווי של 3 מיליארד ₪</span><span class="tp">הפניקס ומור בדרך ל-100% באנלימיטד: מזכר לרכישת 30% מחברת החשמל</span></a></li></ol><details class="arc-more"><summary><span class="txt-btn more-btn">הגיליונות המוקדמים יותר (8)<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><ol class="arc-list"><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-09/" target="_blank" rel="noopener"><span class="r"><span>3–9.9</span><span>7 פריטים</span></span><span class="h">בעלי השליטה באלטשולר שחם בוחנים מכירת 55.4% מבית ההשקעות</span><span class="tp">עסקת מכירת כאל בדרך לקריסה — דיסקונט מבקש לבטל את חובת המכירה</span><span class="tp">עמלות סוכני הביטוח הגיעו ל-13.2 מיליארד ₪ ב-2025 — 46% יותר מאשר ב-2020</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-06/" target="_blank" rel="noopener"><span class="r"><span>31.8–6.9</span><span>7 פריטים</span></span><span class="h">הפניקס משלמת בנכס משרדים כדי להיכנס ב-20% לחברת חללי העבודה של פתאל</span><span class="tp">איילון גייסה 1.2 מיליארד ₪ בחודש הראשון שלה בגמל — עם יעד של 100 מיליארד</span><span class="tp">רשות ני״ע מקדמת רישיון כפול שיאחד פנסיה-ביטוח והשקעות בידי איש מקצוע אחד</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-02/" target="_blank" rel="noopener"><span class="r"><span>27.8–2.9</span><span>6 פריטים</span></span><span class="h">הפניקס חוזרת למכרז הרכב הגדול במשק אחרי 23 שנה — וווישור צונחת מ-60% ל-20%</span><span class="tp">חוזר ההנחות בביטוח חיים ננעל להערות — ויחול גם על פוליסות שכבר שווקו</span><span class="tp">בנק ישראל הפחית את הריבית ל-3.25%, בתחולה 3 בספטמבר</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-30/" target="_blank" rel="noopener"><span class="r"><span>24–30.8</span><span>6 פריטים</span></span><span class="h">מנורה קונה 40% מבית קרנות גידור — שבועיים אחרי שהראל קנתה את השליטה בטוליפ</span><span class="tp">הראל סוגרת את העונה עם תשואה להון 37% ברבעון — ורווחי הליבה נודדים מהחיתום לניהול נכסים</span><span class="tp">רווחי ביטוח הרכב נחתכו בכל חמש הגדולות — ומגדל היחידה שעברה להפסד</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-25/" target="_blank" rel="noopener"><span class="r"><span>19–25.8</span><span>8 פריטים</span></span><span class="h">מנורה מציבה יעד של 750 מיליארד ₪ נכסים ל-2030 — אותו מספר שמגדל הציבה לעצמה ל-2028</span><span class="tp">הפניקס חצתה 658 מיליארד ₪ נכסים מנוהלים — 27 מיליארד יותר ממגדל באותו מועד</span><span class="tp">מחצית שיא בבתי ההשקעות — ואלטשולר שחם היחיד שמצטמצם</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-23/" target="_blank" rel="noopener"><span class="r"><span>17–23.8</span><span>8 פריטים</span></span><span class="h">הפניקס עקפה את אלטשולר שחם והפכה לשלישית בגמל — 110.5 מיליארד ₪ מול 109.1</span><span class="tp">הביטוח הסיעודי של 2.7 מיליון מבוטחי כללית עובר מהראל לאיילון — והמודל שעבר איתו כבר אינו מודל של חיתום</span><span class="tp">וכמה שווה המאזן שקיבל אותה: איילון בתשואה להון 26% ובדיבידנד ביניים נוסף של 50 מיליון ₪</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-19/" target="_blank" rel="noopener"><span class="r"><span>13–19.8</span><span>7 פריטים</span></span><span class="h">הצבירה נטו של כלל בפנסיה ובגמל זינקה פי 5.8 — 11 מיליארד ₪ במחצית</span><span class="tp">Munich Re רוכשת את At-Bay הישראלית, שמוכרת ביטוח סייבר לעסקים</span><span class="tp">מנורה מבטחים וליברה מפעילות סוכני AI של Wonderful, שיוצאת לגיוס לפי שווי 5 מיליארד דולר</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-16/" target="_blank" rel="noopener"><span class="r"><span>10–16.8</span><span>5 פריטים</span></span><span class="h">איילון לוקחת מהראל את הביטוח הסיעודי של כללית</span><span class="tp">מידרוג מעלה את שלושת הדירוגים של מגדל, כולל הון רובד 1 הנוסף</span><span class="tp">יולי שלילי: שלוש חברות בלבד סיימו את החודש בחיוב בקרנות הפנסיה המקיפות</span></a></li></ol></details></section></section><section class="view view-ai" id="view-ai" data-view="ai" role="tabpanel" aria-labelledby="tab-ai" hidden><p class="view-sum">שני עדכונים — אחד גם במבט הראשי, ואחד שנכנס כחריגה מוצהרת · נסרקו 25 גופים · נסגר 2.10</p><section class="paper" aria-label="עדכוני ה-AI של השבוע"><article class="story" id="ai-phoenix-brokers-ai" data-story data-pillar="הגברת אפקטיביות" data-actor="הפניקס ברוקרס" data-ai="1" data-ch="brokers"><div class="opener"><span class="numeral n" aria-hidden="true">02</span><span class="who"><span class="who-txt">הפניקס ברוקרס</span><span class="date">29.9</span></span></div><h3>הפניקס ברוקרס מקימה זרוע AI — ורכשה את פלטפורמת AdvisorOS</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>המהלך השני שלה בתוך חודשיים: ב-28.7 רכשה 60% מגורן פמילי אופיס, בתחום ניהול העושר.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="brokers"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:22</span></button></summary><div class="more"><p class="summary">הפניקס ברוקרס, חברה בבעלות קבוצת הפניקס, רכשה את פלטפורמת AdvisorOS והקימה זרוע ייעודית לבינה מלאכותית ולחדשנות. מייסד הפלטפורמה, עדי לב, מונה לראש התחום בקבוצה. לפי החברה, המטרה היא לשפר את חוויית הלקוח, להעצים את הסוכנים ולייעל תהליכי עבודה, והמנכ״ל, אורן כהן, אמר שהבינה המלאכותית ״תעצב מחדש את עולם ההפצה והשירותים הפיננסיים״. הפרטים הם הודעת החברה, וסכום הרכישה לא פורסם.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.funder.co.il/article/210637" target="_blank" rel="noopener">פאנדר, 29.9.2026</a> · <a href="https://www.ice.co.il/finance/news/article/1131557" target="_blank" rel="noopener">אייס, 29.9</a> · <a href="https://www.maariv.co.il/economy/israel/article-1371951" target="_blank" rel="noopener">מעריב, 29.9</a> · <a href="https://www.globes.co.il/news/article.aspx?did=1001557863" target="_blank" rel="noopener">גלובס, 29.9</a> · <a href="https://www.ynet.co.il/economy/article/ry500kq95fe" target="_blank" rel="noopener">ynet, 30.9</a></p><div class="actions" data-actions><button type="button" data-copy="הפניקס ברוקרס מקימה זרוע AI — ורכשה את פלטפורמת AdvisorOS
-https://www.funder.co.il/article/210637" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%20%D7%91%D7%A8%D7%95%D7%A7%D7%A8%D7%A1%20%D7%9E%D7%A7%D7%99%D7%9E%D7%94%20%D7%96%D7%A8%D7%95%D7%A2%20AI%20%E2%80%94%20%D7%95%D7%A8%D7%9B%D7%A9%D7%94%20%D7%90%D7%AA%20%D7%A4%D7%9C%D7%98%D7%A4%D7%95%D7%A8%D7%9E%D7%AA%20AdvisorOS%0Ahttps%3A//www.funder.co.il/article/210637" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="ai-chatgpt-ads-cellcom" data-story data-pillar="הלקוח במרכז" data-actor="סלקום · OpenAI" data-ai="1" data-ch="gptads"><div class="opener"><span class="numeral n" aria-hidden="true">07</span><span class="who"><span class="who-txt">סלקום · OpenAI · נטורל אינטליג׳נס</span><span class="date">30.9</span></span></div><h3>הפרסום ב-ChatGPT נפתח בישראל — ופרסום ביטוח אסור בו מחוץ לארה״ב</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>לפי החברה עצמה, המפרסם הפיננסי הגדול בפלטפורמה הוא ישראלי: BestMoney של נטורל אינטליג׳נס — אתר השוואה שמפרסם בה, בין השאר, ביטוחי רכב, הלוואות ומשכנתאות.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="gptads"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:27</span></button></summary><div class="more"><p class="summary">מ-30.9 סלקום מפרסמת ב-ChatGPT, ולפי אייס היא מהחברות הראשונות בישראל שעולות לערוץ. המודעות מופיעות בישראל מאמצע ספטמבר למשתמשי החינם ו-Go — בנפרד מהתשובה, ומסומנות כפרסומת. לפי מדיניות הפרסום של OpenAI (עודכנה 10.9), פרסום פיננסי — ובו ביטוח ומשכנתאות — מותר רק בארה״ב, באישור פרטני, ומחוץ לארה״ב אסור ככלל; כלומר בישראל מבטחת אינה יכולה לפרסם שם. בינתיים המבטחות פוגשות את ChatGPT מהצד השני של השיחה: ביטוח ישיר משלמת 200 ₪ למי שמגיע ממנו ורוכש ביטוח רכב מקיף. הפריט חורג מרשימת הגופים שהמבט סורק ונכנס בבקשה מפורשת, כחריגה מוצהרת; נתוני נטורל אינטליג׳נס הם הצהרת החברה.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://ice.co.il/digital-140/news/article/1131761" target="_blank" rel="noopener">אייס, 30.9.2026</a> · <a href="https://www.mako.co.il/nexter-news/Article-49f606e531ea0a1027.htm" target="_blank" rel="noopener">מאקו, 17.9.2026</a> · <a href="https://www.geektime.co.il/openai-confirms-ads-appear-in-chatgpt-in-israel/" target="_blank" rel="noopener">גיקטיים, 17.9.2026</a> · <a href="https://openai.com/policies/ad-policies/" target="_blank" rel="noopener">OpenAI — מדיניות הפרסום, 10.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="הפרסום ב-ChatGPT נפתח בישראל — ופרסום ביטוח אסור בו מחוץ לארה״ב
-https://ice.co.il/digital-140/news/article/1131761" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91-ChatGPT%20%D7%A0%D7%A4%D7%AA%D7%97%20%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%E2%80%94%20%D7%95%D7%A4%D7%A8%D7%A1%D7%95%D7%9D%20%D7%91%D7%99%D7%98%D7%95%D7%97%20%D7%90%D7%A1%D7%95%D7%A8%20%D7%91%D7%95%20%D7%9E%D7%97%D7%95%D7%A5%20%D7%9C%D7%90%D7%A8%D7%94%D7%B4%D7%91%0Ahttps%3A//ice.co.il/digital-140/news/article/1131761" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article></section></section><section class="view view-linkedin" id="view-linkedin" data-view="linkedin" role="tabpanel" aria-labelledby="tab-linkedin" hidden><div class="paper empty-state"><p class="es-h">השבוע אין פוסטים</p><p>הכלי שמביא את הפוסטים לא היה זמין בריצה הזו, ולכן הלשונית ריקה בגיליון הזה. הניסוי (חמישי מתוך עשרה גיליונות) לא התקדם.</p><p class="es-link"><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-23/#linkedin" target="_blank" rel="noopener">הפוסטים האחרונים — גיליון 17–23.9</a></p></div></section><section class="view view-intl" id="view-intl" data-view="intl" role="tabpanel" aria-labelledby="tab-intl" hidden><p class="view-sum">2 מהלכים · 112 כותרות בחלון, 6 מהן על מבטחות מהרשימה · נסגר 2.10</p><section class="paper" aria-label="מה עשו מבטחות בחו״ל"><article class="story" id="intl-metlife-chatgpt-app" data-story data-pillar="הלקוח במרכז" data-actor="MetLife Pet Insurance" data-ch="metlife"><div class="opener"><span class="numeral n" aria-hidden="true">06</span><span class="who"><span class="who-txt">MetLife Pet Insurance</span><span class="date">25.9</span></span></div><h3>MetLife בונה הצעת מחיר לביטוח חיות מחמד בתוך ChatGPT</h3><div class="context"><span class="lbl">המקבילה בישראל</span><p>בישראל: ביטוח ישיר משלמת 200 ₪ ללקוח שמגיע מכלי AI ורוכש רכב מקיף — אבל ההצעה נבנית באתר שלה, לא בתוך הצ׳אט.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="metlife"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:23</span></button></summary><div class="more"><p class="summary">MetLife Pet Insurance, מותג ביטוח חיות המחמד של MetLife, בנתה אפליקציה בתוך ChatGPT: שיחה מונחית שאוספת פרטים על החיה, מציגה תוכניות ומחירים ומפיקה הצעת מחיר אישית, ומשם מפנה לאתר להשלמה. המפתח הרשום הוא Fletch Technologies, ולא פורסם מה טיב ההתקשרות. מועד השקה ונתוני שימוש לא פורסמו.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://coverager.com/metlife-pet-insurance-appears-in-chatgpt/" target="_blank" rel="noopener">Coverager, 25.9.2026</a> · <a href="https://www.ice.co.il/consumerism/news/article/1129695" target="_blank" rel="noopener">אייס — ביטוח ישיר, 200 ₪ למי שמגיע מכלי AI, 14.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="MetLife בונה הצעת מחיר לביטוח חיות מחמד בתוך ChatGPT
-https://coverager.com/metlife-pet-insurance-appears-in-chatgpt/" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=MetLife%20%D7%91%D7%95%D7%A0%D7%94%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%91%D7%99%D7%98%D7%95%D7%97%20%D7%97%D7%99%D7%95%D7%AA%20%D7%9E%D7%97%D7%9E%D7%93%20%D7%91%D7%AA%D7%95%D7%9A%20ChatGPT%0Ahttps%3A//coverager.com/metlife-pet-insurance-appears-in-chatgpt/" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="intl-zurich-tesla-fsd" data-story data-pillar="ליבה וצמיחה" data-actor="Zurich Australia"><div class="opener"><span class="who"><span class="who-txt">Zurich Australia</span><span class="date">29.9</span></span></div><h3>Zurich אוסטרליה מכניסה את הנהיגה העצמית של טסלה לתמחור הפוליסה</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>לפי החברה — הראשונה באוסטרליה והשנייה בעולם; יכולת הסיוע לנהיגה נכנסת לדירוג הסיכון עצמו.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><div class="more"><p class="summary">Zurich באוסטרליה הוסיפה את מערכת הנהיגה העצמית של טסלה (Full Self-Driving, בפיקוח) כפרמטר תמחור בפוליסת הרכב InsureMyTesla: בעלי רכב זכאים ישלמו פחות, לפי הסיכון המופחת שהחברה מייחסת לשימוש במערכת, על בסיס נתוני טסלה. שיעור ההנחה, תנאי הזכאות ומועד התחילה לא פורסמו.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" target="_blank" rel="noopener">Coverager, 29.9.2026</a></p><div class="actions" data-actions><button type="button" data-copy="Zurich אוסטרליה מכניסה את הנהיגה העצמית של טסלה לתמחור הפוליסה
-https://coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=Zurich%20%D7%90%D7%95%D7%A1%D7%98%D7%A8%D7%9C%D7%99%D7%94%20%D7%9E%D7%9B%D7%A0%D7%99%D7%A1%D7%94%20%D7%90%D7%AA%20%D7%94%D7%A0%D7%94%D7%99%D7%92%D7%94%20%D7%94%D7%A2%D7%A6%D7%9E%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%98%D7%A1%D7%9C%D7%94%20%D7%9C%D7%AA%D7%9E%D7%97%D7%95%D7%A8%20%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%A1%D7%94%0Ahttps%3A//coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article></section></section></div>
+  <div class="worlds" id="worlds"><h2 class="section-title worlds-h">הגיליון המלא</h2><div class="switch-anchor"><div class="viewswitch four" role="tablist" aria-label="עולמות הגיליון"><span class="thumb" aria-hidden="true"></span><button type="button" role="tab" id="tab-main" aria-selected="true" aria-controls="view-main" data-view-to="main"><span class="lbl">השוק<span class="count n">6</span></span></button><button type="button" role="tab" id="tab-ai" aria-selected="false" aria-controls="view-ai" data-view-to="ai"><span class="lbl">AI<span class="count n">1</span></span></button><button type="button" role="tab" id="tab-linkedin" aria-selected="false" aria-controls="view-linkedin" data-view-to="linkedin"><span class="lbl">לינקדאין</span></button><button type="button" role="tab" id="tab-intl" aria-selected="false" aria-controls="view-intl" data-view-to="intl"><span class="lbl">בעולם</span></button></div></div><section class="view view-main" id="view-main" data-view="main" role="tabpanel" aria-labelledby="tab-main"><div class="layout"><div class="col-main"><article class="paper feature story" id="cma-ltc-savings" data-story data-pillar="ליבה וצמיחה" data-actor="רשות שוק ההון" data-ch="lead" aria-labelledby="featTitle"><div class="opener"><span class="numeral n" aria-hidden="true">01</span><span class="who"><span class="who-txt">רשות שוק ההון · הראל · איילון</span><span class="date">4.10</span></span></div><h2 id="featTitle">רשות שוק ההון מציעה להפוך את הביטוח הסיעודי של קופות החולים לחיסכון אישי — שינוהל ״במודל תחרותי בין חברות הביטוח״</h2><div class="context"><span class="lbl">הקשר עובדתי</span><p>5.2 מיליון מתוך כ-6.7 מיליון בוגרים מבוטחים היום בביטוח הסיעודי של קופות החולים, כמחציתם בכללית. שם הביטוח נכנס למסלול חיסול עצמי אחרי שהראל הודיעה שלא תמשיך לתפעל אותו במתכונת המפסידה; הרשות קיצצה את הגמלה מכ-6,100 ל-5,000 ₪, הקשיחה את מבחן התלות (4 מתוך 6 פעולות יומיומיות במקום 3) והפכה את המבטחות למתפעלות בלבד, בלי סיכון ביטוחי. במכרז התפעול החדש של כללית ניגשה רק איילון — וזכתה.</p></div><ul class="bullets"><li><b>מי עובר לחיסכון.</b> צעירים מתחת לרף גיל שייקבע; המבוגרים נשארים בפוליסה הקיימת.</li><li><b>גיל 70.</b> לפי הרשות, כ-85% מתביעות הסיעוד מתרחשות מעליו — ושם החיסכון הופך לביטוח.</li><li><b>מי מנהל את הכסף.</b> חברות הביטוח, ״במודל תחרותי״; לפי גלובס, בתי ההשקעות לא יוכלו לשווק את המוצר אם יוגדר כביטוחי.</li></ul><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="lead"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:43</span></button></summary><div class="more"><p class="summary">לפי התוכנית, צעירים — לפי גלובס ״ככל הנראה מתחת לגיל 50–60״ — יפקידו את מה שהם משלמים היום לקופות החולים בחיסכון אישי שינוהל בחברות הביטוח, והמבוגרים יישארו ״קבוצה סגורה״ בפוליסה הקיימת, במימון המדינה בתקופת המעבר. סביב גיל 70 החיסכון והתשואה יקנו ביטוח סיעודי; הרשות מעריכה צבירה של 300 עד 600 אלף ₪, שתממן גמלה ברמה של היום — כ-5,000 ₪ בחודש בבית וכ-10,000 ₪ במוסד, עד חמש שנים. לפי גלובס, המבטחות יגבו דמי ניהול על החיסכון, והעלות לקופת המדינה תגיע לכמה מיליארדי שקלים לאורך 20–30 שנות מעבר. הסייג: זו ״סקיצה ראשונה״, לא חוזר ולא טיוטת חוק — היא תונח לפני הממשלה הבאה, מחייבת חקיקה, ובמשרד האוצר יש מי שמעריכים שהמערכת הנוכחית יציבה.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001558402" target="_blank" rel="noopener">גלובס, 4.10.2026</a> · <a href="https://www.globes.co.il/news/article.aspx?did=1001558482" target="_blank" rel="noopener">גלובס, 6.10.2026 — החורים בתוכנית</a> · <a href="https://www.themarker.com/news/health/2026-10-04/ty-article/.highlight/000001a0-f72a-d9ab-abfd-f7abfd090000" target="_blank" rel="noopener">TheMarker, 4.10</a> · <a href="https://www.calcalist.co.il/local_news/article/h1godxxsgl" target="_blank" rel="noopener">כלכליסט</a> · <a href="https://polisa.news/%d7%a0%d7%97%d7%a9%d7%a3-%d7%9e%d7%95%d7%93%d7%9c-%d7%94%d7%91%d7%99%d7%98%d7%95%d7%97-%d7%94%d7%a1%d7%99%d7%a2%d7%95%d7%93%d7%99-%d7%a9%d7%9e%d7%a6%d7%99%d7%a2%d7%94-%d7%a8%d7%a9%d7%95%d7%aa-%d7%a9" target="_blank" rel="noopener">פוליסה, 5.10</a></p><div class="actions" data-actions><button type="button" data-copy="רשות שוק ההון מציעה להפוך את הביטוח הסיעודי של קופות החולים לחיסכון אישי — שינוהל ״במודל תחרותי בין חברות הביטוח״
+https://www.globes.co.il/news/article.aspx?did=1001558402" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%A8%D7%A9%D7%95%D7%AA%20%D7%A9%D7%95%D7%A7%20%D7%94%D7%94%D7%95%D7%9F%20%D7%9E%D7%A6%D7%99%D7%A2%D7%94%20%D7%9C%D7%94%D7%A4%D7%95%D7%9A%20%D7%90%D7%AA%20%D7%94%D7%91%D7%99%D7%98%D7%95%D7%97%20%D7%94%D7%A1%D7%99%D7%A2%D7%95%D7%93%D7%99%20%D7%A9%D7%9C%20%D7%A7%D7%95%D7%A4%D7%95%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%9C%D7%97%D7%99%D7%A1%D7%9B%D7%95%D7%9F%20%D7%90%D7%99%D7%A9%D7%99%20%E2%80%94%20%D7%A9%D7%99%D7%A0%D7%95%D7%94%D7%9C%20%D7%B4%D7%91%D7%9E%D7%95%D7%93%D7%9C%20%D7%AA%D7%97%D7%A8%D7%95%D7%AA%D7%99%20%D7%91%D7%99%D7%9F%20%D7%97%D7%91%D7%A8%D7%95%D7%AA%20%D7%94%D7%91%D7%99%D7%98%D7%95%D7%97%D7%B4%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001558402" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><section class="paper" aria-label="השוק — שאר הפריטים"><article class="story" id="discount-mercantile" data-story data-pillar="הגברת אפקטיביות" data-actor="דיסקונט" data-ch="discount"><div class="opener"><span class="numeral n" aria-hidden="true">02</span><span class="who"><span class="who-txt">דיסקונט</span><span class="date">6.10</span></span></div><h3>דיסקונט ימזג לתוכו את מרכנתיל — לפי הערכות, 400 עד 550 עובדים יפרשו וסניפים סמוכים ימוזגו</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>דיסקונט הוא הבנק השני הכי פחות יעיל במערכת, אחרי הבינלאומי — שמפעיל מודל דומה של מותגים נפרדים, כמו אוצר החייל. בחודש שעבר קרסה מכירת כאל של דיסקונט לקבוצת יוניון–הראל, לפי שווי של 4 מיליארד ₪, בגלל תנאי רשות התחרות; לפי גלובס, מאז החלו גישושים חדשים לרכישת מניות כאל. למרכנתיל פריסת הסניפים הרחבה ביותר בחברה הערבית.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="discount"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:22</span></button></summary><div class="more"><p class="summary">דירקטוריוני דיסקונט ומרכנתיל אישרו את המיזוג ב-6.10, וההשלמה צפויה במהלך 2027, בכפוף לאישורי הפיקוח על הבנקים; מרכנתיל ימשיך כמותג עצמאי, ובשלב הראשון יאוחדו תהליכים ומערכות. לפי הערכות שמביא גלובס, 400 עד 550 מכ-1,400 עובדי מרכנתיל יפרשו בפרישה מרצון, וסניפים סמוכים ימוזגו — אחרי המיזוג כ-170 סניפים, יותר מללאומי או להפועלים. המנכ״ל, אבי לוי, אומר שהמהלך ישפר את יחס היעילות ויאפשר להגדיל את ההשקעה בטכנולוגיה, בדיגיטל וב-AI. הסייג: מספרי הפורשים והסניפים הם הערכות, וההודעה אינה מפרטת חיסכון או לוח זמנים.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001558611" target="_blank" rel="noopener">גלובס, 6.10.2026</a> · <a href="https://www.funder.co.il/article/211164" target="_blank" rel="noopener">פאנדר, 6.10.2026</a> · <a href="https://www.ice.co.il/finance/news/article/1132548" target="_blank" rel="noopener">אייס, 6.10</a></p><div class="actions" data-actions><button type="button" data-copy="דיסקונט ימזג לתוכו את מרכנתיל — לפי הערכות, 400 עד 550 עובדים יפרשו וסניפים סמוכים ימוזגו
+https://www.globes.co.il/news/article.aspx?did=1001558611" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%93%D7%99%D7%A1%D7%A7%D7%95%D7%A0%D7%98%20%D7%99%D7%9E%D7%96%D7%92%20%D7%9C%D7%AA%D7%95%D7%9B%D7%95%20%D7%90%D7%AA%20%D7%9E%D7%A8%D7%9B%D7%A0%D7%AA%D7%99%D7%9C%20%E2%80%94%20%D7%9C%D7%A4%D7%99%20%D7%94%D7%A2%D7%A8%D7%9B%D7%95%D7%AA%2C%20400%20%D7%A2%D7%93%20550%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%99%D7%A4%D7%A8%D7%A9%D7%95%20%D7%95%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D%20%D7%A1%D7%9E%D7%95%D7%9B%D7%99%D7%9D%20%D7%99%D7%9E%D7%95%D7%96%D7%92%D7%95%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001558611" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="phoenix-bernstein" data-story data-pillar="ליבה וצמיחה" data-actor="הפניקס" data-ch="bernstein"><div class="opener"><span class="numeral n" aria-hidden="true">03</span><span class="who"><span class="who-txt">הפניקס</span><span class="date">5.10</span></span></div><h3>הפניקס W חתמה על שיתוף פעולה עם Bernstein: לקוחות אמידים יקבלו גישה לפלטפורמת ההשקעות הגלובלית שלה</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>זה המהלך השני של קבוצת הפניקס בניהול עושר בתוך כעשרה שבועות: ב-28.7 רכשה הפניקס ברוקרס 60% מגורן פמילי אופיס (גלובס).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="bernstein"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:19</span></button></summary><div class="more"><p class="summary">הפניקס W, זרוע ניהול העושר של הפניקס בית השקעות, תפתח ללקוחות פרטיים בעלי הון ולמשפחות אמידות שעומדים בתנאי הסף את פלטפורמת ההשקעות הגלובלית של Bernstein, זרוע ניהול ההון הפרטי של AllianceBernstein: מניות, אג״ח וקרנות סל בעולם, קרנות גידור, פרייבט אקוויטי ונדל״ן, ותכנון פרישה, נאמנויות והעברה בין-דורית של הון. הסייג: אלה פרטי ההודעה של החברה; תנאי הסף, העמלות והיקף הנכסים לא פורסמו.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.ice.co.il/finance/news/article/1132289" target="_blank" rel="noopener">אייס, 5.10.2026</a> · <a href="https://www.funder.co.il/article/210966" target="_blank" rel="noopener">פאנדר, 5.10.2026</a> · <a href="https://www.bizportal.co.il/capitalmarket/news/article/20044005" target="_blank" rel="noopener">ביזפורטל, 5.10</a></p><div class="actions" data-actions><button type="button" data-copy="הפניקס W חתמה על שיתוף פעולה עם Bernstein: לקוחות אמידים יקבלו גישה לפלטפורמת ההשקעות הגלובלית שלה
+https://www.ice.co.il/finance/news/article/1132289" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%20W%20%D7%97%D7%AA%D7%9E%D7%94%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%AA%D7%95%D7%A3%20%D7%A4%D7%A2%D7%95%D7%9C%D7%94%20%D7%A2%D7%9D%20Bernstein%3A%20%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA%20%D7%90%D7%9E%D7%99%D7%93%D7%99%D7%9D%20%D7%99%D7%A7%D7%91%D7%9C%D7%95%20%D7%92%D7%99%D7%A9%D7%94%20%D7%9C%D7%A4%D7%9C%D7%98%D7%A4%D7%95%D7%A8%D7%9E%D7%AA%20%D7%94%D7%94%D7%A9%D7%A7%D7%A2%D7%95%D7%AA%20%D7%94%D7%92%D7%9C%D7%95%D7%91%D7%9C%D7%99%D7%AA%20%D7%A9%D7%9C%D7%94%0Ahttps%3A//www.ice.co.il/finance/news/article/1132289" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="harel-mortgages" data-story data-pillar="ליבה וצמיחה" data-actor="הראל" data-ch="mortgages"><div class="opener"><span class="numeral n" aria-hidden="true">04</span><span class="who"><span class="who-txt">הראל · מנורה · הפניקס · כלל · מגדל</span><span class="date">25.9</span></span></div><h3>המבטחות נכנסות למשכנתאות: הראל מציעה עד 80% מימון ועד 40 שנה</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>לבנקים כ-95% משוק המשכנתאות — כ-110 מיליארד ₪ ב-2025. ומ-1.10 הבנקים נדרשים לשקלל ביחס ההחזר את כל ההלוואות המובטחות באותו נכס, גם של גופים חוץ-בנקאיים (טור ב-TheMarker, 6.10).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="mortgages"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:22</span></button></summary><div class="more"><p class="summary">הראל מציעה משכנתאות במימון של עד 80% משווי הנכס, הלוואות של עד 7 מיליון ₪, ועד 40 שנה כשהמימון אינו עולה על 60% — כשבבנקים, לפי הוראות בנק ישראל, התקרה היא 75% לדירה יחידה ו-30 שנה. לפי כלכליסט, מנורה החלה השנה להציע משכנתאות, הפניקס נערכת דרך גמא וכלל מתמקדת במשכנתאות הפוכות; וב-30.9 דיווח העיתון שגם מגדל נכנסת לשוק, בשיתוף בנק ירושלים — השירות טרם הושק. הסייג: זה מהלך מבני שדווח לראשונה ב-25.9, לפני החלון, ונכנס בדיווח הראשון שלו למטה; התנאים של הראל כפי שתוארו בסיקור, וריבית ויעד לתיק לא פורסמו.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.bizportal.co.il/realestates/news/article/20043221" target="_blank" rel="noopener">ביזפורטל, 25.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/r100eeyxcme" target="_blank" rel="noopener">כלכליסט, 25.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/79egmk4g9" target="_blank" rel="noopener">כלכליסט, 30.9.2026 — מגדל נכנסת</a> · <a href="https://www.ice.co.il/realestate/news/article/1131551" target="_blank" rel="noopener">אייס, 30.9.2026</a> · <a href="https://www.calcalist.co.il/market/article/hygfczqdgl" target="_blank" rel="noopener">כלכליסט, 19.8.2026 — הלוואות ג׳מבו</a></p><div class="actions" data-actions><button type="button" data-copy="המבטחות נכנסות למשכנתאות: הראל מציעה עד 80% מימון ועד 40 שנה
+https://www.bizportal.co.il/realestates/news/article/20043221" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%9E%D7%91%D7%98%D7%97%D7%95%D7%AA%20%D7%A0%D7%9B%D7%A0%D7%A1%D7%95%D7%AA%20%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%D7%95%D7%AA%3A%20%D7%94%D7%A8%D7%90%D7%9C%20%D7%9E%D7%A6%D7%99%D7%A2%D7%94%20%D7%A2%D7%93%2080%25%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%95%D7%A2%D7%93%2040%20%D7%A9%D7%A0%D7%94%0Ahttps%3A//www.bizportal.co.il/realestates/news/article/20043221" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="ayalon-gemel" data-story data-pillar="ליבה וצמיחה" data-actor="איילון" data-ch="ayalon"><div class="opener"><span class="numeral n" aria-hidden="true">05</span><span class="who"><span class="who-txt">איילון</span><span class="date">7.10</span></span></div><h3>איילון גייסה כ-1.4–1.5 מיליארד ₪ לגמל ולהשתלמות בספטמבר — דרך סוכני הביטוח</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>איילון ממתגת את עצמה בחודשים האחרונים כמי שתציג את התשואות הטובות בתעשייה, כפי שהציגה עד לאחרונה בפוליסות החיסכון — שאותן מנהלים אותם מנהלי השקעות; שם, בספטמבר, מינוס 0.1% במסלול הכללי. ובאותו שבוע היא גם המפעילה החדשה של הביטוח הסיעודי בכללית — היחידה שניגשה למכרז (כותרת השבוע).</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="ayalon"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:18</span></button></summary><div class="more"><p class="summary">לפי גלובס, איילון — בחודש השני שלה בתחום — מנהלת כבר כ-2.6 מיליארד ₪ בגמל ובהשתלמות, ובספטמבר גייסה כ-1.4–1.5 מיליארד, יותר מבאוגוסט; ״זו חברת סוכנים״, אמר לעיתון מתחרה בכיר. התשואות לספטמבר צפויות להיות חלשות: מינוס 0.1% במסלול הכללי בהשתלמות וכ-0.25% במסלול המניות, בחלק התחתון של הטבלה — לפי גלובס בגלל חשיפה גבוהה יחסית לישראל ולאג״ח סחיר. הסייג: הנתונים ״נודעו לגלובס״ ואינם פרסום רשמי, וחודשיים הם תקופה קצרה למדידת תשואה.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001558691" target="_blank" rel="noopener">גלובס, 7.10.2026</a></p><div class="actions" data-actions><button type="button" data-copy="איילון גייסה כ-1.4–1.5 מיליארד ₪ לגמל ולהשתלמות בספטמבר — דרך סוכני הביטוח
+https://www.globes.co.il/news/article.aspx?did=1001558691" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F%20%D7%92%D7%99%D7%99%D7%A1%D7%94%20%D7%9B-1.4%E2%80%931.5%20%D7%9E%D7%99%D7%9C%D7%99%D7%90%D7%A8%D7%93%20%E2%82%AA%20%D7%9C%D7%92%D7%9E%D7%9C%20%D7%95%D7%9C%D7%94%D7%A9%D7%AA%D7%9C%D7%9E%D7%95%D7%AA%20%D7%91%D7%A1%D7%A4%D7%98%D7%9E%D7%91%D7%A8%20%E2%80%94%20%D7%93%D7%A8%D7%9A%20%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%94%D7%91%D7%99%D7%98%D7%95%D7%97%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001558691" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article><article class="story" id="car-renewal-gap" data-story data-pillar="הלקוח במרכז" data-actor="ביטוח רכב · הכשרה · כלל · מנורה מבטחים" data-ch="car"><div class="opener"><span class="numeral n" aria-hidden="true">07</span><span class="who"><span class="who-txt">ביטוח רכב · הכשרה · כלל · מנורה מבטחים</span><span class="date">4.10</span></span></div><h3>פער של עד 5,400 ₪ בשנה על אותו רכב — למי שמחדש ביטוח מקיף אוטומטית</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>מחירי ביטוח הרכב ירדו בכמעט 18% מאז נובמבר 2024 (הלמ״ס), אבל מי שמחדש אוטומטית בהצעה הראשונה לא רואה את זה. שני שלישים מהשוק, שמגלגל יותר מ-20 מיליארד ₪ בשנה, בידי שש חברות.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="car"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:19</span></button></summary><div class="more"><p class="summary">לפי השוואת מחירים של סוכנות WOBI שהופקה עבור גלובס, ביטוח מקיף לאותו רכב ולאותו נהג נע בין חברות בעשרות אחוזים. בטוסון 2022 לנהג בן 47 ההצעה הזולה (הכשרה) הייתה 5,824 ₪ והיקרה (מנורה מבטחים) 8,404 ₪ — פער של 2,580 ₪. בקורולה 2021 לנהג בן 31 הזולה (כלל) הייתה 6,657 ₪ והיקרה (מנורה מבטחים) 12,068 ₪ — פער של 5,411 ₪, 81%. הסייג: שני פרופילים בלבד, והנתונים של סוכנות מסחרית ולא סקר רשמי.</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.globes.co.il/news/article.aspx?did=1001558268" target="_blank" rel="noopener">גלובס, 4.10.2026</a></p><div class="actions" data-actions><button type="button" data-copy="פער של עד 5,400 ₪ בשנה על אותו רכב — למי שמחדש ביטוח מקיף אוטומטית
+https://www.globes.co.il/news/article.aspx?did=1001558268" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%A4%D7%A2%D7%A8%20%D7%A9%D7%9C%20%D7%A2%D7%93%205%2C400%20%E2%82%AA%20%D7%91%D7%A9%D7%A0%D7%94%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%AA%D7%95%20%D7%A8%D7%9B%D7%91%20%E2%80%94%20%D7%9C%D7%9E%D7%99%20%D7%A9%D7%9E%D7%97%D7%93%D7%A9%20%D7%91%D7%99%D7%98%D7%95%D7%97%20%D7%9E%D7%A7%D7%99%D7%A3%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%98%D7%99%D7%AA%0Ahttps%3A//www.globes.co.il/news/article.aspx%3Fdid%3D1001558268" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article></section></div><aside class="col-side"><section class="radar" id="radar" aria-labelledby="radarTitle"><h2 class="sub" id="radarTitle">על הרדאר</h2><ol><li id="cma-alt-valuation" data-item data-pillar="הלקוח במרכז" data-actor="רשות שוק ההון"><span class="t">רשות שוק ההון רוצה לחייב הערכת שווי לפחות פעם ברבעון — במקום פעם בשנה — להשקעות הלא-סחירות של קרנות הפנסיה וקופות הגמל, שהיקפן עולה על 300 מיליארד ₪. ״אין ספק שאנחנו כרגולטור צריכים לתקן את זה״, אמר אסף נחמני, מנהל חטיבת ההשקעות ברשות, בכנס. הבעיה, לפי גלובס: חוסך שעובר בין קופות נהנה או נפגע משיערוך ישן. טרם פורסמה טיוטה, ואין מועד.</span><span class="m">7.10 · <a href="https://www.globes.co.il/news/article.aspx?did=1001558588" target="_blank" rel="noopener">גלובס</a></span></li><li id="isa-ceo" data-item data-pillar="הגברת אפקטיביות" data-actor="רשות ניירות ערך"><span class="t">עו״ד שרה קנדלר מונתה למנכ״לית רשות ניירות ערך, בתום מכרז פנימי, ותחליף את עודד שפירר, שמסיים בדצמבר אחרי שבע שנים. קנדלר ברשות מאז 2001, ומנהלת היום את מחלקת ביקורת ואכיפה.</span><span class="m">5.10 · <a href="https://www.globes.co.il/news/article.aspx?did=1001558431" target="_blank" rel="noopener">גלובס</a></span></li><li id="phoenix-avisror" data-item data-pillar="ליבה וצמיחה" data-actor="הפניקס"><span class="t">הפניקס השקיעה כ-160 מיליון ₪ בהנפקת אביסרור והפכה לבעלת עניין, עם 6.24%. מנורה בעלת עניין מאוגוסט, עם כ-5.4%; ההנפקה גייסה 525 מיליון ₪ מגופי ביטוח וגמל.</span><span class="m">5.10 · <a href="https://www.ice.co.il/finance/news/article/1132234" target="_blank" rel="noopener">אייס</a></span></li><li id="yelin-zero-fee" data-item data-pillar="ליבה וצמיחה" data-actor="ילין לפידות"><span class="t">ילין לפידות פרסמה תשקיפים לשלוש קרנות מחקות — ת״א 35, ת״א 35 משקל שווה ות״א 125 — בשכר מנהל של 0%. ההצעה מתחילה ב-8.10; שכר הנאמן (0.015%–0.02%) ממשיך להיגבות, והשיעור אינו מובטח לצמיתות.</span><span class="m">4.10 · <a href="https://www.funder.co.il/article/210934" target="_blank" rel="noopener">פאנדר</a></span></li></ol><h2 class="sub landing-h" id="landing">מה נוחת</h2><ol class="landing"><li><span class="when n">4.11</span><span class="t">נסגר המכרז להפעלת המסלקה הפנסיונית</span><span class="m">במבט של 17–23.9</span></li></ol></section><details class="scoreboard board-d" id="board"><summary><span><b>הלוח של 2028</b> · היעדים שמגדל הכריזה, מול המתחרה</span><span class="toggle"><span class="lbl-open">לפתיחה</span><span class="lbl-close">לסגירה</span><svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><table><thead><tr><th>מדד</th><th>מגדל</th><th>המתחרה</th><th>יעד</th></tr></thead><tbody><tr><td>נכסים מנוהלים<small>30.6</small></td><td class="goal n">631 מיליארד ₪</td><td class="now">הפניקס 658 · הראל 638</td><td class="goal n">750–850</td></tr><tr><td>תשואה להון<small>ר׳ 2</small></td><td class="goal n">22.4%</td><td class="now">הראל 37% · מנורה 34.2% · הפניקס 29.7%</td><td class="goal n">16%–18%</td></tr></tbody></table><p class="src">היעדים: כלכליסט · אייס, 25.3.2026. אין דוח רבעוני בחלון.</p></details></aside></div><section class="archive" id="archive" aria-labelledby="arcTitle"><h2 class="section-title" id="arcTitle">גיליונות קודמים</h2><ol class="arc-list"><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-10-02/" target="_blank" rel="noopener"><span class="r"><span>24.9–2.10</span><span>9 פריטים</span></span><span class="h">המבטחות נכנסות למשכנתאות</span><span class="tp">הפניקס ברוקרס מקימה זרוע AI</span><span class="tp">אלטשולר שחם מבטלת את ההשקעה בלידר</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-23/" target="_blank" rel="noopener"><span class="r"><span>17–23.9</span><span>7 פריטים</span></span><span class="h">עסקת כאל קורסת על תנאי של רשות התחרות — הרוכשות ישלמו כ-187 מיליון ₪, ודיסקונט מבקש דחייה במועד המכירה</span><span class="tp">כלל ביטוח קיבלה בלעדיות לבחינת השקעה של 18%–20% בבנק ההשקעות ווליו בייס, לפי שווי של כ-600 מיליון ₪</span><span class="tp">הפרסומות של ChatGPT הגיעו לישראל — אבל מבטחות ובנקים אינם יכולים לקנות בהן מקום</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-20/" target="_blank" rel="noopener"><span class="r"><span>14–20.9</span><span>7 פריטים</span></span><span class="h">רשות שוק ההון מסמנת במסמך רשמי מתי מעורבות של מוסדי בחברה ללא בעל שליטה הופכת ל״ניסיון שליטה״</span><span class="tp">כלל עוקפת את מיטב בראש טבלת המגייסים של אוגוסט — ואלטשולר שחם וילין לפידות איבדו יחד 4.6 מיליארד ₪ בחודש</span><span class="tp">כלל ביטוח מעבירה מכירות, שירות ותפעול באלמנטר ממערך הסוכנים לחטיבה לביטוח כללי — ומחליפה שני משנים למנכ״ל</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-16/" target="_blank" rel="noopener"><span class="r"><span>10–16.9</span><span>3 פריטים</span></span><span class="h">ההסכם עם ווישור נחתם — ורשות שוק ההון מרגיעה את חוסכי אלטשולר שחם בזמן שסוכנים ממליצים לבחון יציאה</span><span class="tp">מור מובילה משא ומתן לרכישת 15%–20% מסאנפלאוור, מפתחת משחקי קזינו מקוונים — כמיליארד ₪ מצד מור</span><span class="tp">ביטוח ישיר משלמת 200 ₪ ללקוח שמגיע מ-ChatGPT, Gemini או Claude ורוכש ביטוח רכב מקיף</span></a></li></ol><details class="arc-more"><summary><span class="txt-btn more-btn">הגיליונות המוקדמים יותר (9)<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span></summary><ol class="arc-list"><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-14/" target="_blank" rel="noopener"><span class="r"><span>8–14.9</span><span>5 פריטים</span></span><span class="h">ווישור תרכוש עם המנכ״ל את השליטה בחברת הגמל והפנסיה של אלטשולר שחם — בכמיליארד ₪</span><span class="tp">גם בעלי השליטה בילין לפידות בוחנים מכירה — ודורשים שווי של 3 מיליארד ₪</span><span class="tp">הפניקס ומור בדרך ל-100% באנלימיטד: מזכר לרכישת 30% מחברת החשמל</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-09/" target="_blank" rel="noopener"><span class="r"><span>3–9.9</span><span>7 פריטים</span></span><span class="h">בעלי השליטה באלטשולר שחם בוחנים מכירת 55.4% מבית ההשקעות</span><span class="tp">עסקת מכירת כאל בדרך לקריסה — דיסקונט מבקש לבטל את חובת המכירה</span><span class="tp">עמלות סוכני הביטוח הגיעו ל-13.2 מיליארד ₪ ב-2025 — 46% יותר מאשר ב-2020</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-06/" target="_blank" rel="noopener"><span class="r"><span>31.8–6.9</span><span>7 פריטים</span></span><span class="h">הפניקס משלמת בנכס משרדים כדי להיכנס ב-20% לחברת חללי העבודה של פתאל</span><span class="tp">איילון גייסה 1.2 מיליארד ₪ בחודש הראשון שלה בגמל — עם יעד של 100 מיליארד</span><span class="tp">רשות ני״ע מקדמת רישיון כפול שיאחד פנסיה-ביטוח והשקעות בידי איש מקצוע אחד</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-02/" target="_blank" rel="noopener"><span class="r"><span>27.8–2.9</span><span>6 פריטים</span></span><span class="h">הפניקס חוזרת למכרז הרכב הגדול במשק אחרי 23 שנה — וווישור צונחת מ-60% ל-20%</span><span class="tp">חוזר ההנחות בביטוח חיים ננעל להערות — ויחול גם על פוליסות שכבר שווקו</span><span class="tp">בנק ישראל הפחית את הריבית ל-3.25%, בתחולה 3 בספטמבר</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-30/" target="_blank" rel="noopener"><span class="r"><span>24–30.8</span><span>6 פריטים</span></span><span class="h">מנורה קונה 40% מבית קרנות גידור — שבועיים אחרי שהראל קנתה את השליטה בטוליפ</span><span class="tp">הראל סוגרת את העונה עם תשואה להון 37% ברבעון — ורווחי הליבה נודדים מהחיתום לניהול נכסים</span><span class="tp">רווחי ביטוח הרכב נחתכו בכל חמש הגדולות — ומגדל היחידה שעברה להפסד</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-25/" target="_blank" rel="noopener"><span class="r"><span>19–25.8</span><span>8 פריטים</span></span><span class="h">מנורה מציבה יעד של 750 מיליארד ₪ נכסים ל-2030 — אותו מספר שמגדל הציבה לעצמה ל-2028</span><span class="tp">הפניקס חצתה 658 מיליארד ₪ נכסים מנוהלים — 27 מיליארד יותר ממגדל באותו מועד</span><span class="tp">מחצית שיא בבתי ההשקעות — ואלטשולר שחם היחיד שמצטמצם</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-23/" target="_blank" rel="noopener"><span class="r"><span>17–23.8</span><span>8 פריטים</span></span><span class="h">הפניקס עקפה את אלטשולר שחם והפכה לשלישית בגמל — 110.5 מיליארד ₪ מול 109.1</span><span class="tp">הביטוח הסיעודי של 2.7 מיליון מבוטחי כללית עובר מהראל לאיילון — והמודל שעבר איתו כבר אינו מודל של חיתום</span><span class="tp">וכמה שווה המאזן שקיבל אותה: איילון בתשואה להון 26% ובדיבידנד ביניים נוסף של 50 מיליון ₪</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-19/" target="_blank" rel="noopener"><span class="r"><span>13–19.8</span><span>7 פריטים</span></span><span class="h">הצבירה נטו של כלל בפנסיה ובגמל זינקה פי 5.8 — 11 מיליארד ₪ במחצית</span><span class="tp">Munich Re רוכשת את At-Bay הישראלית, שמוכרת ביטוח סייבר לעסקים</span><span class="tp">מנורה מבטחים וליברה מפעילות סוכני AI של Wonderful, שיוצאת לגיוס לפי שווי 5 מיליארד דולר</span></a></li><li><a href="https://muatom.github.io/weekly-competitive-brief/2026-08-16/" target="_blank" rel="noopener"><span class="r"><span>10–16.8</span><span>5 פריטים</span></span><span class="h">איילון לוקחת מהראל את הביטוח הסיעודי של כללית</span><span class="tp">מידרוג מעלה את שלושת הדירוגים של מגדל, כולל הון רובד 1 הנוסף</span><span class="tp">יולי שלילי: שלוש חברות בלבד סיימו את החודש בחיוב בקרנות הפנסיה המקיפות</span></a></li></ol></details></section></section><section class="view view-ai" id="view-ai" data-view="ai" role="tabpanel" aria-labelledby="tab-ai" hidden><p class="view-sum">עדכון אחד — מהלך מבני שדווח לראשונה ב-29.9 · שלושה סיפורי AI בבריכה, אחד עבר · נסרקו 25 גופים · נסגר 8.10</p><section class="paper" aria-label="עדכוני ה-AI של השבוע"><article class="story" id="ai-phoenix-brokers-advisoros" data-story data-pillar="הגברת אפקטיביות" data-actor="הפניקס ברוקרס" data-ai="1" data-ch="brokers"><div class="opener"><span class="numeral n" aria-hidden="true">06</span><span class="who"><span class="who-txt">הפניקס ברוקרס</span><span class="date">29.9</span></span></div><h3>הפניקס ברוקרס רכשה את פלטפורמת AdvisorOS ומקימה זרוע AI וחדשנות — מייסד הפלטפורמה מונה לראש תחום ה-AI בקבוצה</h3><div class="context"><span class="lbl">הקשר עובדתי</span><p>זה המהלך השני של הפניקס ברוקרס בתוך חודשיים: ב-28.7 רכשה 60% מגורן פמילי אופיס, בתחום ניהול העושר (גלובס, 28.7). המנכ״ל, אורן כהן, מגדיר אותה ״קבוצת ההפצה המובילה בישראל״. ובאותה קבוצה, השבוע: הפניקס W חתמה על שיתוף פעולה עם Bernstein לניהול עושר.</p></div><details class="story-more"><summary><span class="txt-btn more-btn">הרחבה<svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></span><button type="button" class="txt-btn" data-listen data-ch="brokers"><svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M10 0v12L0 6z"/></svg><span>האזנה</span><span class="n t">0:16</span></button></summary><div class="more"><p class="summary">הפניקס ברוקרס, חברה בבעלות קבוצת הפניקס, רכשה את פלטפורמת AdvisorOS ומקימה זרוע AI וחדשנות ייעודית; מייסד הפלטפורמה, עדי לב, מונה לראש תחום הבינה המלאכותית והחדשנות בקבוצה. המטרה המוצהרת: חוויית לקוח, העצמת יכולות הסוכנים וייעול תהליכי עבודה. הסייג: זו הודעת החברה, סכום הרכישה לא פורסם, והמהלך דווח לראשונה ב-29.9 — לפני החלון; בחלון חזר עליו פוליסה (4.10).</p><p class="srclinks"><span class="lbl">מקורות</span> <a href="https://www.funder.co.il/article/210637" target="_blank" rel="noopener">פאנדר, 29.9.2026</a> · <a href="https://www.ice.co.il/finance/news/article/1131557" target="_blank" rel="noopener">אייס, 29.9</a> · <a href="https://www.maariv.co.il/economy/israel/article-1371951" target="_blank" rel="noopener">מעריב, 29.9</a> · <a href="https://www.globes.co.il/news/article.aspx?did=1001557863" target="_blank" rel="noopener">גלובס, 29.9</a> · <a href="https://www.ynet.co.il/economy/article/ry500kq95fe" target="_blank" rel="noopener">ynet, 30.9</a> · <a href="https://polisa.news/%d7%94%d7%a4%d7%a0%d7%99%d7%a7%d7%a1-%d7%91%d7%a8%d7%95%d7%a7%d7%a8%d7%a1-%d7%91%d7%a8%d7%90%d7%a9%d7%95%d7%aa-%d7%94%d7%9e%d7%a0%d7%9b%d7%9c-%d7%90%d7%95%d7%a8%d7%9f-%d7%9b%d7%94%d7%9f-%d7%a8%d7%95" target="_blank" rel="noopener">פוליסה, 4.10</a></p><div class="actions" data-actions><button type="button" data-copy="הפניקס ברוקרס רכשה את פלטפורמת AdvisorOS ומקימה זרוע AI וחדשנות — מייסד הפלטפורמה מונה לראש תחום ה-AI בקבוצה
+https://www.funder.co.il/article/210637" aria-label="העתקת הכותרת והקישור לכתבה">העתקה</button><a class="wa" href="https://wa.me/?text=%D7%94%D7%A4%D7%A0%D7%99%D7%A7%D7%A1%20%D7%91%D7%A8%D7%95%D7%A7%D7%A8%D7%A1%20%D7%A8%D7%9B%D7%A9%D7%94%20%D7%90%D7%AA%20%D7%A4%D7%9C%D7%98%D7%A4%D7%95%D7%A8%D7%9E%D7%AA%20AdvisorOS%20%D7%95%D7%9E%D7%A7%D7%99%D7%9E%D7%94%20%D7%96%D7%A8%D7%95%D7%A2%20AI%20%D7%95%D7%97%D7%93%D7%A9%D7%A0%D7%95%D7%AA%20%E2%80%94%20%D7%9E%D7%99%D7%99%D7%A1%D7%93%20%D7%94%D7%A4%D7%9C%D7%98%D7%A4%D7%95%D7%A8%D7%9E%D7%94%20%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%A8%D7%90%D7%A9%20%D7%AA%D7%97%D7%95%D7%9D%20%D7%94-AI%20%D7%91%D7%A7%D7%91%D7%95%D7%A6%D7%94%0Ahttps%3A//www.funder.co.il/article/210637" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div></div></details></article></section></section><section class="view view-linkedin" id="view-linkedin" data-view="linkedin" role="tabpanel" aria-labelledby="tab-linkedin" hidden><div class="paper empty-state"><p class="es-h">השבוע אין פוסטים</p><p>הלשונית ריקה בגיליון הזה: שליפת הפוסטים לא הורצה בריצה הזו, ומונה הניסוי (חמישי מתוך עשרה גיליונות) לא התקדם.</p><p class="es-link"><a href="https://muatom.github.io/weekly-competitive-brief/2026-09-23/#linkedin" target="_blank" rel="noopener">הפוסטים האחרונים — גיליון 17–23.9</a></p></div></section><section class="view view-intl" id="view-intl" data-view="intl" role="tabpanel" aria-labelledby="tab-intl" hidden><p class="view-sum">שבוע שקט · 69 כותרות בחלון, 4 מהן על מבטחות מהרשימה, אף אחת לא עברה · נסגר 8.10</p><div class="paper empty-state"><p class="es-h">השבוע שקט</p><p>לא נמצא השבוע פריט שעבר את השערים.</p></div></section></div>
   <footer class="end">
-    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">ניוזלטר אסטרטגי להנהלת מגדל</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt=""></span></span><span class="foot-note"><b>המבט השבועי · 24 בספטמבר – 2 באוקטובר 2026</b><br>מוצר מבית מגדל AI</span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
-    <div class="end-row"><span class="next"><b>המבט הבא: 1–7 באוקטובר</b></span></div>
+    <p class="colofoot"><span class="mg-lockup mg-on-dark"><span class="mg-id"><span class="mg-name"><b>המגדלור</b><i class="mg-ai">AI</i></span><span class="mg-tagline">ניוזלטר אסטרטגי להנהלת מגדל</span></span><span class="mg-mark"><i class="mg-beam" aria-hidden="true"></i><img src="../assets/tower-mark.png" alt=""></span></span><span class="foot-note"><b>המבט השבועי · 2–8 באוקטובר 2026</b><br>מוצר מבית מגדל AI</span><span class="foot-note" data-usage-note>הדף מודד קריאה ולחיצות בלי לזהות אותך — בלי שם, מייל או כתובת — כדי לשפר את הגיליון הבא.</span></p>
+    <div class="end-row"><span class="next"><b>המבט הבא: 5–11 באוקטובר</b></span></div>
   </footer>
 </main>
 
@@ -1507,7 +1685,7 @@ https://coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" 
     <button type="button" class="np-next" id="npNext" aria-label="לנושא הבא"><svg viewBox="0 0 16 14" fill="currentColor" aria-hidden="true"><path d="M9 0v14L1 7z"/><path d="M15 0v14h-2.4V0z"/></svg></button>
   </div>
 </div>
-<audio id="aud" preload="metadata"><source src="../assets/audio/2026-10-02.m4a" type="audio/mp4"></audio>
+<audio id="aud" preload="metadata"><source src="../assets/audio/2026-10-08.m4a" type="audio/mp4"></audio>
 
 <div class="player pl-audio" id="plAudio" role="dialog" aria-modal="true" aria-label="האזנה לגיליון" hidden>
   <div class="pl-frame">
@@ -1519,7 +1697,7 @@ https://coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" 
       <h2 class="pl-title" id="plTitle"></h2>
       <ul class="pl-facts" id="plFacts"></ul>
       <a class="txt-btn on-dark pl-read" id="plRead" href="#top">לקריאת הפריט</a>
-      <p class="pl-time"><span id="plNow">0:00</span><span id="plDur">4:03</span></p>
+      <p class="pl-time"><span id="plNow">0:00</span><span id="plDur">3:21</span></p>
       <ol class="pl-list" id="plList"></ol>
       <button type="button" class="txt-btn on-dark" id="plStop">עצירה וסגירת הנגן</button>
     </div>
@@ -1529,7 +1707,7 @@ https://coverager.com/zurich-adds-tesla-fsd-to-insurance-pricing-in-australia/" 
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-window.M2 = {"issue": "2026-10-02", "range": "24.9–2.10", "total": 7, "art": "../assets/icon-512.png", "icons": {"play": "<svg viewBox=\"0 0 10 12\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M10 0v12L0 6z\"/></svg>", "pause": "<svg viewBox=\"0 0 10 12\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M0 0h3.6v12H0zM6.4 0H10v12H6.4z\"/></svg>"}, "screens": {"lead": {"n": 1, "title": "המבטחות נכנסות למשכנתאות", "anchor": "harel-mortgages", "bullets": ["הראל: עד 80% מימון · עד 40 שנה כשהמימון עד 60%", "כלכליסט: ״יוצאת דופן היא מגדל…״ — ויומיים אחר כך, מגדל נכנסת דרך בנק ירושלים"]}, "brokers": {"n": 2, "title": "הפניקס ברוקרס מקימה זרוע AI", "anchor": "phoenix-brokers-ai", "bullets": ["רכשה את פלטפורמת AdvisorOS · הסכום לא פורסם", "המהלך השני בתוך חודשיים, אחרי גורן פמילי אופיס"]}, "leader": {"n": 3, "title": "אלטשולר שחם מבטלת את ההשקעה בלידר", "anchor": "altshuler-leader", "bullets": ["160 מיליון ₪ על כ-18% מלידר, חודשיים אחרי החתימה", "לידר מלווה הנפקות בבורסה — אלטשולר תקים חיתום משלה"]}, "private": {"n": 4, "title": "מגדל בראש ההשקעות הפרטיות", "anchor": "private-capital-institutions", "bullets": ["מגדל 23 מיליארד דולר · הפניקס 19 · כלל 18.2", "ניתוח של ווליו השקעות מתקדמות, בגלובס"]}, "meitav": {"n": 5, "title": "ניסיון פריצה למיטב טרייד", "anchor": "meitav-breach", "bullets": ["כ-3,000 מסרונים; נשלפו מספרי זהות וחשבונות בנק", "לחשבונות ולכספים לא הייתה גישה · המניה ירדה 3.4%"]}, "metlife": {"n": 6, "title": "MetLife בונה הצעת מחיר בתוך ChatGPT", "anchor": "intl-metlife-chatgpt-app", "bullets": ["ביטוח חיות מחמד: שיחה מונחית עד הצעת מחיר אישית", "בישראל: ביטוח ישיר מתגמלת מי שמגיע מכלי AI לאתר שלה"]}, "gptads": {"n": 7, "title": "הפרסום ב-ChatGPT נפתח בישראל", "anchor": "ai-chatgpt-ads-cellcom", "bullets": ["סלקום מהמפרסמות הראשונות בישראל · מ-30.9", "פרסום ביטוח מותר שם רק בארה״ב · המפרסם הפיננסי הגדול: BestMoney הישראלית"]}, "intro": {"kicker": "פתיח", "title": "המבט השבועי · 24.9–2.10", "bullets": ["7 הכותרות של השבוע"]}, "outro": {"kicker": "סיום", "title": "המבט הבא: 1–7 באוקטובר", "bullets": []}}, "audio": {"chapters": [{"id": "intro", "t": 0.7, "title": "פתיח"}, {"id": "lead", "t": 24.58, "title": "המבטחות נכנסות למשכנתאות"}, {"id": "brokers", "t": 88.16, "title": "הפניקס ברוקרס מקימה זרוע AI"}, {"id": "leader", "t": 110.66, "title": "אלטשולר שחם מבטלת את ההשקעה בלידר"}, {"id": "private", "t": 137.3, "title": "מגדל בראש ההשקעות הפרטיות"}, {"id": "meitav", "t": 154.29, "title": "ניסיון פריצה למיטב טרייד"}, {"id": "metlife", "t": 174.42, "title": "MetLife בונה הצעת מחיר בתוך ChatGPT"}, {"id": "gptads", "t": 197.45, "title": "הפרסום ב-ChatGPT נפתח בישראל"}, {"id": "outro", "t": 224.81, "title": "סיום"}], "duration": 242.85}};
+window.M2 = {"issue": "2026-10-08", "range": "2–8.10", "total": 7, "art": "../assets/icon-512.png", "icons": {"play": "<svg viewBox=\"0 0 10 12\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M10 0v12L0 6z\"/></svg>", "pause": "<svg viewBox=\"0 0 10 12\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M0 0h3.6v12H0zM6.4 0H10v12H6.4z\"/></svg>"}, "screens": {"lead": {"bullets": ["צעירים יחסכו — המבטחות ינהלו ״במודל תחרותי״", "5.2 מיליון מבוטחים היום · ההצעה לממשלה הבאה"], "n": 1, "title": "הביטוח הסיעודי עובר לחיסכון", "anchor": "cma-ltc-savings"}, "discount": {"bullets": ["השלמה צפויה ב-2027 · מרכנתיל נשאר מותג", "לפי הערכות: 400–550 פורשים, כ-170 סניפים"], "n": 2, "title": "דיסקונט ממזג את מרכנתיל", "anchor": "discount-mercantile"}, "bernstein": {"bullets": ["ללקוחות אמידים: הפלטפורמה הגלובלית של Bernstein", "המהלך השני של הפניקס בניהול עושר מאז יולי"], "n": 3, "title": "הפניקס W חוברת ל-Bernstein", "anchor": "phoenix-bernstein"}, "mortgages": {"bullets": ["הראל: עד 80% מימון · עד 40 שנה", "מנורה בשוק, הפניקס דרך גמא, מגדל עם בנק ירושלים"], "n": 4, "title": "המבטחות נכנסות למשכנתאות", "anchor": "harel-mortgages"}, "ayalon": {"bullets": ["כ-2.6 מיליארד ₪ מנוהלים · גיוס דרך הסוכנים", "תשואות ספטמבר צפויות חלשות"], "n": 5, "title": "איילון גייסה כמיליארד וחצי לגמל", "anchor": "ayalon-gemel"}, "brokers": {"bullets": ["רכשה את AdvisorOS · הסכום לא פורסם", "המייסד מונה לראש תחום ה-AI"], "n": 6, "title": "הפניקס ברוקרס מקימה זרוע AI", "anchor": "ai-phoenix-brokers-advisoros"}, "car": {"bullets": ["אותו רכב, פער של עד 81% בין חברות", "מי שמחדש אוטומטית מפספס את ההוזלה"], "n": 7, "title": "הפער במחירי ביטוח הרכב", "anchor": "car-renewal-gap"}, "intro": {"kicker": "פתיח", "title": "המבט השבועי · 2–8.10", "bullets": ["7 הכותרות של השבוע"]}, "outro": {"kicker": "סיום", "title": "המבט הבא: 5–11 באוקטובר", "bullets": []}}, "audio": {"chapters": [{"id": "intro", "t": 0.7, "title": "פתיח"}, {"id": "lead", "t": 23.52, "title": "הביטוח הסיעודי עובר לחיסכון"}, {"id": "discount", "t": 66.19, "title": "דיסקונט ממזג את מרכנתיל"}, {"id": "bernstein", "t": 88.09, "title": "הפניקס W חוברת ל-Bernstein"}, {"id": "mortgages", "t": 107.25, "title": "המבטחות נכנסות למשכנתאות"}, {"id": "ayalon", "t": 129.12, "title": "איילון גייסה כמיליארד וחצי לגמל"}, {"id": "brokers", "t": 146.89, "title": "הפניקס ברוקרס מקימה זרוע AI"}, {"id": "car", "t": 163.31, "title": "הפער במחירי ביטוח הרכב"}, {"id": "outro", "t": 182.75, "title": "סיום"}], "duration": 200.79}};
 /* ============================================================
    המגדלור 2.0 · התנהגות הדף (D-078–D-081). נטען ב-tools/build_magdalor2.py.
    מקור: הגרסה הניסיונית (prototypes/demos/2026-09-30-lab, גרסה 5), בלי שכבות הסקירה.
@@ -1698,5 +1876,488 @@ window.M2 = {"issue": "2026-10-02", "range": "24.9–2.10", "total": 7, "art": "
 })();
 
 </script>
+<!--wcb-ob:js-->
+<script data-ob>
+window.__OB_CFG={"slug":"2026-10-08","v":"2","auto_until":"2026-10-31","copy":{"intro":{"tag":"גרסה חדשה","kicker":"ברוכים הבאים אל","title":"המגדלור","version":"2.0","subtitle":"המבט השבועי עבר שדרוג. {n_words} דברים חדשים — בחצי דקה.","items":{"about":{"title":"מה כתבו על מגדל","desc":"ציטוטים מהעיתונות על מגדל, בראש הגיליון — כשיש."},"listen":{"title":"האזנה","desc":"הכותרות המרכזיות של השבוע בקול אחד, ב-{dur} דקות."},"issue":{"title":"הגיליון המלא","desc":"מתחת לשער, בלשוניות: {tabs}."},"more":{"title":"הרחבה","desc":"פסקה אחת, מקורות ושליחה בוואטסאפ לכל כתבה."},"archive":{"title":"גיליונות קודמים","desc":"הארכיון לפי תאריך, עם הנושאים של כל שבוע."}},"start":"המשך","skip":"דילוג"},"steps":{"about":{"badge":"חדש","title":"מה כתבו על מגדל","body":"כשהעיתונות כותבת על מגדל, הציטוטים מופיעים כאן, בראש הגיליון — עם התאריך והקישור."},"listen":{"badge":"חדש","title":"האזנה","body":"הכותרות המרכזיות של השבוע בקול אחד, ב-{dur} דקות. אפשר להמשיך לקרוא בזמן ההאזנה."},"issue":{"badge":"","title":"הגיליון המלא","body":"מתחת לשער — כל הגיליון, מחולק ללשוניות: {tabs}."},"more":{"badge":"חדש","title":"הרחבה בכל כתבה","body":"פסקה אחת שמסכמת את הידיעה, עם המקורות — ושליחה בוואטסאפ של הקישור לכתבה."},"archive":{"badge":"","title":"גיליונות קודמים","body":"כל הגיליונות הקודמים לפי תאריך, עם כותרת השבוע והנושאים של כל אחד."}},"ui":{"aria":"הכרת הגרסה החדשה","next":"הבא","done":"סיום","skip":"דילוג","count":"{i} מתוך {n}","replay":"סיור קצר בגרסה החדשה","toast_done":"זה הכול. את הסיור אפשר לראות שוב בתחתית העמוד."}},"steps":["listen","issue","more","archive"]};
+/* ============================================================
+   wcb-ob · סיור היכרות חד-פעמי ל״המגדלור 2.0״ — בסגנון ״מה חדש״ של Apple אחרי עדכון גרסה
+   מקור האמת: tools/onboarding/ob.js · אפיון: docs/11-magdalor-2-onboarding.md
+   מוזרק לעותק שבאתר בפרסום (inject_onboarding.py), רק לגיליון שנחמש ב-config.json,
+   אחרי `window.__OB_CFG = {slug, v, auto_until, steps, copy}`. קובץ אחד, בלי תלויות חיצוניות, ES5.
+
+   מה הוא עושה: (1) מסך פתיחה שתופס את כל המסך — ״המגדלור 2.0״, מה חדש בארבע שורות, ״המשך״ — ואי אפשר להתעלם ממנו;
+   (2) סיור של עד חמישה צעדים שמדגישים רכיב אמיתי בדף (האזנה · הגיליון המלא · ״הרחבה״ · גיליונות קודמים); (3) סיום.
+   דילוג בכל מסך. הדף נשאר כפי שהיה (״הרחבה״ נסגרת, לשונית וגלילה חוזרות).
+   מה הוא לא עושה: לא נוגע בתוכן, לא מתחיל שמע, לא שולח דבר מעבר לאירועי מד השימוש, ונכשל פתוח —
+   שגיאה אחת וכל מה שהוא הוסיף מוסר, הדף משוחרר והוא נשאר כמו שהיה.
+
+   חוזה עם הדף (docs/11 §2.2): window.M2 {audio, issue} · #coverListen (רק כשיש שמע) · .cover-quote ·
+   #worlds > .worlds-h + .switch-anchor > .viewswitch · [data-view-to] · details.story-more · #archive ·
+   .siteheader · footer.end > .mg-lockup + .end-row · #toast / window.__toast. צעד שהעוגן שלו חסר — מדולג.
+   פחות משני צעדים — אין סיור.
+
+   מתגי כתובת: ?ob=1 מציג בכל מקרה · ?ob=0 מכבה לגמרי (בדיקות עשן!).
+   ============================================================ */
+(function(){
+  "use strict";
+  var CFG = window.__OB_CFG;
+  if (!CFG || !CFG.copy || window.__ob) return;
+
+  var W = window, D = document, HTML = D.documentElement;
+  var COPY = CFG.copy, INTRO = COPY.intro || {}, UI = COPY.ui || {}, SLUG = String(CFG.slug || "");
+  var KEY = "wcb-ob:" + SLUG;
+  var AUTO_DELAY = 350, FORCED_DELAY = 200, FONT_WAIT = 900, MAX_AUTO = 2;
+
+  /* ---------- כלים ---------- */
+  function $(s, r){ return (r || D).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
+  function el(tag, cls, text){ var e = D.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function q(name){ try { return new URLSearchParams(W.location.search).get(name) || ""; } catch (e) { return ""; } }
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function fmt(s){ s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  function today(){ var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function reducedNow(){ return !!(W.matchMedia && W.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function visible(e){ return !!(e && e.getClientRects().length && !e.closest("[hidden]")); }
+  function numHe(n){ return { 2: "שני", 3: "שלושה", 4: "ארבעה", 5: "חמישה", 6: "שישה" }[n] || String(n); }
+
+  /* ---------- זיכרון: localStorage ← sessionStorage ← זיכרון הדף (ב-WebView של וואטסאפ לפעמים אין) ---------- */
+  var mem = {};
+  var store = {
+    get: function(k){
+      try { var v = W.localStorage.getItem(k); if (v != null) return v; } catch (e) {}
+      try { var s = W.sessionStorage.getItem(k); if (s != null) return s; } catch (e2) {}
+      return mem[k] || null;
+    },
+    set: function(k, v){
+      mem[k] = v;
+      try { W.localStorage.setItem(k, v); return; } catch (e) {}
+      try { W.sessionStorage.setItem(k, v); } catch (e2) {}
+    }
+  };
+  function readFlag(){ try { var o = JSON.parse(store.get(KEY) || "{}"); return { s: o.s || "", n: +o.n || 0 }; } catch (e) { return { s: "", n: 0 }; } }
+  function writeFlag(o){ store.set(KEY, JSON.stringify(o)); }
+
+  /* ---------- מד השימוש: אירוע = click עם target ‏ob_*. אין מד / מד כבוי — שקט ---------- */
+  function track(name, props){ try { var u = W.__wcbu; if (u && typeof u.track === "function") u.track(name, props || {}); } catch (e) {} }
+
+  /* ---------- מתגי כתובת ו-bots ---------- */
+  var FORCE = q("ob") || (CFG.preview ? "1" : "");   /* preview: עמוד בדיקה פרטי — נפתח תמיד, כמו ?ob=1 */
+  if (FORCE === "0") return;
+  if (navigator.webdriver && FORCE !== "1") return;
+
+  /* ---------- מצב ---------- */
+  var state = "idle", steps = [], cur = -1, T0 = 0;
+  var origin = null, opened = null, prevView = "", timers = [], rzT = 0, locked = [], prevOverflow = null;
+  var root, intro, ring, shield, card, bars, head, badge, count, title, body, skipB, nextB, built = false;
+  var introPrimary, introGhost;
+
+  /* ---------- כשל = הדף כמו שהיה (שגיאה אחת ← הכול מוסר, הדף משוחרר) ---------- */
+  function bail(err){
+    try { clearTimers(); unbindKeys(); unlockPage(); if (opened) opened.open = false; var r = $("#ob-root"); if (r && r.parentNode) r.parentNode.removeChild(r); } catch (e) {}
+    state = "closed"; try { track("ob_abort", { value: "error" }); } catch (e2) {}
+    try { if (W.console) console.warn("wcb-ob:", err); } catch (e3) {}
+  }
+  function guard(fn){ return function(){ try { return fn.apply(this, arguments); } catch (e) { bail(e); } }; }
+  function later(fn, ms){
+    var id = setTimeout(function(){
+      var i = timers.indexOf(id); if (i >= 0) timers.splice(i, 1);
+      try { fn(); } catch (e) { bail(e); }
+    }, ms);
+    timers.push(id); return id;
+  }
+  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+
+  /* ---------- נעילת הדף בזמן מסך הפתיחה: גלילה + inert על כל מה שמאחור ---------- */
+  function lockPage(){
+    if (prevOverflow !== null) return;
+    prevOverflow = HTML.style.overflow; HTML.style.overflow = "hidden";
+    Array.prototype.forEach.call(D.body.children, function(ch){
+      if (ch === root || /^(SCRIPT|STYLE|LINK|NOSCRIPT)$/.test(ch.tagName) || ch.hasAttribute("inert")) return;
+      ch.setAttribute("inert", ""); locked.push(ch);
+    });
+  }
+  function unlockPage(){
+    locked.forEach(function(ch){ ch.removeAttribute("inert"); }); locked = [];
+    if (prevOverflow !== null) { HTML.style.overflow = prevOverflow; prevOverflow = null; }
+  }
+
+  /* ---------- הצעדים: רכיב אמיתי בדף, או שאין צעד ---------- */
+  function firstMore(){ return $('.view[data-view="main"] details.story-more') || $("details.story-more"); }
+  function tabLabels(){
+    return $$(".viewswitch [data-view-to]").map(function(b){
+      var l = $(".lbl", b) || b, t = "";
+      Array.prototype.forEach.call(l.childNodes, function(n){ if (n.nodeType === 3) t += n.textContent; });
+      return t.replace(/\s+/g, " ").trim();
+    }).filter(Boolean);
+  }
+  function joinHe(a){
+    if (a.length < 2) return a[0] || "";
+    var last = a[a.length - 1];
+    return a.slice(0, -1).join(", ") + " " + (/^[A-Za-z0-9]/.test(last) ? "ו-" : "ו") + last;
+  }
+  function fill(t){
+    var M = W.M2 || {}, tabs = tabLabels();
+    return String(t == null ? "" : t)
+      .replace(/\{dur\}/g, M.audio ? fmt(M.audio.duration) : "")
+      .replace(/\{tabs\}/g, joinHe(tabs))
+      .replace(/\{first_tab\}/g, tabs[0] || "")
+      .replace(/\{n_words\}/g, numHe(steps.length));
+  }
+  function makeSteps(){
+    var all = {}, M = W.M2 || {};
+    if ($(".cover-quote")) all.about = { id: "about", align: "top", els: function(){ return [$(".cover-quote")]; } };
+    if (M.audio && visible($("#coverListen"))) all.listen = { id: "listen", els: function(){ return [$("#coverListen")]; } };
+    if ($("#worlds .switch-anchor, #worlds .viewswitch")) all.issue = { id: "issue", main: true, els: function(){
+      return [$("#worlds .worlds-h"), $("#worlds .switch-anchor") || $("#worlds .viewswitch")].filter(Boolean); } };
+    if (firstMore()) all.more = { id: "more", main: true, open: true, align: "bottom", els: function(){ return [firstMore()]; } };
+    if ($("#archive")) all.archive = { id: "archive", main: true, align: "top", els: function(){
+      return [$("#archive .section-title"), $("#archive .arc-list li:nth-child(2)") || $("#archive .arc-list li")].filter(Boolean); } };   /* הכותרת + שתי השורות הראשונות — לא כל הרשימה */
+    var order = (CFG.steps && CFG.steps.length) ? CFG.steps : ["listen", "issue", "more", "archive"];   /* config.json: אילו צעדים ובאיזה סדר */
+    return order.map(function(k){ return all[k]; }).filter(Boolean);
+  }
+  function stepBody(st){ var c = (COPY.steps || {})[st.id] || {}; return fill(c.body); }
+
+  /* ---------- איורי השורות במסך הפתיחה: קווים, 24px, בלי תלויות ---------- */
+  var ICONS = {
+    listen: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6.5" rx="1.7"/><rect x="17" y="14" width="4" height="6.5" rx="1.7"/>',
+    issue: '<rect x="3.5" y="5" width="17" height="14" rx="2.6"/><path d="M3.5 10h17M9.2 10V5M14.8 10V5"/>',
+    more: '<path d="M4 6h16M4 11h16M4 16h9.5"/><path d="M15.5 17.5l2.5 2.5 2.5-2.5"/>',
+    archive: '<path d="M3.6 12a8.4 8.4 0 1 0 2.5-6"/><path d="M3.6 4.6v4h4"/><path d="M12 7.6V12l3 2"/>',
+    about: '<path d="M7.2 8.4C5.4 8.8 4 10.3 4 12.3V16h5.2v-4.3H6.5c.1-1.1.8-1.9 2-2.3zM16.2 8.4c-1.8.4-3.2 1.9-3.2 3.9V16h5.2v-4.3h-2.7c.1-1.1.8-1.9 2-2.3z"/>'
+  };
+  function icon(id){
+    var s = D.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("aria-hidden", "true"); s.setAttribute("fill", "none");
+    s.setAttribute("stroke", "currentColor"); s.setAttribute("stroke-width", "1.8"); s.setAttribute("stroke-linecap", "round"); s.setAttribute("stroke-linejoin", "round");
+    s.innerHTML = ICONS[id] || ""; return s;
+  }
+
+  /* ---------- DOM (נוצר רק כשצריך) ---------- */
+  function build(){
+    if (built) return; built = true;
+    root = el("div", "ob-root"); root.id = "ob-root"; root.hidden = true; root.setAttribute("data-ob", "1");
+    shield = el("div", "ob-shield"); shield.setAttribute("aria-hidden", "true");
+    ring = el("div", "ob-ring"); ring.setAttribute("aria-hidden", "true");
+    card = el("section", "ob-card"); card.setAttribute("role", "dialog"); card.setAttribute("aria-labelledby", "ob-t");
+    card.setAttribute("aria-describedby", "ob-b"); card.tabIndex = -1;
+    bars = el("div", "ob-bars"); bars.setAttribute("aria-hidden", "true");
+    head = el("p", "ob-head"); badge = el("span", "ob-badge"); count = el("span", "ob-count"); head.appendChild(badge); head.appendChild(count);
+    var box = el("div", "ob-copy"); box.setAttribute("aria-live", "polite"); box.setAttribute("aria-atomic", "true");
+    title = el("h2", "ob-title"); title.id = "ob-t"; body = el("p", "ob-body"); body.id = "ob-b";
+    box.appendChild(title); box.appendChild(body);
+    var acts = el("div", "ob-actions");
+    skipB = el("button", "ob-btn ob-ghost"); skipB.type = "button";
+    nextB = el("button", "ob-btn ob-primary"); nextB.type = "button";
+    acts.appendChild(skipB); acts.appendChild(nextB);
+    card.appendChild(bars); card.appendChild(head); card.appendChild(box); card.appendChild(acts);
+    root.appendChild(shield); root.appendChild(ring); root.appendChild(card);
+    D.body.appendChild(root);
+    nextB.addEventListener("click", guard(function(){ onNext(); }));
+    skipB.addEventListener("click", guard(function(){ finish("btn"); }));
+    shield.addEventListener("touchmove", function(e){ e.preventDefault(); }, { passive: false });
+    shield.addEventListener("wheel", function(e){ e.preventDefault(); }, { passive: false });
+  }
+  function cloneMark(){
+    var src = $("footer.end .mg-lockup .mg-mark") || $(".siteheader .mg-lockup .mg-mark");
+    if (!src) return null;
+    var m = src.cloneNode(true);
+    [m].concat($$("[id]", m)).forEach(function(e){ e.removeAttribute("id"); });
+    var img = $("img", m); if (img) img.setAttribute("alt", "");
+    var wrap = el("span", "mg-lockup mg-on-dark ob-mark"); wrap.setAttribute("aria-hidden", "true"); wrap.appendChild(m);
+    return wrap;
+  }
+  function buildIntro(){
+    if (intro) return;
+    intro = el("div", "ob-intro"); intro.hidden = true; intro.tabIndex = -1;
+    intro.setAttribute("role", "dialog"); intro.setAttribute("aria-modal", "true");
+    intro.setAttribute("aria-labelledby", "ob-it"); intro.setAttribute("aria-describedby", "ob-is");
+    var cone = el("div", "ob-cone"); cone.setAttribute("aria-hidden", "true");
+    var scroll = el("div", "ob-scroll"), hero = el("div", "ob-hero");
+    var mark = cloneMark(); if (mark) hero.appendChild(mark);
+    hero.appendChild(el("p", "ob-tag"));
+    hero.appendChild(el("p", "ob-kicker"));
+    var h = el("h2", "ob-it"); h.id = "ob-it"; h.appendChild(el("b")); h.appendChild(D.createTextNode(" ")); h.appendChild(el("span", "ob-v"));
+    hero.appendChild(h);
+    var sub = el("p", "ob-is"); sub.id = "ob-is"; hero.appendChild(sub);
+    var list = el("ul", "ob-list");
+    var foot = el("div", "ob-foot");
+    introPrimary = el("button", "ob-btn ob-primary ob-big"); introPrimary.type = "button";
+    introGhost = el("button", "ob-btn ob-ghost"); introGhost.type = "button";
+    foot.appendChild(introPrimary); foot.appendChild(introGhost);
+    scroll.appendChild(hero); scroll.appendChild(list);
+    intro.appendChild(cone); intro.appendChild(scroll); intro.appendChild(foot);
+    root.appendChild(intro);
+    introPrimary.addEventListener("click", guard(function(){ startTour("intro"); }));
+    introGhost.addEventListener("click", guard(function(){ finish("btn"); }));
+  }
+  function paintIntro(){
+    $(".ob-tag", intro).textContent = INTRO.tag || "";
+    $(".ob-kicker", intro).textContent = INTRO.kicker || "";
+    $(".ob-it b", intro).textContent = INTRO.title || "";
+    $(".ob-it .ob-v", intro).textContent = INTRO.version || "";
+    $(".ob-is", intro).textContent = fill(INTRO.subtitle);
+    var list = $(".ob-list", intro); list.innerHTML = "";
+    steps.forEach(function(st, i){
+      var it = (INTRO.items || {})[st.id] || {};
+      var li = el("li"); li.style.setProperty("--i", String(i));
+      var ico = el("span", "ob-ico"); ico.appendChild(icon(st.id));
+      var tx = el("span", "ob-tx"); tx.appendChild(el("b", null, fill(it.title))); tx.appendChild(el("span", null, fill(it.desc)));
+      li.appendChild(ico); li.appendChild(tx); list.appendChild(li);
+    });
+    introPrimary.textContent = INTRO.start || UI.next || ""; introGhost.textContent = INTRO.skip || UI.skip || "";
+  }
+
+  /* ---------- גיאומטריה ---------- */
+  function union(els){
+    var r = null;
+    els.forEach(function(e){
+      if (!e) return; var b = e.getBoundingClientRect(); if (!b.width && !b.height) return;
+      if (!r) r = { l: b.left, t: b.top, r: b.right, b: b.bottom };
+      else { r.l = Math.min(r.l, b.left); r.t = Math.min(r.t, b.top); r.r = Math.max(r.r, b.right); r.b = Math.max(r.b, b.bottom); }
+    });
+    return r;
+  }
+  function headerBottom(){ var h = $(".siteheader"); if (!h) return 0; var r = h.getBoundingClientRect(); return r.height ? Math.max(0, r.bottom) : 0; }
+  function cardTop(){ var b = parseFloat(W.getComputedStyle(card).bottom) || 0; return W.innerHeight - b - card.offsetHeight; }
+  function freeArea(){ return { top: headerBottom() + 12, bottom: Math.min(cardTop(), W.innerHeight) - 12 }; }
+  function scrollToY(y, cb){
+    var max = Math.max(0, HTML.scrollHeight - W.innerHeight), ny = clamp(Math.round(y), 0, max), cy = W.pageYOffset;
+    if (Math.abs(ny - cy) < 2) { cb(); return; }
+    try { W.scrollTo({ top: ny, left: 0, behavior: reducedNow() ? "instant" : "smooth" }); } catch (e) { W.scrollTo(0, ny); }
+    var last = cy, still = 0, t0 = Date.now();
+    (function poll(){
+      var now = W.pageYOffset; still = Math.abs(now - last) < 1 ? still + 1 : 0; last = now;
+      if (still >= 3 || Date.now() - t0 > 1400 || Math.abs(now - ny) < 1) { cb(); return; }
+      later(poll, 60);
+    })();
+  }
+
+  /* ---------- הטבעת: חור בהכהיה סביב הרכיב. נפתחת ממרכזו (״איריס״), לא מחליקה מצעד לצעד ---------- */
+  function ringRect(els){
+    var r = union(els); if (!r) return null;
+    var pad = (r.b - r.t) > 160 ? 6 : 8, rad = 14;
+    try { var br = parseFloat(W.getComputedStyle(els[0]).borderTopLeftRadius); if (br > 0) rad = Math.min(br + pad, 32); } catch (e) {}
+    var t = r.t - pad, b = r.b + pad, hb = headerBottom(), clipped = t < hb;
+    if (clipped) t = hb;                      /* רכיב גבוה שחלקו העליון מתחת להדר — החור מתחיל מתחתיתו, וההדר נשאר מוכהה */
+    return { l: r.l - pad, t: t, w: (r.r - r.l) + pad * 2, h: b - t, rad: clipped ? "0 0 " + rad + "px " + rad + "px" : rad + "px" };
+  }
+  function setRing(r, grow){
+    if (!r) { ring.classList.remove("on"); return; }
+    if (grow) {
+      ring.classList.remove("anim");
+      ring.style.left = (r.l + r.w / 2) + "px"; ring.style.top = (r.t + r.h / 2) + "px";
+      ring.style.width = "0px"; ring.style.height = "0px"; ring.style.borderRadius = r.rad;
+      void ring.offsetWidth;
+      if (!reducedNow()) ring.classList.add("anim");
+    }
+    ring.style.left = r.l + "px"; ring.style.top = r.t + "px"; ring.style.width = r.w + "px"; ring.style.height = r.h + "px"; ring.style.borderRadius = r.rad;
+    ring.classList.add("on");
+  }
+  function collapseRing(){
+    var b = ring.getBoundingClientRect();
+    if (!reducedNow()) ring.classList.add("anim");
+    ring.style.left = (b.left + b.width / 2) + "px"; ring.style.top = (b.top + b.height / 2) + "px"; ring.style.width = "0px"; ring.style.height = "0px";
+  }
+
+  /* ---------- כרטיס הצעד ---------- */
+  function paintStep(i){
+    var st = steps[i], c = (COPY.steps || {})[st.id] || {};
+    root.className = "ob-root ob-tour"; card.setAttribute("aria-modal", "true");
+    bars.hidden = false; bars.innerHTML = "";
+    for (var j = 0; j < steps.length; j++) { var s = el("i"); if (j <= i) s.className = "on"; bars.appendChild(s); }
+    badge.textContent = c.badge || ""; badge.hidden = !c.badge; head.hidden = false;
+    count.textContent = String(UI.count || "{i} מתוך {n}").replace("{i}", i + 1).replace("{n}", steps.length);
+    title.textContent = fill(c.title); body.textContent = stepBody(st);
+    skipB.textContent = UI.skip || ""; nextB.textContent = i === steps.length - 1 ? (UI.done || "") : (UI.next || "");
+  }
+
+  /* ---------- הזרימה ---------- */
+  var showIntro = guard(function(why){
+    steps = makeSteps();
+    if (steps.length < 2) { track("ob_abort", { value: "few_steps", num: steps.length }); return; }
+    build(); buildIntro(); state = "intro"; T0 = Date.now();
+    if (why !== "forced") { var fl = readFlag(); fl.n += 1; writeFlag(fl); }
+    paintIntro();
+    root.className = "ob-root ob-has-intro"; root.hidden = false; intro.hidden = false;
+    if (W.getComputedStyle(intro).position !== "fixed") throw new Error("ob.css לא נטען — לא נועלים דף בלי מסך שמכסה אותו");
+    lockPage();
+    void intro.offsetWidth; intro.classList.add("in");
+    try { intro.focus({ preventScroll: true }); } catch (e) { intro.focus(); }
+    track("ob_shown", { value: why, num: steps.length });
+    bindKeys();
+  });
+
+  var startTour = guard(function(from){
+    if (from !== "intro") steps = makeSteps();
+    if (steps.length < 2) { track("ob_abort", { value: "few_steps", num: steps.length }); return; }
+    build();
+    if (state === "tour") return;
+    var fromIntro = state === "intro";
+    clearTimers();
+    if (from === "replay") T0 = Date.now();
+    state = "tour"; origin = { y: W.pageYOffset, focus: fromIntro ? null : D.activeElement };
+    unlockPage();
+    root.hidden = false; paintStep(0);
+    if (!card.classList.contains("in")) { void card.offsetWidth; card.classList.add("in"); }
+    if (fromIntro && intro) { intro.classList.add("out"); later(function(){ intro.hidden = true; intro.classList.remove("in", "out"); }, 260); }
+    track("ob_start", { value: from === "replay" ? "replay" : "intro", num: steps.length });
+    bindKeys();
+    showStep(0);
+  });
+
+  function ensureMain(){
+    var v = D.body.getAttribute("data-view");
+    if (v && v !== "main") { var t = $('[data-view-to="main"]'); if (t) { prevView = v; t.click(); } }
+  }
+
+  var showStep = guard(function(i){
+    if (state !== "tour") return;
+    if (i >= steps.length) { finish("done"); return; }
+    var st = steps[i];
+    if (st.main) ensureMain();
+    var els = st.els().filter(Boolean);
+    if (!els.length || !visible(els[0])) {          /* העוגן נעלם — מדלגים על הצעד, לא על הסיור */
+      track("ob_skipstep", { value: st.id, num: i + 1 });
+      steps.splice(i, 1);
+      if (!steps.length) { finish("btn"); return; }
+      showStep(i); return;
+    }
+    if (opened && !(st.open && els[0] === opened)) { opened.open = false; opened = null; }   /* עברנו הלאה — ה״הרחבה״ חוזרת להיות סגורה */
+    cur = i; paintStep(i); track("ob_step", { value: st.id, num: i + 1 });
+    if (st.open && els[0].tagName === "DETAILS" && !els[0].open) { els[0].open = true; opened = els[0]; }
+    placeStep(i, "enter");
+  });
+
+  var placeStep = guard(function(i, mode){
+    var st = steps[i]; if (!st) return;
+    var had = mode !== "resize" && ring.classList.contains("on");
+    if (had) collapseRing();
+    later(function(){
+      if (state !== "tour" || cur !== i) return;
+      var els = st.els().filter(Boolean), r = union(els); if (!r) return;
+      var f = freeArea(), h = r.b - r.t, avail = f.bottom - f.top, want;
+      if (r.t >= f.top - 2 && r.b <= f.bottom + 2) want = r.t;        /* כבר באזור הפנוי — נשארים במקום */
+      else if (h <= avail) want = f.top + (avail - h) / 2;             /* נכנס — למרכז האזור */
+      else want = st.align === "top" ? f.top : f.bottom - h;           /* גבוה מדי: ״archive/about״ — הראש; ״more״ — התחתית (הפעולות) */
+      scrollToY(W.pageYOffset + (r.t - want), function(){
+        if (state !== "tour" || cur !== i) return;
+        setRing(ringRect(els), mode !== "resize");
+        if (mode !== "resize") { try { nextB.focus({ preventScroll: true }); } catch (e) { nextB.focus(); } }
+      });
+    }, mode === "resize" ? 0 : (had ? 200 : 60));
+  });
+
+  var onNext = guard(function(){
+    if (state === "intro") { startTour("intro"); return; }
+    if (state === "tour") { if (cur >= steps.length - 1) finish("done"); else showStep(cur + 1); }
+  });
+
+  var finish = guard(function(how){
+    if (state !== "tour" && state !== "intro") return;
+    var wasTour = state === "tour", ms = Date.now() - T0;
+    var id = wasTour && steps[cur] ? steps[cur].id : "intro", idx = wasTour ? cur + 1 : 0;
+    state = "closed"; unbindKeys(); clearTimers();
+    var fl = readFlag();
+    if (how === "done") { fl.s = "done"; track("ob_done", { value: id, num: steps.length, ms: ms }); }
+    else { fl.s = "skip"; track("ob_skip", { value: id, num: idx, via: how, ms: ms }); }
+    writeFlag(fl);
+    unlockPage();
+    if (wasTour) { collapseRing(); ring.classList.remove("on"); }
+    card.classList.remove("in");
+    if (intro && !intro.hidden) intro.classList.add("out");
+    if (opened) { opened.open = false; opened = null; }
+    if (prevView) { var pv = $('[data-view-to="' + prevView + '"]'); prevView = ""; if (pv) pv.click(); }
+    var o = origin; origin = null;
+    function end(){
+      root.hidden = true; root.className = "ob-root"; if (intro) { intro.hidden = true; intro.classList.remove("in", "out"); }
+      if (o && o.focus && o.focus !== D.body && D.contains(o.focus) && !root.contains(o.focus) && o.focus.focus) { try { o.focus.focus({ preventScroll: true }); } catch (e) {} }
+      if (how === "done" && typeof W.__toast === "function" && UI.toast_done) W.__toast(UI.toast_done);
+    }
+    if (wasTour && o) scrollToY(o.y, function(){ later(end, 120); }); else later(end, 260);
+  });
+
+  /* ---------- מקלדת ושינוי גודל ---------- */
+  var onKey = guard(function(e){
+    if (state !== "tour" && state !== "intro") return;
+    var k = e.key;
+    if (k === "Escape") { e.preventDefault(); finish("esc"); return; }
+    if (state === "intro") {
+      if (k === "ArrowLeft") { e.preventDefault(); onNext(); return; }
+      if (k === "Tab") {
+        var f = [introPrimary, introGhost], a = D.activeElement, i = f.indexOf(a);
+        if (i < 0) { e.preventDefault(); introPrimary.focus(); return; }
+        if (e.shiftKey && i === 0) { e.preventDefault(); f[1].focus(); } else if (!e.shiftKey && i === 1) { e.preventDefault(); f[0].focus(); }
+      }
+      return;
+    }
+    if (k === "ArrowLeft") { e.preventDefault(); onNext(); return; }
+    if (k === "Tab") {
+      if (!card.contains(D.activeElement)) { e.preventDefault(); nextB.focus(); return; }
+      if (e.shiftKey && D.activeElement === skipB) { e.preventDefault(); nextB.focus(); }
+      else if (!e.shiftKey && D.activeElement === nextB) { e.preventDefault(); skipB.focus(); }
+      return;
+    }
+    var isBtn = e.target && e.target.tagName === "BUTTON";
+    if (k === "PageDown" || k === "PageUp" || k === "Home" || k === "End" || k === "ArrowUp" || k === "ArrowDown" || (k === " " && !isBtn)) e.preventDefault();
+  });
+  var onResize = guard(function(){
+    clearTimeout(rzT);
+    rzT = setTimeout(guard(function(){ if (state === "tour" && cur >= 0) placeStep(cur, "resize"); }), 140);
+  });
+  function bindKeys(){ D.addEventListener("keydown", onKey, true); W.addEventListener("resize", onResize); W.addEventListener("orientationchange", onResize); }
+  function unbindKeys(){ D.removeEventListener("keydown", onKey, true); W.removeEventListener("resize", onResize); W.removeEventListener("orientationchange", onResize); }
+
+  /* ---------- קישור ״הפעלה מחדש״ בתחתית ---------- */
+  function addReplay(){
+    if ($("[data-ob-replay]") || !UI.replay) return;
+    var host = $("footer.end .end-row") || $(".end-row") || $("footer.end");
+    if (!host) return;
+    var b = el("button", "ob-replay", UI.replay); b.type = "button"; b.setAttribute("data-ob-replay", "");
+    b.addEventListener("click", guard(function(){
+      if (state === "tour") return;
+      if (state === "intro") { startTour("intro"); return; }
+      state = "idle"; startTour("replay");
+    }));
+    host.appendChild(b);
+  }
+
+  /* ---------- מתי נפתח לבד: ביקור ראשון, אלא אם הקורא כבר דילג/סיים או שראה את המסך פעמיים ---------- */
+  function autoMode(){
+    if (FORCE === "1") return "forced";
+    var fl = readFlag(); if (fl.s || fl.n >= MAX_AUTO) return "";
+    if (CFG.auto_until && today() > CFG.auto_until) return "";
+    return "auto";
+  }
+  function afterFonts(cb){
+    var done = false; function go(){ if (!done) { done = true; cb(); } }
+    try { if (D.fonts && D.fonts.ready) { D.fonts.ready.then(go, go); setTimeout(go, FONT_WAIT); return; } } catch (e) {}
+    go();
+  }
+  var arm = guard(function(){
+    var m = autoMode(); if (!m) return;
+    if (D.visibilityState !== "visible") {
+      D.addEventListener("visibilitychange", function once(){ if (D.visibilityState === "visible") { D.removeEventListener("visibilitychange", once); arm(); } });
+      return;
+    }
+    afterFonts(guard(function(){ later(function(){ var m2 = autoMode(); if (m2 && state === "idle") showIntro(m2); }, m === "forced" ? FORCED_DELAY : AUTO_DELAY); }));
+  });
+
+  /* ---------- אתחול ---------- */
+  try {
+    if (makeSteps().length < 2) { track("ob_abort", { value: "few_steps" }); return; }
+    addReplay();
+    if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", arm); else arm();
+  } catch (e) { bail(e); }
+
+  /* ידית לבדיקות ולניפוי */
+  W.__ob = {
+    state: function(){ return state; }, step: function(){ return cur; },
+    steps: function(){ return steps.map(function(s){ return s.id; }); },
+    start: function(){ if (state === "tour") return; if (state === "intro") startTour("intro"); else { state = "idle"; startTour("replay"); } },
+    close: function(){ finish("btn"); }
+  };
+})();
+</script>
+<!--/wcb-ob:js-->
 </body>
 </html>
