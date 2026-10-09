@@ -445,10 +445,15 @@
   /* ---------- שמע (גרסה 2.0): <audio id="aud"> — כמה באמת האזינו, לא רק שלחצו play ----------
      הנגן עצמו אינו מצויד; המד מאזין לאלמנט. ״האזנה״ = שניות מדיה שנוגנו ברצף (קפיצה לא נספרת),
      ולכן דילוג לסוף לא מייצר ״האזין עד הסוף״. אחוזים = שניות שהואזנו / משך הקובץ.
-     אירועים (click, לפי הסכימה הקפואה): audio_play · audio_pct (value 25/50/75/100) · audio_end · audio_time (value = שניות, בעת יציאה). */
+     אירועים (click, לפי הסכימה הקפואה): audio_play · audio_pct (value 25/50/75/100) · audio_end · audio_time (value = שניות, בעת יציאה) ·
+     audio_ch (value = מזהה פרק, num = שניות שהואזנו לפרק, meta: title, len — מצטבר, נשלח ביציאה). */
   var aud = document.getElementById("aud");
   if (aud){
     var aHeard = 0, aLastT = null, aStarted = false, aMarks = {}, aSentSec = -1;
+    /* פרקים: window.M2.audio.chapters = [{id, t, title}] (הנגן של 2.0). שניות האזנה לכל פרק — כדי לדעת איזה תוכן משך באודיו */
+    var chs = (window.M2 && window.M2.audio && Array.isArray(window.M2.audio.chapters)) ? window.M2.audio.chapters : [];
+    var chHeard = {}, chSent = {};
+    var chAt = function(t){ var ix = -1; for (var i = 0; i < chs.length; i++){ if (t >= chs[i].t - 0.05) ix = i; } return ix; };
     var aDur = function(){ var d = aud.duration; return d && isFinite(d) && d > 0 ? d : 0; };
     var aMark = function(){
       var d = aDur(); if (!d) return;
@@ -466,11 +471,26 @@
     aud.addEventListener("timeupdate", function(){
       if (aud.paused || aud.seeking){ return; }
       var t = aud.currentTime;
-      if (aLastT != null){ var dt = t - aLastT; if (dt > 0 && dt < 2.5) aHeard += dt; }   /* קפיצה גדולה = דילוג, לא האזנה */
+      if (aLastT != null){
+        var dt = t - aLastT;
+        if (dt > 0 && dt < 2.5){ aHeard += dt; var ci = chAt(aLastT); if (ci >= 0) chHeard[ci] = (chHeard[ci] || 0) + dt; }   /* קפיצה גדולה = דילוג, לא האזנה */
+      }
       aLastT = t; aMark();
     });
     aud.addEventListener("ended", function(){ aMark(); push("click", { target:"audio_end", num:Math.round(aHeard) }); flush(); });
-    var aReport = function(){ var sec = Math.round(aHeard); if (sec > 0 && sec !== aSentSec){ aSentSec = sec; push("click", { target:"audio_time", value:String(sec) }); flush(); } };
+    var aReport = function(){
+      var sec = Math.round(aHeard), any = false;
+      if (sec > 0 && sec !== aSentSec){ aSentSec = sec; push("click", { target:"audio_time", value:String(sec) }); any = true; }
+      Object.keys(chHeard).forEach(function(i){   /* פרק שהואזן 2 שניות ומעלה, כשהערך השתנה מאז הדיווח הקודם */
+        var n = Math.round(chHeard[i]), c = chs[+i];
+        if (c && n >= 2 && n !== chSent[i]){
+          chSent[i] = n; any = true;
+          var end = chs[+i + 1] ? chs[+i + 1].t : aDur();
+          push("click", { target:"audio_ch", value:String(c.id), num:n, title:String(c.title || ""), len:Math.round(end - c.t) });
+        }
+      });
+      if (any) flush();
+    };
     document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") aReport(); });
     window.addEventListener("pagehide", aReport);
   }
