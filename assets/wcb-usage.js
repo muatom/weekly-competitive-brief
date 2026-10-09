@@ -18,6 +18,7 @@
    ב-wcb-fb: (שכבת המשוב).
 
    כיבוי לעצמך: ?usage=off פעם אחת (נשמר בדפדפן). הפעלה מחדש / מצב בדיקה: ?usage=on.
+   תום: ?fb=tom משתיק את הדפדפן לצמיתות (D-088); ?fb=tom&usage=on — בדיקה חד-פעמית של המד, who=tom.
    https://docs.google.com/forms/d/e/1FAIpQLSfIhHNs_gouRWXF7_bTcCZgckMWE2LAgjYV66BbWTrNtQOYyQ/formResponse, {"v": "entry.1178236466", "ts": "entry.354698067", "vid": "entry.1499500897", "sid": "entry.2024482859", "who": "entry.1745642139", "c": "entry.819031390", "issue": "entry.168559566", "path": "entry.1433981678", "variant": "entry.922617261", "dev": "entry.500397430", "ev": "entry.1625100283", "target": "entry.974584509", "item": "entry.660110197", "value": "entry.293225028", "num": "entry.1664435965", "meta": "entry.864790437"} ו-2026-12-02 מוחלפים בזמן הבנייה מ-tools/analytics/config.json.
    ============================================================ */
 (function(){
@@ -58,9 +59,13 @@
   /* ---------- מתג כיבוי, ובוטים ---------- */
   var sw = q("usage");
   var DEBUG = sw === "on";
-  if (sw === "off") ls(false, K.off, "1");
-  if (DEBUG) { try { localStorage.removeItem(K.off); } catch(e){} }
-  if (ls(true, K.off) === "1") return;
+  /* תום (D-088): כניסה עם ?fb=tom לא נמדדת ולא נשלחת בכלל, והדפדפן הזה נשאר מושתק גם בכניסות הבאות
+     (גם בלינק הנקי). היחיד שעוקף: ?fb=tom&usage=on, לבדיקת המד עצמו — ואז הדגל נשאר, והשורות נושאות who=tom */
+  var isTom = clean(q("fb")) === "tom";
+  if (sw === "off" || isTom) ls(false, K.off, "1");
+  if (DEBUG && !isTom) { try { localStorage.removeItem(K.off); } catch(e){} }
+  if (isTom && !DEBUG) return;
+  if (ls(true, K.off) === "1" && !(DEBUG && isTom)) return;
   if (!FORM || FORM.indexOf("__") === 0 || !E || !E.v) { window.__wcbu = { off:"no-form" }; return; }
   if (/^\d{4}-\d{2}-\d{2}$/.test(KILL_DATE) && new Date().toISOString().slice(0, 10) > KILL_DATE) { window.__wcbu = { off:"expired" }; return; }
   var UA = navigator.userAgent || "";
