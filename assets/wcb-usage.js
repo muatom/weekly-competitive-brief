@@ -437,6 +437,39 @@
   window.addEventListener("beforeprint", function(){ push("print"); flush(); });
   window.addEventListener("appinstalled", function(){ push("click", { target:"pwa_install" }); flush(); });
 
+  /* ---------- שמע (גרסה 2.0): <audio id="aud"> — כמה באמת האזינו, לא רק שלחצו play ----------
+     הנגן עצמו אינו מצויד; המד מאזין לאלמנט. ״האזנה״ = שניות מדיה שנוגנו ברצף (קפיצה לא נספרת),
+     ולכן דילוג לסוף לא מייצר ״האזין עד הסוף״. אחוזים = שניות שהואזנו / משך הקובץ.
+     אירועים (click, לפי הסכימה הקפואה): audio_play · audio_pct (value 25/50/75/100) · audio_end · audio_time (value = שניות, בעת יציאה). */
+  var aud = document.getElementById("aud");
+  if (aud){
+    var aHeard = 0, aLastT = null, aStarted = false, aMarks = {}, aSentSec = -1;
+    var aDur = function(){ var d = aud.duration; return d && isFinite(d) && d > 0 ? d : 0; };
+    var aMark = function(){
+      var d = aDur(); if (!d) return;
+      [25, 50, 75, 100].forEach(function(p){
+        if (!aMarks[p] && aHeard >= d * (p === 100 ? 0.95 : p / 100)){ aMarks[p] = 1; push("click", { target:"audio_pct", value:String(p), num:Math.round(aHeard) }); }
+      });
+    };
+    aud.addEventListener("play", function(){
+      aLastT = aud.currentTime;
+      if (!aStarted){ aStarted = true; push("click", { target:"audio_play", num:Math.round(aDur()) }); }
+    });
+    aud.addEventListener("pause", function(){ aLastT = null; });
+    aud.addEventListener("seeking", function(){ aLastT = null; });
+    aud.addEventListener("seeked", function(){ if (!aud.paused) aLastT = aud.currentTime; });
+    aud.addEventListener("timeupdate", function(){
+      if (aud.paused || aud.seeking){ return; }
+      var t = aud.currentTime;
+      if (aLastT != null){ var dt = t - aLastT; if (dt > 0 && dt < 2.5) aHeard += dt; }   /* קפיצה גדולה = דילוג, לא האזנה */
+      aLastT = t; aMark();
+    });
+    aud.addEventListener("ended", function(){ aMark(); push("click", { target:"audio_end", num:Math.round(aHeard) }); flush(); });
+    var aReport = function(){ var sec = Math.round(aHeard); if (sec > 0 && sec !== aSentSec){ aSentSec = sec; push("click", { target:"audio_time", value:String(sec) }); flush(); } };
+    document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") aReport(); });
+    window.addEventListener("pagehide", aReport);
+  }
+
   /* השידור הראשון רק אחרי פריים מצויר — תצוגות מקדימות ובוטים בדרך כלל לא מגיעים לכאן */
   function start(){
     if (started) return;
