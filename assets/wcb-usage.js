@@ -101,7 +101,8 @@
   }
   var path = location.pathname.replace(/index\.html$/, "");
   if (path.indexOf(SITE_PREFIX) === 0) path = path.slice(SITE_PREFIX.length) || "/";
-  var variant = document.body.hasAttribute("data-issue") || /-review\/?$/.test(path) ? "review" : "clean";
+  /* D-096: השורש מגיש את גרסת המשוב לכולם (ה-body נושא data-issue), ולכן הסוג נקבע לפי הנתיב בלבד */
+  var variant = /-review\/?$/.test(path) ? "review" : "clean";
   var ref = document.referrer ? host(document.referrer) : "";
   if (ref === location.hostname) ref = "self";
   /* כמה גיליונות הדפדפן הזה כבר ראה — נשלח כמספר בלבד */
