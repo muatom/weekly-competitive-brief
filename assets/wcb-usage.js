@@ -19,14 +19,14 @@
 
    כיבוי לעצמך: ?usage=off פעם אחת (נשמר בדפדפן). הפעלה מחדש / מצב בדיקה: ?usage=on.
    תום: ?fb=tom משתיק את הדפדפן לצמיתות (D-088); ?fb=tom&usage=on — בדיקה חד-פעמית של המד, who=tom.
-   https://docs.google.com/forms/d/e/1FAIpQLSfIhHNs_gouRWXF7_bTcCZgckMWE2LAgjYV66BbWTrNtQOYyQ/formResponse, {"v": "entry.1178236466", "ts": "entry.354698067", "vid": "entry.1499500897", "sid": "entry.2024482859", "who": "entry.1745642139", "c": "entry.819031390", "issue": "entry.168559566", "path": "entry.1433981678", "variant": "entry.922617261", "dev": "entry.500397430", "ev": "entry.1625100283", "target": "entry.974584509", "item": "entry.660110197", "value": "entry.293225028", "num": "entry.1664435965", "meta": "entry.864790437"} ו-2026-12-02 מוחלפים בזמן הבנייה מ-tools/analytics/config.json.
+   https://docs.google.com/forms/d/e/1FAIpQLSfIhHNs_gouRWXF7_bTcCZgckMWE2LAgjYV66BbWTrNtQOYyQ/formResponse, {"v": "entry.1178236466", "ts": "entry.354698067", "vid": "entry.1499500897", "sid": "entry.2024482859", "who": "entry.1745642139", "c": "entry.819031390", "issue": "entry.168559566", "path": "entry.1433981678", "variant": "entry.922617261", "dev": "entry.500397430", "ev": "entry.1625100283", "target": "entry.974584509", "item": "entry.660110197", "value": "entry.293225028", "num": "entry.1664435965", "meta": "entry.864790437"} ו-2027-01-02 מוחלפים בזמן הבנייה מ-tools/analytics/config.json.
    ============================================================ */
 (function(){
   "use strict";
 
   var FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfIhHNs_gouRWXF7_bTcCZgckMWE2LAgjYV66BbWTrNtQOYyQ/formResponse";
   var E = {"v": "entry.1178236466", "ts": "entry.354698067", "vid": "entry.1499500897", "sid": "entry.2024482859", "who": "entry.1745642139", "c": "entry.819031390", "issue": "entry.168559566", "path": "entry.1433981678", "variant": "entry.922617261", "dev": "entry.500397430", "ev": "entry.1625100283", "target": "entry.974584509", "item": "entry.660110197", "value": "entry.293225028", "num": "entry.1664435965", "meta": "entry.864790437"};
-  var KILL_DATE = "2026-12-02";       /* אחרי התאריך הזה המד שותק — גם בדפים שלא ייאספו חזרה */
+  var KILL_DATE = "2027-01-02";       /* אחרי התאריך הזה המד שותק — גם בדפים שלא ייאספו חזרה */
   var VERSION = "1";
   var SITE_PREFIX = "/weekly-competitive-brief";
   var K = { vid:"wcbu:vid", born:"wcbu:born", seen:"wcbu:seen", off:"wcbu:off" };
